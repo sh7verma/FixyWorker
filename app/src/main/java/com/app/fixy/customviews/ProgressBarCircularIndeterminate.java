@@ -10,7 +10,8 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-import app.com.nass.utils.Utils;
+import com.app.fixy.utils.Utils;
+
 
 public class ProgressBarCircularIndeterminate extends CustomView {
 	

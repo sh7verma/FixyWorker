@@ -28,7 +28,7 @@ public class SemiboldTextView extends TextView {
     private void init() {
         if (!isInEditMode()) {
             Typeface typeface = Typeface.createFromAsset(getContext()
-                    .getAssets(), "fonts/ProximaNova-Semibold.otf");
+                    .getAssets(), "fonts/Ubuntu-Medium.ttf");
             setTypeface(typeface);
         }
 

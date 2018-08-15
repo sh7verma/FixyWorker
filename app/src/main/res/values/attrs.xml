@@ -12,15 +12,28 @@
 
     <declare-styleable name="RippleBackground">
         <attr name="rb_color" format="color" />
-        <attr name="rb_strokeWidth" format="dimension"/>
-        <attr name="rb_radius" format="dimension"/>
-        <attr name="rb_duration" format="integer"/>
-        <attr name="rb_rippleAmount" format="integer"/>
-        <attr name="rb_scale" format="float"/>
+        <attr name="rb_strokeWidth" format="dimension" />
+        <attr name="rb_radius" format="dimension" />
+        <attr name="rb_duration" format="integer" />
+        <attr name="rb_rippleAmount" format="integer" />
+        <attr name="rb_scale" format="float" />
         <attr name="rb_type" format="enum">
-            <enum name="fillRipple" value="0"/>
-            <enum name="strokeRipple" value="1"/>
+            <enum name="fillRipple" value="0" />
+            <enum name="strokeRipple" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FloatingEditText">
+        <attr name="android:text" />
+        <attr name="android:textAllCaps" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:textStyle" />
+        <attr name="android:fontFamily" />
+        <attr name="android:inputType" />
+        <attr name="android:imeOptions" />
+        <attr name="android:maxLength" />
+        <attr name="android:maxLines" />
     </declare-styleable>
 
     <declare-styleable name="FlowLayout">
@@ -88,7 +101,7 @@
         <!-- Always show the helper text, no matter if the edit text is focused. -->
         <attr name="met_helperTextAlwaysShown" format="boolean" />
         <!-- Whether use animation to show/hide the floating label -->
-        <attr name="met_floatingLabelAnimating" format="boolean"/>
+        <attr name="met_floatingLabelAnimating" format="boolean" />
         <!-- Text color -->
         <attr name="met_textColor" format="color" />
         <!-- Hint Text Color -->

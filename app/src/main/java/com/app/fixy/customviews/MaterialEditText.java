@@ -34,14 +34,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.app.fixy.R;
+import com.app.fixy.utils.METValidator;
+import com.app.fixy.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-import app.com.nass.utils.METValidator;
-import app.com.nass.utils.Utils;
 
 /**
  * EditText in Material Design
@@ -409,8 +409,8 @@ public class MaterialEditText extends EditText {
         iconLeftBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconLeft, -1));
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
-        clearButtonBitmaps = generateIconBitmaps(R.drawable.met_ic_clear);
-        closeButtonBitmaps = generateIconBitmaps(R.drawable.met_ic_close);
+//        clearButtonBitmaps = generateIconBitmaps(R.drawable.met_ic_clear);
+//        closeButtonBitmaps = generateIconBitmaps(R.drawable.met_ic_close);
         iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(16));
         floatingLabelAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_floatingLabelAlwaysShown, false);
         helperTextAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_helperTextAlwaysShown, false);

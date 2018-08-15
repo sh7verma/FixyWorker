@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fixy</string>
+    <string name="app_name">Fixy</string>
 
 
     <string name="update">Update</string>
@@ -25,5 +25,25 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="hello_there">Hello there</string>
+    <string name="welcome_to_fixy">Welcome to Fixy!</string>
+    <string name="please_enter_your_phone_number_to_get_started">Please enter your phone number to get \nstarted.</string>
+    <string name="to_get_started">To get started</string>
+    <string name="verify_your_number">Verify your number</string>
+    <string name="please_enter_the_otp_sent_your_mobile_no">Please enter the OTP sent your mobile \nno.</string>
+    <string name="didn_t_receive_an_otp">Didn\'t receive an OTP?</string>
+    <string name="call">Call</string>
+    <string name="resend">Resend</string>
+    <string name="title_activity_create_profile">CreateProfileActivity</string>
+    <string name="create_profile">CREATE PROFILE</string>
+    <string name="full_name">Full Name</string>
+    <string name="enter">Enter</string>
+    <string name="email">Email</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="gender">Gender</string>
+    <string name="done">DONE</string>
+    <string name="female">FEMALE</string>
+    <string name="male">MALE</string>
+    <string name="enter_referral_code_detail">Enter Referral code and earn 20 Coins. You can earn later more coins by referring your own referral code with other.</string>
 
 </resources>

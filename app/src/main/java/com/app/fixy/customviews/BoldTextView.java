@@ -28,7 +28,7 @@ public class BoldTextView extends TextView {
     private void init() {
         if (!isInEditMode()) {
             Typeface typeface = Typeface.createFromAsset(getContext()
-                    .getAssets(), "fonts/ProximaNova-Bold_0.otf");
+                    .getAssets(), "fonts/Ubuntu-Bold.ttf");
             setTypeface(typeface);
         }
     }

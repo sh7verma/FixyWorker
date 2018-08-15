@@ -1,10 +1,11 @@
 package com.app.fixy.network;
 
+import com.app.fixy.utils.FixyApplication;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import app.com.nass.utils.NassApplication;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -55,7 +56,7 @@ public class RetrofitClient {
     private static Cache provideCache() {
         Cache cache = null;
         try {
-            cache = new Cache(new File(NassApplication.getInstance().getCacheDir(), "http-cache"),
+            cache = new Cache(new File(FixyApplication.getInstance().getCacheDir(), "http-cache"),
                     10 * 1024 * 1024); // 10 MB
         } catch (Exception ignored) {
 
@@ -88,7 +89,7 @@ public class RetrofitClient {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
 
-                if (!NassApplication.hasNetwork()) {
+                if (!FixyApplication.hasNetwork()) {
                     CacheControl cacheControl = new CacheControl.Builder()
                             .maxStale(7, TimeUnit.DAYS)
                             .build();

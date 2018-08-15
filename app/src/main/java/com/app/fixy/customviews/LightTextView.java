@@ -28,7 +28,7 @@ public class LightTextView extends TextView {
     private void init() {
         if (!isInEditMode()) {
             Typeface typeface = Typeface.createFromAsset(getContext()
-                    .getAssets(), "fonts/ProximaNova-Light.otf");
+                    .getAssets(), "fonts/Ubuntu-Light.ttf");
             setTypeface(typeface);
         }
 
