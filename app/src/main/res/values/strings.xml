@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">fixy</string>
+
+
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="new_version">A newer version of String Messenger is available would you like to update?</string>
+    <string name="cannot_connect_server">Cannot connect to server</string>
+    <string name="error">Something went wrong!</string>
+    <string name="internet">Internet connection not available!</string>
+    <string name="success">200</string>
+    <string name="invalid_access_token">420</string>
+    <string name="someone_logedin_some_other_device">Someone has logged in from same account from other device.</string>
+    <string name="someone_register_some_other_device">Someone else has registered with same Phone number/Email id.</string>
+    <string name="account_expired">Account Expired</string>
+    <string name="lorem_ipsum_small">lorem ipsum</string>
+    <string name="Lorem_Ipsum_large">Lorem Ipsum dolor sit amet ipsu dolor sit ame </string>
+    <string name="Lorem_Ipsum_larger">Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum dolor sit amet ipsu dolor sit ame Lorem Ipsum dolor sit amet ipsu dolor sit ame </string>
+
+    <string name="title_activity_landing">LandingActivity</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>
