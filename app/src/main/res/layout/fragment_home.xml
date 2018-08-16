@@ -309,8 +309,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
-                        android:gravity="center_vertical"
                         android:background="@mipmap/ic_rec_referral"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="@dimen/_10sdp">
 
@@ -336,6 +336,7 @@
                             <com.app.fixy.customviews.RegularTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
+                                android:textSize="@dimen/_12sdp"
                                 android:layout_weight="1"
                                 android:text="@string/Lorem_Ipsum_large" />
 
@@ -347,9 +348,9 @@
                                 android:paddingEnd="@dimen/_20sdp"
                                 android:paddingStart="@dimen/_20sdp"
                                 android:paddingTop="@dimen/_8sdp"
-                                android:textSize="@dimen/_10sdp"
                                 android:text="@string/share_and_earn"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
                     </LinearLayout>
