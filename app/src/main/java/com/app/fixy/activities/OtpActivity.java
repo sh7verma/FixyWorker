@@ -2,6 +2,7 @@ package com.app.fixy.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import com.app.fixy.R;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class OtpActivity extends BaseActivity {
 
@@ -41,7 +43,10 @@ public class OtpActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        llNext.setEnabled(false);
+        edFirst.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
+        edSecond.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
+        edThird.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
+        edFourth.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
     }
 
     @Override
@@ -211,7 +216,7 @@ public class OtpActivity extends BaseActivity {
                     }
                 }
                 return false;
-        }
+            }
         });
     }
 
@@ -221,6 +226,11 @@ public class OtpActivity extends BaseActivity {
     }
 
     private void checkOTP() {
+
+    }
+
+    @OnClick(R.id.ll_next)
+    void next() {
         Intent intent = new Intent(this, CreateProfileActivity.class);
         startActivity(intent);
     }

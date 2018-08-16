@@ -2,7 +2,12 @@ package com.app.fixy.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.app.fixy.R;
@@ -15,6 +20,8 @@ public class EnterNumberActivity extends BaseActivity {
     @BindView(R.id.ll_next)
     LinearLayout llNext;
 
+    @BindView(R.id.ed_number)
+    EditText edNumber;
 
     @Override
     protected int getContentView() {
@@ -28,6 +35,7 @@ public class EnterNumberActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
+        edNumber.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
 
     }
 
@@ -48,7 +56,6 @@ public class EnterNumberActivity extends BaseActivity {
         finish();
         overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
     }
-
 
 
     @Override
