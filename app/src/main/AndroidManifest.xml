@@ -33,29 +33,40 @@
         android:roundIcon="@mipmap/ic_logo_login"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity">
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.EnterNumberActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
+
         <activity
             android:name=".activities.OtpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
+
         <activity
             android:name=".activities.CreateProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".activities.LandingActivity" />
+
+        <activity
+            android:name=".activities.LandingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
         <activity android:name=".activities.CongratulationActivity"></activity>
     </application>
 

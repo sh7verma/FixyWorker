@@ -65,9 +65,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textAllCaps="true"
                     android:padding="@dimen/_5sdp"
                     android:text="@string/main_services"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp" />
 
@@ -118,7 +118,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -145,7 +145,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -172,7 +172,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -236,7 +236,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -263,7 +263,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/beauty"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 
@@ -281,7 +281,7 @@
                 android:text="@string/recommended_services"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13ssp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_recommended_services"
@@ -290,6 +290,74 @@
                 android:layout_below="@id/txt_recommended_services_header"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_recommended_services"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/white_round"
+                    android:elevation="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:gravity="center_vertical"
+                        android:background="@mipmap/ic_rec_referral"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_refferal_illus" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.app.fixy.customviews.BoldTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FixY85v"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_20sdp" />
+
+                            <com.app.fixy.customviews.RegularTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="@string/Lorem_Ipsum_large" />
+
+                            <com.app.fixy.customviews.RegularTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/primary_round"
+                                android:paddingBottom="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_20sdp"
+                                android:paddingStart="@dimen/_20sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:text="@string/share_and_earn"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
 
