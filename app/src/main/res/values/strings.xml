@@ -53,5 +53,7 @@
     <string name="beauty">beauty</string>
     <string name="main_services">main services</string>
     <string name="view_all"><![CDATA[view all >]]></string>
+    <string name="congratulation">congratulation</string>
+    <string name="congratulatin_text_mess">congratulatin_text_mess</string>
 
 </resources>
