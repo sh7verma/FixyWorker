@@ -18,7 +18,6 @@ import butterknife.OnClick;
 
 public class OtpActivity extends BaseActivity {
 
-
     @BindView(R.id.ed_first)
     EditText edFirst;
     @BindView(R.id.ed_second)
