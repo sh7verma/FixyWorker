@@ -65,6 +65,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textAllCaps="true"
                     android:padding="@dimen/_5sdp"
                     android:text="@string/main_services"
                     android:textColor="@color/white"
@@ -287,8 +288,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_recommended_services_header"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp" />
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp" />
 
         </RelativeLayout>
 

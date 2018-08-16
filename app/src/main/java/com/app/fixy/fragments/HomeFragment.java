@@ -41,7 +41,7 @@ public class HomeFragment extends BaseFragment {
         mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rvRecommendedServices.setLayoutManager(mLayoutManager);
         rvRecommendedServices.setNestedScrollingEnabled(false);
-        mAdapter = new RecommendedServicesAdapter(getActivity());
+        mAdapter = new RecommendedServicesAdapter(getActivity(),mHeight);
         rvRecommendedServices.setAdapter(mAdapter);
     }
 
