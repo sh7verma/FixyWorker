@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="4">
+
+    <LinearLayout
+        android:id="@+id/ll_home"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:src="@mipmap/ic_home_a" />
+
+        <com.app.fixy.customviews.RegularTextView
+            android:id="@+id/txt_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/home"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_9ssp" />
+
+        <View
+            android:id="@+id/view_home"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:background="@color/app_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bookings"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/img_bookings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+
+            android:src="@mipmap/ic_booking" />
+
+        <com.app.fixy.customviews.RegularTextView
+            android:id="@+id/txt_bookings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="@string/bookings"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/_9ssp" />
+
+        <View
+            android:id="@+id/view_bookings"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:background="@color/app_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_coins"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/img_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+
+            android:src="@mipmap/ic_coins" />
+
+        <com.app.fixy.customviews.RegularTextView
+            android:id="@+id/txt_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="@string/coins"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/_9ssp" />
+
+        <View
+            android:id="@+id/view_coins"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:background="@color/app_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profile"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:src="@mipmap/ic_profile" />
+
+        <com.app.fixy.customviews.RegularTextView
+            android:id="@+id/txt_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="@string/profile"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/_9ssp" />
+
+        <View
+            android:id="@+id/view_profile"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:background="@color/app_color" />
+    </LinearLayout>
+
+
+</LinearLayout>

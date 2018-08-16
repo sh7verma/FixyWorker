@@ -1,10 +1,10 @@
 package com.app.fixy.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import com.app.fixy.R;
@@ -49,6 +49,13 @@ public class CreateProfileActivity extends BaseActivity {
     @Override
     protected Context getContext() {
         return this;
+    }
+
+    @OnClick(R.id.txt_done)
+    void done() {
+        Intent intent = new Intent(mContext, LandingActivity.class);
+        finish();
+        startActivity(intent);
     }
 
     @OnClick(R.id.img_referral)

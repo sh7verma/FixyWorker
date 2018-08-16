@@ -17,25 +17,14 @@ public class Consts {
     public static final int DISPATCH = 100;
     public static final String DOC_PATH = "doc_path";
     public static final String HINT = "hint";
-    public static final java.lang.String RULES_REGEX = "-@-!-N-!-@-";
+    public static final java.lang.String RULES_REGEX = "-@-!-F-!-@-";
 
     public static final int FRAG_NULL = 0;
-    public static final int FRAG_DASHBOARD = 1;
-    public static final int FRAG_BILLS = 2;
-    public static final int FRAG_COMMITTEE = 3;
-    public static final int FRAG_ACTS = 4;
-    public static final int FRAG_LIVE = 5;
-    public static final int FRAG_SENATE_LEADERSHIP = 11;
-    public static final int FRAG_RECENT_ACTIVITIES = 12;
-    public static final int FRAG_ABOUT_SENATE = 13;
-    public static final int FRAG_PRINCIPAL_OFFICERS = 14;
-    public static final int FRAG_CONSTITUTIONAL_ROLES = 15;
-    public static final int FRAG_COMPOSITIONS = 16;
-    public static final int FRAG_PROFILE = 21;
+    public static final int FRAG_HOME = 1;
+    public static final int FRAG_BOOKINGS = 2;
+    public static final int FRAG_COINS = 3;
+    public static final int FRAG_PROFILE = 4;
 
-    public static final int PRESIDENT = 0;
-    public static final int DEPUTY = 1;
-    public static String DETAIL_ID="detail_id";
 
 
     ///

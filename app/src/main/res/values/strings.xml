@@ -45,5 +45,9 @@
     <string name="female">FEMALE</string>
     <string name="male">MALE</string>
     <string name="enter_referral_code_detail">Enter Referral code and earn 20 Coins. You can earn later more coins by referring your own referral code with other.</string>
+    <string name="home">Home</string>
+    <string name="bookings">Bookings</string>
+    <string name="coins">Coins</string>
+    <string name="profile">Profile</string>
 
 </resources>
