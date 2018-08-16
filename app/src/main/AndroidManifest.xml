@@ -55,7 +55,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".activities.LandingActivity"></activity>
+        <activity android:name=".activities.LandingActivity" />
+        <activity android:name=".activities.CongratulationActivity"></activity>
     </application>
 
 </manifest>
