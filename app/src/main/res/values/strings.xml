@@ -49,5 +49,9 @@
     <string name="bookings">Bookings</string>
     <string name="coins">Coins</string>
     <string name="profile">Profile</string>
+    <string name="recommended_services">recommended services</string>
+    <string name="beauty">beauty</string>
+    <string name="main_services">main services</string>
+    <string name="view_all"><![CDATA[view all >]]></string>
 
 </resources>
