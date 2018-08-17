@@ -36,9 +36,9 @@ public class CreateProfileActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        edName.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
-        edEmail.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
-        edReferralCode.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf"));
+        edName.setTypeface(typefaceMedium);
+        edEmail.setTypeface(typefaceMedium);
+        edReferralCode.setTypeface(typefaceMedium);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CreateProfileActivity extends BaseActivity {
 
     @OnClick(R.id.txt_done)
     void done() {
-        Intent intent = new Intent(mContext, LandingActivity.class);
+        Intent intent = new Intent(mContext, CongratulationActivity.class);
         finish();
         startActivity(intent);
     }

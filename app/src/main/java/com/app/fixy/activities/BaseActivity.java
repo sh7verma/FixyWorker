@@ -3,6 +3,7 @@ package com.app.fixy.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -41,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     Gson mGson = new Gson();
     Encode encode;
     private Snackbar mSnackbar;
+    public Typeface typefaceRegular,typefaceBold,typefaceMedium;
 
     public static void hideKeyboard(Activity mContext) {
         // Check if no view has focus:
@@ -130,6 +132,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         Log.e("Height = ", mHeight + " width " + mWidth);
         utils.setInt("width", mWidth);
         utils.setInt("height", mHeight);
+        typefaceMedium = Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Medium.ttf");
+        typefaceBold = Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Bold.ttf");
+        typefaceRegular = Typeface.createFromAsset(getContext().getAssets(), "fonts/Ubuntu-Regular.ttf");
+
     }
 
 //    protected void moveToSplash() {
