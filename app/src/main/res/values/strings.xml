@@ -51,5 +51,15 @@
     <string name="profile">Profile</string>
     <string name="congratulation">Congratulation!</string>
     <string name="congratulatin_text_mess">You have earned 100 coin,you can use these coin to request a service</string>
+    <string name="buy_more_coin">Buy More Coin</string>
+    <string name="browse_service">Let\'s Start</string>
+    <string name="pending">Pending</string>
+    <string name="booked">Booked</string>
+    <string name="my_requests">My Request</string>
+    <string name="main_services">Main Services</string>
+    <string name="view_all">View all</string>
+    <string name="beauty">Beauty</string>
+    <string name="recommended_services">Recommended Service</string>
+    <string name="share_and_earn">Share and Earn</string>
 
 </resources>

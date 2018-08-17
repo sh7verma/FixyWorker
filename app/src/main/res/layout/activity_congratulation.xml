@@ -56,7 +56,7 @@
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/grey_round_stroke">
 
                 <com.app.fixy.customviews.BoldTextView
@@ -64,8 +64,8 @@
                     android:layout_height="match_parent"
                     android:background="?selectableItemBackground"
                     android:gravity="center"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_15sdp"
+                    android:paddingTop="@dimen/_15sdp"
                     android:text="@string/buy_more_coin"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
@@ -84,8 +84,8 @@
                     android:layout_height="match_parent"
                     android:background="?selectableItemBackground"
                     android:gravity="center"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_15sdp"
+                    android:paddingTop="@dimen/_15sdp"
                     android:text="@string/browse_service"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
