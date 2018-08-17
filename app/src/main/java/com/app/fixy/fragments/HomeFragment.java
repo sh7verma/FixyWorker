@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.app.fixy.R;
 import com.app.fixy.adapter.RecommendedServicesAdapter;
@@ -47,6 +48,11 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

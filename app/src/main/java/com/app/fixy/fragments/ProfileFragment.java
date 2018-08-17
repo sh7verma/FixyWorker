@@ -2,6 +2,7 @@ package com.app.fixy.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.view.View;
 
 import com.app.fixy.R;
 
@@ -32,6 +33,11 @@ public class ProfileFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

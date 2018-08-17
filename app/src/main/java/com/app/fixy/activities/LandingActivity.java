@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy.R;
-import com.app.fixy.fragments.BookingsFragment;
+import com.app.fixy.fragments.MyRequestFragment;
 import com.app.fixy.fragments.CoinsFragment;
 import com.app.fixy.fragments.HomeFragment;
 import com.app.fixy.fragments.ProfileFragment;
@@ -145,7 +145,7 @@ public class LandingActivity extends BaseActivity {
 
                 break;
             case R.id.ll_bookings:
-                loadFragment(BookingsFragment.newInstance(mContext), Consts.FRAG_BOOKINGS);
+                loadFragment(MyRequestFragment.newInstance(mContext), Consts.FRAG_BOOKINGS);
 
                 break;
             case R.id.ll_coins:

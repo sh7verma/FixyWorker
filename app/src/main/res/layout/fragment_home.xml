@@ -76,6 +76,8 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
                     android:text="@string/view_all"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableRight="@mipmap/ic_view_all"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10ssp" />
 

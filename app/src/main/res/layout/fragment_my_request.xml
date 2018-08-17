@@ -38,6 +38,7 @@
             android:layout_weight="1">
 
             <com.app.fixy.customviews.SemiboldTextView
+                android:id="@+id/txt_booked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -58,6 +59,7 @@
 
             <com.app.fixy.customviews.SemiboldTextView
                 android:layout_width="match_parent"
+                android:id="@+id/txt_pending"
                 android:layout_height="wrap_content"
                 android:text="@string/pending"
                 android:gravity="center"

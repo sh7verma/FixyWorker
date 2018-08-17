@@ -28,7 +28,7 @@ import com.google.gson.Gson;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
     public MarshMallowPermission mPermission;
     protected int mWidth, mHeight;
