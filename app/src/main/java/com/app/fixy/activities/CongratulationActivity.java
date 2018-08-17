@@ -42,6 +42,7 @@ public class CongratulationActivity extends BaseActivity {
     public void onClick(View view) {
 
     }
+
     @OnClick(R.id.txt_browse_service)
     void browseService() {
         Intent intent = new Intent(mContext, LandingActivity.class);

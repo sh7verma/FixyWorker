@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.app.fixy.R;
-import com.app.fixy.adapter.RecommendedServicesAdapter;
+import com.app.fixy.adapters.RecommendedServicesAdapter;
 
 import butterknife.BindView;
 
