@@ -39,13 +39,24 @@
                     android:textSize="@dimen/_15ssp" />
 
                 <RelativeLayout
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp">
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="@dimen/_70sdp"
-                        android:src="@mipmap/ic_profile_s" />
+                    <LinearLayout
+                        android:id="@+id/ll_background"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/circular_background"
+                        android:padding="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/img_service"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@mipmap/ic_profile" />
+                    </LinearLayout>
 
                     <ImageView
                         android:layout_width="wrap_content"

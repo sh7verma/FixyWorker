@@ -12,35 +12,33 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.app.fixy.R;
-import com.app.fixy.customviews.CircleTransform;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Shubham verma on 17-08-2018.
+ * Created by Shubham verma on 18-08-2018.
  */
 
-public class RecommendedServicesAdapter extends RecyclerView.Adapter<RecommendedServicesAdapter.ViewHolder> {
+public class WorkersAdsAdapter extends RecyclerView.Adapter<WorkersAdsAdapter.ViewHolder> {
 
     Context mContext;
     int mHeight;
 
-    public RecommendedServicesAdapter(Context context, int height) {
+    public WorkersAdsAdapter(Context context, int height) {
         mContext = context;
         mHeight = height;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recommended_services, parent, false);
-        return new ViewHolder(v);
+    public WorkersAdsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_workers_ads, parent, false);
+        return new WorkersAdsAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final WorkersAdsAdapter.ViewHolder holder, final int position) {
 
 //            if (!TextUtils.isEmpty(mData.getProfilePicURL().getOriginal())) {
 //                Picasso.with(mContext)
@@ -53,8 +51,8 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 //                        .into(imgProfile);
 //            } else {
 
-        GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
-        bgShape.setColor(Color.BLACK);
+//        GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//        bgShape.setColor(Color.BLACK);
 
 //        Picasso.get()
 //                .load(R.mipmap.ic_beauty)
@@ -72,11 +70,6 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.ll_background)
-        LinearLayout llBackground;
-
-        @BindView(R.id.img_service)
-        ImageView imgService;
 
         ViewHolder(View itemView) {
             super(itemView);

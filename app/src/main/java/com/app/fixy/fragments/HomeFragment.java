@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.app.fixy.R;
 import com.app.fixy.adapters.RecommendedServicesAdapter;
+import com.app.fixy.adapters.WorkersAdsAdapter;
 
 import butterknife.BindView;
 
@@ -20,12 +21,17 @@ public class HomeFragment extends BaseFragment {
     @SuppressLint("StaticFieldLeak")
     static HomeFragment fragment;
 
-    LinearLayoutManager mLayoutManager;
+    LinearLayoutManager mLayoutManagerServices;
+    LinearLayoutManager mLayoutManagerAds;
 
     @BindView(R.id.rv_recommended_services)
     RecyclerView rvRecommendedServices;
 
-    RecommendedServicesAdapter mAdapter;
+    @BindView(R.id.rv_workers_ads)
+    RecyclerView rvWorkersAds;
+
+    RecommendedServicesAdapter mAdapterServices;
+    WorkersAdsAdapter mAdapterAds;
 
     public static HomeFragment newInstance(Context mContext) {
         fragment = new HomeFragment();
@@ -39,11 +45,17 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void onCreateStuff() {
-        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        rvRecommendedServices.setLayoutManager(mLayoutManager);
+        mLayoutManagerServices = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rvRecommendedServices.setLayoutManager(mLayoutManagerServices);
         rvRecommendedServices.setNestedScrollingEnabled(false);
-        mAdapter = new RecommendedServicesAdapter(getActivity(),mHeight);
-        rvRecommendedServices.setAdapter(mAdapter);
+        mAdapterServices = new RecommendedServicesAdapter(getActivity(), mHeight);
+        rvRecommendedServices.setAdapter(mAdapterServices);
+
+        mLayoutManagerAds = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rvWorkersAds.setLayoutManager(mLayoutManagerAds);
+        rvWorkersAds.setNestedScrollingEnabled(false);
+        mAdapterAds = new WorkersAdsAdapter(getActivity(), mHeight);
+        rvWorkersAds.setAdapter(mAdapterAds);
     }
 
     @Override
