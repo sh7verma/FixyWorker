@@ -1,8 +1,6 @@
 package com.app.fixy.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.app.fixy.R;
-import com.app.fixy.customviews.CircleTransform;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,8 +21,8 @@ import butterknife.ButterKnife;
 
 public class RecommendedServicesAdapter extends RecyclerView.Adapter<RecommendedServicesAdapter.ViewHolder> {
 
-    Context mContext;
-    int mHeight;
+    private Context mContext;
+    private int mHeight;
 
     public RecommendedServicesAdapter(Context context, int height) {
         mContext = context;
@@ -53,7 +49,6 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 //                        .centerCrop()
 //                        .into(imgProfile);
 //            } else {
-
         GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
         bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
