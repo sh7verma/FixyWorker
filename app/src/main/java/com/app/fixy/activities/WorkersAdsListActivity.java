@@ -18,8 +18,8 @@ public class WorkersAdsListActivity extends BaseActivity {
     @BindView(R.id.rv_ads)
     RecyclerView rvAds;
 
-    @BindView(R.id.ic_back)
-    ImageView icBack;
+    @BindView(R.id.img_back)
+    ImageView imgBack;
 
     AdsAdapter mAdapter;
 
@@ -36,7 +36,7 @@ public class WorkersAdsListActivity extends BaseActivity {
     @Override
     protected void initUI() {
 
-        mAdapter = new AdsAdapter(mContext,mHeight);
+        mAdapter = new AdsAdapter(mContext, mHeight);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mContext, 2);
         rvAds.setLayoutManager(mLayoutManager);
@@ -47,7 +47,7 @@ public class WorkersAdsListActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        imgBack.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +57,10 @@ public class WorkersAdsListActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.img_back:
+                finish();
+                break;
+        }
     }
 }
