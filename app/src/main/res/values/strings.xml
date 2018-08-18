@@ -65,5 +65,9 @@
     <string name="accepted">Accepted</string>
     <string name="on_the_way">On the way</string>
     <string name="confirmed">Confirmed</string>
+    <string name="services">services</string>
+    <string name="workers_ads">workers ads</string>
+    <string name="luke_brown">Luke Brown</string>
+    <string name="plumber">Plumber</string>
 
 </resources>
