@@ -74,6 +74,7 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <com.app.fixy.customviews.SemiboldTextView
+                    android:id="@+id/txt_view_all_services"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:drawableEnd="@mipmap/ic_view_all"
@@ -321,8 +322,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:padding="@dimen/_5sdp"
-
-                        android:text="@string/main_services"
+                        android:text="@string/workers_ads"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_15ssp" />

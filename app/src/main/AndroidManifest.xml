@@ -33,6 +33,7 @@
         android:roundIcon="@mipmap/ic_logo_login"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activities.LandingActivity"
             android:screenOrientation="portrait"
@@ -67,7 +68,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
-        <activity android:name=".activities.CongratulationActivity"></activity>
+        <activity
+            android:name=".activities.CongratulationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".activities.ViewAllServicesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>

@@ -2,11 +2,14 @@ package com.app.fixy.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.app.fixy.R;
+import com.app.fixy.activities.ViewAllServicesActivity;
 import com.app.fixy.adapters.RecommendedServicesAdapter;
 import com.app.fixy.adapters.WorkersAdsAdapter;
 
@@ -21,17 +24,20 @@ public class HomeFragment extends BaseFragment {
     @SuppressLint("StaticFieldLeak")
     static HomeFragment fragment;
 
-    LinearLayoutManager mLayoutManagerServices;
-    LinearLayoutManager mLayoutManagerAds;
-
     @BindView(R.id.rv_recommended_services)
     RecyclerView rvRecommendedServices;
 
     @BindView(R.id.rv_workers_ads)
     RecyclerView rvWorkersAds;
 
+    @BindView(R.id.txt_view_all_services)
+    TextView txtViewAllServices;
+
     RecommendedServicesAdapter mAdapterServices;
     WorkersAdsAdapter mAdapterAds;
+
+    LinearLayoutManager mLayoutManagerServices;
+    LinearLayoutManager mLayoutManagerAds;
 
     public static HomeFragment newInstance(Context mContext) {
         fragment = new HomeFragment();
@@ -60,11 +66,17 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-
+        txtViewAllServices.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.txt_view_all_services:
+                Intent intent = new Intent(mContext, ViewAllServicesActivity.class);
+                startActivity(intent);
 
+                break;
+        }
     }
 }
