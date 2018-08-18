@@ -1,5 +1,6 @@
 package com.app.fixy.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -54,7 +55,7 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 //            } else {
 
         GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
-        bgShape.setColor(Color.BLACK);
+        bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
 //        Picasso.get()
 //                .load(R.mipmap.ic_beauty)

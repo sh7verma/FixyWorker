@@ -325,7 +325,7 @@
                         android:text="@string/workers_ads"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp" />
+                        android:textSize="@dimen/_13ssp" />
 
                     <com.app.fixy.customviews.SemiboldTextView
                         android:layout_width="wrap_content"
@@ -336,7 +336,7 @@
                         android:padding="@dimen/_5sdp"
                         android:text="@string/view_all"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_10ssp" />
 
                 </LinearLayout>
 

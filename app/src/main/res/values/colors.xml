@@ -17,7 +17,7 @@
     <!--gursharan sir-->
     <color name="unselected_text">#8c92b9</color>
     <color name="white_tint">#fcf1f1</color>
-    <color name="background">#EDEFEE</color>
+    <color name="background">#f9f9f9</color>
     <color name="orange">#f68933</color>
     <color name="orange_light">#f7f49142</color>
     <color name="black_tint">#86000000</color>
@@ -43,6 +43,8 @@
     <color name="blue">#585fe7</color>
 
     <color name="yellow">#f6c02f</color>
+    <color name="cleaner">#1DD0CA</color>
+    <color name="plumber">#5E9CEB</color>
 
     <color name="trasparent_light">#55ffffff</color>
     <!---->
