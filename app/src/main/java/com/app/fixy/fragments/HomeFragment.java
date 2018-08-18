@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.app.fixy.R;
-import com.app.fixy.activities.ViewAllServicesActivity;
+import com.app.fixy.activities.ServicesListActivity;
+import com.app.fixy.activities.WorkersAdsListActivity;
 import com.app.fixy.adapters.RecommendedServicesAdapter;
 import com.app.fixy.adapters.WorkersAdsAdapter;
 
@@ -32,6 +33,9 @@ public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.txt_view_all_services)
     TextView txtViewAllServices;
+
+    @BindView(R.id.txt_view_all_ads)
+    TextView txtViewAllAds;
 
     RecommendedServicesAdapter mAdapterServices;
     WorkersAdsAdapter mAdapterAds;
@@ -67,15 +71,22 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initListeners() {
         txtViewAllServices.setOnClickListener(this);
+        txtViewAllAds.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent;
+
         switch (view.getId()) {
             case R.id.txt_view_all_services:
-                Intent intent = new Intent(mContext, ViewAllServicesActivity.class);
+                intent = new Intent(mContext, ServicesListActivity.class);
                 startActivity(intent);
+                break;
 
+            case R.id.txt_view_all_ads:
+                intent = new Intent(mContext, WorkersAdsListActivity.class);
+                startActivity(intent);
                 break;
         }
     }

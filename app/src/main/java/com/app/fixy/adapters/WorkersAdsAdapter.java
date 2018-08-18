@@ -17,8 +17,8 @@ import butterknife.ButterKnife;
 
 public class WorkersAdsAdapter extends RecyclerView.Adapter<WorkersAdsAdapter.ViewHolder> {
 
-    Context mContext;
-    int mHeight;
+    private Context mContext;
+    private int mHeight;
 
     public WorkersAdsAdapter(Context context, int height) {
         mContext = context;
@@ -34,7 +34,6 @@ public class WorkersAdsAdapter extends RecyclerView.Adapter<WorkersAdsAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final WorkersAdsAdapter.ViewHolder holder, final int position) {
-
 //            if (!TextUtils.isEmpty(mData.getProfilePicURL().getOriginal())) {
 //                Picasso.with(mContext)
 //                        .load(mData.getProfilePicURL().getOriginal())
@@ -64,7 +63,6 @@ public class WorkersAdsAdapter extends RecyclerView.Adapter<WorkersAdsAdapter.Vi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
 
         ViewHolder(View itemView) {
             super(itemView);

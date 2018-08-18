@@ -11,7 +11,7 @@ import com.app.fixy.adapters.AllServicesAdapter;
 
 import butterknife.BindView;
 
-public class ViewAllServicesActivity extends BaseActivity {
+public class ServicesListActivity extends BaseActivity {
 
     @BindView(R.id.rv_services)
     RecyclerView rvServices;
