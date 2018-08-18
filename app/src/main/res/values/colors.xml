@@ -12,6 +12,7 @@
     <color name="app_color">#EB655D</color>
     <color name="red_dark">#910909</color>
     <color name="green">#24f251</color>
+    <color name="golden">#f9f533</color>
     <color name="red_dark_selected">#760505</color>
     <!--gursharan sir-->
     <color name="unselected_text">#8c92b9</color>
@@ -39,6 +40,7 @@
     <color name="trasparent_background">#83ffffff</color>
     <color name="green_color">#5acf67</color>
     <color name="grey_color">#a6a6a6</color>
+    <color name="blue">#585fe7</color>
 
     <color name="yellow">#f6c02f</color>
 

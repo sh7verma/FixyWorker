@@ -61,7 +61,9 @@
     <string name="beauty">Beauty</string>
     <string name="recommended_services">Recommended Service</string>
     <string name="share_and_earn">Share and Earn</string>
-    <string name="services">SERVICES</string>
-    <string name="workers_ads">Workers ads</string>
+    <string name="requested">Requested</string>
+    <string name="accepted">Accepted</string>
+    <string name="on_the_way">On the way</string>
+    <string name="confirmed">Confirmed</string>
 
 </resources>
