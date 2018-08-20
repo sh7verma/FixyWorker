@@ -70,7 +70,8 @@
             android:name=".activities.ServicesListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.WorkersAdsListActivity"></activity>
+        <activity android:name=".activities.WorkersAdsListActivity" />
+        <activity android:name=".activities.AddAddressActivity"></activity>
     </application>
 
 </manifest>

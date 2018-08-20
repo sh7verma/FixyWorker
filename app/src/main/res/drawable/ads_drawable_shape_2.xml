@@ -11,13 +11,16 @@
     </item>
     <item
         android:id="@+id/corner"
-        android:right="@dimen/_60sdp"
-        android:bottom="@dimen/_100sdp">
+        android:bottom="@dimen/_100sdp"
+        android:left="-90dp"
+        android:right="@dimen/_70sdp"
+        android:top="-90dp">
         <shape android:shape="rectangle">
 
             <corners
-                android:topLeftRadius="@dimen/_10sdp"
-                android:bottomRightRadius="@dimen/_60sdp"  />
+                android:topRightRadius="@dimen/_150sdp"
+                android:bottomLeftRadius="@dimen/_140sdp"
+                android:bottomRightRadius="@dimen/_75sdp" />
             <solid android:color="@color/plumber" />
         </shape>
 
