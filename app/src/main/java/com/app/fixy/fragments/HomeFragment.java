@@ -77,7 +77,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onClick(View view) {
         Intent intent;
-
         switch (view.getId()) {
             case R.id.txt_view_all_services:
                 intent = new Intent(mContext, ServicesListActivity.class);

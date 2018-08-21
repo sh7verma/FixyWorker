@@ -69,5 +69,9 @@
     <string name="workers_ads">worker\'s ads</string>
     <string name="luke_brown">Luke Brown</string>
     <string name="plumber">Plumber</string>
+    <string name="booking_history">Booking \nHistory</string>
+    <string name="my_address">My \nAddress</string>
+    <string name="payment_method">Payment \nMethod</string>
+    <string name="account_settings">Account \nSettings</string>
 
 </resources>
