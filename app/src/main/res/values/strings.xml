@@ -73,5 +73,9 @@
     <string name="my_address">My \nAddress</string>
     <string name="payment_method">Payment \nMethod</string>
     <string name="account_settings">Account \nSettings</string>
+    <string name="email">Email</string>
+    <string name="temp_emial">shubham.v@applify.co</string>
+    <string name="temp_num">+919469152174</string>
+    <string name="phone_no">Phone no.</string>
 
 </resources>
