@@ -22,6 +22,7 @@ public class RetrofitClient {
     private static final String BASE_URL = "http://13.126.29.41:3050/";// Development
     private static Retrofit retrofit = null;
     private static final String CACHE_CONTROL = "Cache-Control";
+    private static Retrofit retrofitGoogle=null;
 
     private static ApiInterface apiInterface = null;
 
@@ -104,5 +105,31 @@ public class RetrofitClient {
         };
     }
 
+
+    public static final String GOOGLEPLACE = "https://maps.googleapis.com/maps/api/place/autocomplete/";
+
+    public static Retrofit getClient() {
+        if (retrofitGoogle == null) {
+            retrofitGoogle = new Retrofit.Builder()
+                    .baseUrl(GOOGLEPLACE)
+                    .client(provideOkHttpClient())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofitGoogle;
+    }
+
+    public static final String GOOGLEPLACE_NEARBY = "https://maps.googleapis.com/maps/api/place/nearbysearch/";
+
+    public static Retrofit getClientNearBy() {
+        if (retrofitGoogle == null) {
+            retrofitGoogle = new Retrofit.Builder()
+                    .baseUrl(GOOGLEPLACE_NEARBY)
+                    .client(provideOkHttpClient())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofitGoogle;
+    }
 
 }

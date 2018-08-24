@@ -1,8 +1,22 @@
 package com.app.fixy.network;
 
+import com.app.fixy.models.GooglePlaceModal;
+import com.app.fixy.models.NearbyPlaceModel;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Url;
+
 public interface ApiInterface {
 
     //API Method to get Questions From API
+
+
+    @GET
+    public Call<GooglePlaceModal> getGooglePlaces(@Url String url);
+
+    @GET
+    public Call<NearbyPlaceModel> getGoogleNearByPlaces(@Url String url);
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

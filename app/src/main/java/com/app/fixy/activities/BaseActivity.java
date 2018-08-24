@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fixy.R;
+import com.app.fixy.interfaces.AddressInterface;
 import com.app.fixy.utils.Connection_Detector;
 import com.app.fixy.utils.Encode;
 import com.app.fixy.utils.LoadingDialog;
@@ -53,6 +54,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    public AddressInterface addressInterface;
+
+    public void setInterface(AddressInterface name) {
+        addressInterface = name;
+    }
+
+    public AddressInterface getAddressInterface() {
+        return addressInterface;
+    }
     public static void hideKeyboardDialog(Activity mContext) {
         // Check if no view has focus:
         View view = mContext.getCurrentFocus();

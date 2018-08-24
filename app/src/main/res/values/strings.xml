@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Fixy</string>
-
+    <string name="mapKey">AIzaSyBp-ZPIvxfguT0ohgpA4uCza8tHqR4zOrQ</string>//fixy
 
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
@@ -73,9 +73,22 @@
     <string name="my_address">My \nAddress</string>
     <string name="payment_method">Payment \nMethod</string>
     <string name="account_settings">Account \nSettings</string>
-    <string name="email">Email</string>
+    <string name="home_add">Home</string>
+    <string name="work_add">Work</string>
+    <string name="other_add">Other</string>
+    <string name="landmark">Landmark</string>
+    <string name="flat_house_no">House / Flat No.</string>
+    <string name="address">Address</string>
+    <string name="change">Change</string>
+    <string name="search_your_location">Search your Location..</string>
+    <string name="use_current_location">Use Current Location</string>
+    <string name="enable">Enable</string>
+    <string name="enable_location_setting">Enable Location Permissions from settings</string>
+    <string name="location_permission">Location permission is needed for core functionality.</string>
+    <string name="read_phone_state_permission">Read Phone State permission is needed for core functionality.</string>
+    <string name="label_name">Label Name</string>
+
     <string name="temp_emial">shubham.v@applify.co</string>
     <string name="temp_num">+919469152174</string>
     <string name="phone_no">Phone no.</string>
-
 </resources>

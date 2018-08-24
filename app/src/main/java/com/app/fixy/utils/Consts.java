@@ -1,6 +1,11 @@
 package com.app.fixy.utils;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +34,22 @@ public class Consts {
 
     ///
 
+    public static void hideKeyboard(Activity mContext) {
+        // Check if no view has focus:
+        View view = mContext.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    public static void hideKeyboardDialog(View view,Context mContext) {
+        // Check if no view has focus:
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 
     public static long getUtcTime(long time) {
         long utcTime = 0;
