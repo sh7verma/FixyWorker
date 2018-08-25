@@ -85,7 +85,18 @@
         <activity
             android:name=".activities.SearchAddressActivity"
             android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".activities.SettingsActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".activities.ShowAddressActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
 
         <!-- google map api key -->
         <meta-data
@@ -95,7 +106,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/mapKey" />
 
-        <activity android:name=".activities.SettingsActivity"></activity>
+
     </application>
 
 </manifest>
