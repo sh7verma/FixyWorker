@@ -5,6 +5,7 @@
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
+    <string name="ok_">OK</string>
     <string name="new_version">A newer version of String Messenger is available would you like to update?</string>
     <string name="cannot_connect_server">Cannot connect to server</string>
     <string name="error">Something went wrong!</string>
@@ -91,13 +92,15 @@
     <string name="temp_emial">shubham.v@applify.co</string>
     <string name="temp_num">+919469152174</string>
     <string name="phone_no">Phone no.</string>
-    <string name="title">Title</string>
-    <string name="change_no">Change No.</string>
-    <string name="fixy">FIXY</string>
-    <string name="version_1_0">Version 1.0</string>
-    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
-    <string name="rate_us">Rate Us</string>
-    <string name="about_us">About Us</string>
-    <string name="faq">FAQ</string>
-    <string name="refer_a_frient_earn"><![CDATA[Refer a frient & Earn]]></string>
+    <string name="fetching">Fetching..</string>
+    <string name="label_your_address">Label you address</string>
+    <string name="please_select_label">Please Select Label</string>
+    <string name="change_address">Change Address</string>
+    <string name="please_change_address">Please change your address</string>
+    <string name="name_already_exist">Name already exist</string>
+    <string name="delete">Delete</string>
+    <string name="add_new">Add New</string>
+    <string name="please_enter_label_name">Please enter label name</string>
+    <string name="remove_add_warning">Do you want to remove this address?</string>
+    <string name="hash">#</string>
 </resources>

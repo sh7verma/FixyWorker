@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 import com.app.fixy.R;
@@ -53,6 +54,8 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
     ImageView imgCancel;
     @BindView(R.id.ic_back)
     ImageView icBack;
+    @BindView(R.id.ll_current_location)
+    LinearLayout llCurrentLocation;
 
     int EXTRA = -1;
     private List<GooglePlaceModal.PredictionsBean> list;
@@ -60,6 +63,8 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
     private NearByPlaceAdapter nearByPlaceAdapter;
     private List<NearbyPlaceModel.ResultsBean> listNearBy;
     private GoogleApiClient mGoogleApiClient;
+    private final int ADDRESS_RESULT = 12;
+    Location mCurrentLocation;
 
     @Override
     protected int getContentView() {
@@ -68,6 +73,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
 
     @Override
     protected void initUI() {
+        mCurrentLocation = getIntent().getParcelableExtra(InterConst.LOCATION_DATA_EXTRA);
 
     }
 
@@ -124,6 +130,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
     protected void initListener() {
         icBack.setOnClickListener(this);
         imgCancel.setOnClickListener(this);
+        llCurrentLocation.setOnClickListener(this);
     }
 
     @Override
@@ -140,7 +147,13 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
                 break;
             case R.id.ic_back:
                 finish();
-                overridePendingTransition(R.anim.slide_right,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_right, R.anim.slide_out_right);
+                break;
+            case R.id.ll_current_location:
+                intent = new Intent(SearchAddressActivity.this, MapAddressActivity.class);
+                intent.putExtra(InterConst.LOCATION_DATA_EXTRA, mCurrentLocation);
+                startActivityForResult(intent, ADDRESS_RESULT);
+                overridePendingTransition(R.anim.in, R.anim.out);
                 break;
         }
     }
@@ -163,7 +176,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
             e.printStackTrace();
         }
         urlString.append("&location=");
-        urlString.append("30.6577647" + "," + "76.7327158"); // append lat long of current location to show nearby results.
+        urlString.append(mCurrentLocation.getLatitude() + "," + mCurrentLocation.getLongitude()); // append lat long of current location to show nearby results.
         urlString.append("&radius=500");
         urlString.append("&sensor=true");
 //        urlString.append("&type=geocode");
@@ -220,7 +233,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
         }
         urlString.append("&limit=20");
         urlString.append("&location=");
-        urlString.append("30.6577647" + "," + "76.7327158"); // append lat long of current location to show nearby results.        urlString.append("&radius=2000000");
+        urlString.append(mCurrentLocation.getLatitude() + "," + mCurrentLocation.getLongitude()); // append lat long of current location to show nearby results.
         urlString.append("&sensor=true");
         urlString.append("&radius=5000");
 //        urlString.append("&types=geocode");
@@ -254,7 +267,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
     public void onClick(int pos, InterConst.GOOGLE searchType) {
         Consts.hideKeyboard(this);
 
-        getLocationById(list.get(pos).getPlace_id(),pos);//autocomplete api
+        getLocationById(list.get(pos).getPlace_id(), pos);//autocomplete api
     }
 
 
@@ -266,6 +279,7 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
         mGoogleApiClient.connect();
 
     }
+
     public void getLocationById(String placeId, final int position) {
         Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeId)
                 .setResultCallback(new ResultCallback<PlaceBuffer>() {
@@ -277,16 +291,32 @@ public class SearchAddressActivity extends BaseActivity implements AddressInterf
                             Location upLoc = new Location("newL");
                             upLoc.setLongitude(queriedLocation.longitude);
                             upLoc.setLatitude(queriedLocation.latitude);
-                            Intent intent = new Intent();
+                            Intent intent = new Intent(SearchAddressActivity.this, MapAddressActivity.class);
                             intent.putExtra(InterConst.LOCATION_DATA_EXTRA, upLoc);
                             intent.putExtra(InterConst.EXTRA, list.get(position).getDescription());
-                            setResult(RESULT_OK, intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_right,R.anim.slide_out_right);
+                            startActivityForResult(intent, ADDRESS_RESULT);
+                            overridePendingTransition(R.anim.in, R.anim.out);
 
                         }
                         places.release();
                     }
                 });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case ADDRESS_RESULT:
+                    Intent intent = new Intent();
+                    intent.putExtra(InterConst.LOCATION_DATA_EXTRA, data.getParcelableExtra(InterConst.LOCATION_DATA_EXTRA));
+                    intent.putExtra(InterConst.EXTRA, data.getStringExtra(InterConst.EXTRA));
+                    setResult(RESULT_OK, intent);
+                    finish();
+                    overridePendingTransition(R.anim.slide_right, R.anim.slide_out_right);
+                    break;
+            }
+        }
     }
 }
