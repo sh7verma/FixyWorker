@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fixy.R;
+import com.app.fixy.database.Db;
 import com.app.fixy.interfaces.AddressInterface;
 import com.app.fixy.utils.Connection_Detector;
 import com.app.fixy.utils.Encode;
@@ -38,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected String errorAPI;
     protected String errorAccessToken;
     protected String terminateAccount;
-    //    protected Db db;
+        protected Db db;
     Utils utils;
     Gson mGson = new Gson();
     Encode encode;
@@ -80,7 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         utils = new Utils(BaseActivity.this);
         mContext = getContext();
         ButterKnife.bind(this);
-//        db = new Db(this);
+        db = new Db(this);
         encode = new Encode();
         getDefaults();
         onCreateStuff();

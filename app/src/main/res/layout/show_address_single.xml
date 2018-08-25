@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_55sdp"
+        android:visibility="visible"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:background="@color/red">
+
+
+        <com.app.fixy.customviews.SemiboldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:drawableRight="@drawable/ic_delete"
+            android:textAllCaps="true"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
+
+    <!-- Your main layout here -->
+<RelativeLayout
+    android:id="@+id/view_foreground"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="@dimen/_55sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/ic_current_location" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+        <com.app.fixy.customviews.SemiboldTextView
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:text="name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="visible" />
+        <com.app.fixy.customviews.RegularTextView
+            android:id="@+id/txt_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:text="name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="visible" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginLeft="@dimen/_50sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/grey_line"/>
+
+</RelativeLayout>
+</RelativeLayout>

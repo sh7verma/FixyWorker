@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.app.fixy.R;
 import com.app.fixy.activities.AddAddressActivity;
 import com.app.fixy.activities.LandingActivity;
+import com.app.fixy.activities.MapAddressActivity;
 import com.app.fixy.interfaces.InterfacesCall;
 import com.app.fixy.utils.Utils;
 import com.google.android.gms.common.api.ApiException;
@@ -45,7 +46,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCallback,InterfacesCall.LocationInterface {
+public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCallback, InterfacesCall.LocationInterface {
     Activity context;
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 3;
     private static final int REQUEST_CHECK_SETTINGS = 0x1;
@@ -62,18 +63,27 @@ public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCa
     MarshMallowPermission marshMallowPermission;
     SupportMapFragment supportMapFragment;
     public static InterfacesCall.MapInterface mapInterface;
-    int width,height;
+    int width, height;
     Utils utils;
+
     public static void setInterface(InterfacesCall.MapInterface location) {
         mapInterface = location;
     }
-    public GoogleMapInitiate(Activity context, SupportMapFragment mapFragment) {
+
+    public GoogleMapInitiate(Activity context, SupportMapFragment mapFragment, int activity) {
         this.context = context;
         supportMapFragment = mapFragment;
         marshMallowPermission = new MarshMallowPermission(context);
         onCreate();
         utils = new Utils(context);
-        AddAddressActivity.setInterface(this);
+        switch (activity) {
+            case 1:
+                AddAddressActivity.setInterface(this);
+                break;
+            case 2:
+                MapAddressActivity.setInterface(this);
+                break;
+        }
         width = utils.getInt("width", 0);
         height = utils.getInt("height", 0);
     }
@@ -116,7 +126,7 @@ public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCa
         builder.addLocationRequest(mLocationRequest);
         mLocationSettingsRequest = builder.build();
 
-        if (supportMapFragment == null){
+        if (supportMapFragment == null) {
             createLocationCallback();//buildLocationSettingsRequest
         }
     }
@@ -243,7 +253,7 @@ public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCa
             // position on right bottom
             rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
             rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            rlp.setMargins(0,0, (int) (height*0.3), (int) (height*0.2));
+            rlp.setMargins(0, 0, (int) (height * 0.3), (int) (height * 0.2));
             //Disable Map Toolbar:
             mMap.getUiSettings().setMapToolbarEnabled(false);
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -255,8 +265,6 @@ public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCa
             createLocationCallback();
         }
     }
-
-
 
 
     @Override

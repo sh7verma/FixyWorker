@@ -2,155 +2,189 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:animateLayoutChanges="true" >
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
+
+
+    <com.app.fixy.customviews.SemiboldTextView
+        android:id="@+id/txt_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/label_your_address"
+        android:textAllCaps="true"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/_8ssp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_10sdp">
+
         <com.app.fixy.customviews.SemiboldTextView
             android:id="@+id/txt_home"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
-            android:text="@string/home_add"
+            android:background="@drawable/pink_stroke_round"
             android:gravity="center"
-            android:textAllCaps="true"
             android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/_9ssp"
+            android:text="@string/home_add"
+            android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
-            android:background="@drawable/pink_stroke_round"/>
+            android:textSize="@dimen/_9ssp" />
+
         <com.app.fixy.customviews.RegularTextView
             android:id="@+id/txt_work"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
-            android:text="@string/work_add"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:padding="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:textSize="@dimen/_9ssp"
+            android:background="@drawable/pink_stroke_round"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/work_add"
+            android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
-            android:background="@drawable/pink_stroke_round"/>
+            android:textSize="@dimen/_9ssp" />
+
         <com.app.fixy.customviews.RegularTextView
             android:id="@+id/txt_other"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
-            android:text="@string/other_add"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:padding="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:textSize="@dimen/_9ssp"
+            android:background="@drawable/pink_stroke_round"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/other_add"
+            android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
-            android:background="@drawable/pink_stroke_round"/>
+            android:textSize="@dimen/_9ssp" />
     </LinearLayout>
 
     <com.app.fixy.customviews.FloatingEditText
         android:id="@+id/et_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:hint="@string/label_name"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:hint="@string/label_name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey_color"
         android:textSize="@dimen/_13ssp"
         android:visibility="gone"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:textColorHint="@color/grey_color"
         app:hintAnimationEnabled="true"
-        app:hintEnabled="true"/>
+        app:hintEnabled="true" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginRight="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp">
 
         <com.app.fixy.customviews.MaterialEditText
             android:id="@+id/txt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:hint="@string/address"
-            android:focusable="false"
-            android:maxLines="1"
-            android:maxEms="3"
-            android:paddingTop="@dimen/_5sdp"
-            android:inputType="text"
-            android:ellipsize="end"
-            app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelTextColor="@color/grey_color"
-            android:focusableInTouchMode="false"
-            android:textSize="@dimen/_11ssp"
-            app:met_floatingLabelText="@string/address"
-            android:paddingRight="@dimen/_10sdp"
-            app:met_floatingLabel="normal"
             android:layout_toLeftOf="@+id/txt_change"
-            app:met_hideUnderline="true"
-            android:textColorHint="@color/grey_color"/>
+            android:ellipsize="end"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/change_address"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxEms="3"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_color"
+            android:textSize="@dimen/_11ssp"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelAnimating="true"
+            app:met_floatingLabelText="@string/address"
+            app:met_floatingLabelTextColor="@color/grey_color"
+            app:met_hideUnderline="true" />
+
         <com.app.fixy.customviews.RegularTextView
             android:id="@+id/txt_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change"
-            android:paddingTop="@dimen/_10sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:paddingBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="@string/change"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_13ssp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
+            android:textSize="@dimen/_13ssp" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_1ssp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_below="@+id/txt_change"
-            android:background="@color/light_grey"/>
+            android:background="@color/grey_color" />
     </RelativeLayout>
+
     <com.app.fixy.customviews.FloatingEditText
+        android:id="@+id/et_house_flat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:hint="@string/flat_house_no"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:textSize="@dimen/_13ssp"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:imeOptions="actionNext"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:maxLines="1"
         android:textColorHint="@color/grey_color"
+        android:textSize="@dimen/_13ssp"
         app:hintAnimationEnabled="true"
-        app:hintEnabled="true"/>
+        app:hintEnabled="true" />
+
     <com.app.fixy.customviews.FloatingEditText
+        android:id="@+id/et_landmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:hint="@string/landmark"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:textSize="@dimen/_13ssp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:hint="@string/landmark"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
         android:textColorHint="@color/grey_color"
+        android:textSize="@dimen/_13ssp"
         app:hintAnimationEnabled="true"
-        app:hintEnabled="true"/>
+        app:hintEnabled="true" />
 
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:layout_height="match_parent">
+        android:layout_marginRight="@dimen/_20sdp">
 
         <com.app.fixy.customviews.BoldTextView
             android:id="@+id/txt_done"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:background="@drawable/black_round"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
+            android:background="@drawable/black_round"
+            android:gravity="center"
             android:text="@string/done"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
