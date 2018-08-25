@@ -13,11 +13,11 @@ public class InterfacesCall {
 
         void onpause();
     }
+
     public interface MapInterface {
         void onLocationUpdate(LocationResult location);
         void onMapReady(GoogleMap map);
     }
-
 
     public  interface IndexClick{
         void clickIndex(String itemPosition, int pos);

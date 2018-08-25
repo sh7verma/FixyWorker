@@ -91,4 +91,13 @@
     <string name="temp_emial">shubham.v@applify.co</string>
     <string name="temp_num">+919469152174</string>
     <string name="phone_no">Phone no.</string>
+    <string name="title">Title</string>
+    <string name="change_no">Change No.</string>
+    <string name="fixy">FIXY</string>
+    <string name="version_1_0">Version 1.0</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="rate_us">Rate Us</string>
+    <string name="about_us">About Us</string>
+    <string name="faq">FAQ</string>
+    <string name="refer_a_frient_earn"><![CDATA[Refer a frient & Earn]]></string>
 </resources>

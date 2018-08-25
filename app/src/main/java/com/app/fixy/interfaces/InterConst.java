@@ -15,7 +15,7 @@ public interface InterConst {
     String READ_PHONE_STATE_PERMISSION= "phone_state";
     String LOCATION_DATA_EXTRA="location_extra";
     String RECEIVER ="reciver_location";
-     String RESULT_DATA_KEY = ".RESULT_DATA_KEY";
+    String RESULT_DATA_KEY = ".RESULT_DATA_KEY";
     int SUCCESS_RESULT = 200;
     int HOME = 1;
     int WORK= 2;
@@ -25,10 +25,10 @@ public interface InterConst {
     public enum WEBVIEW{
         TERM_CONDITION;
     }
-    public enum GOOGLE{
-        NEARBY,AUTOCOMPLETE;
-    }
 
+    public enum GOOGLE{
+        NEARBY,AUTOCOMPLETE
+    }
 
     public enum Address{
         HOME,WORK,OTHER
