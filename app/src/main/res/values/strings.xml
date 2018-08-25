@@ -103,4 +103,15 @@
     <string name="please_enter_label_name">Please enter label name</string>
     <string name="remove_add_warning">Do you want to remove this address?</string>
     <string name="hash">#</string>
+    <string name="change_no">Change no.</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="rate_us">Rate us</string>
+    <string name="about_us">About us</string>
+    <string name="faq">FAQ</string>
+    <string name="refer_a_frient_earn"><![CDATA[Refer a Friend & Earn]]></string>
+    <string name="version_1_0">Version 1.0</string>
+    <string name="fixy">FIXY</string>
+    <string name="title">TITLE</string>
+
+
 </resources>
