@@ -88,6 +88,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/mapKey" />
+        <activity android:name=".activities.SplashActivity"/>
 
         <activity android:name=".activities.MapAddressActivity"></activity>
         <activity android:name=".activities.AddAddressActivity"></activity>
