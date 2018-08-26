@@ -113,5 +113,7 @@
     <string name="fixy">FIXY</string>
     <string name="title">TITLE</string>
 
+    <string name="otp">OTP</string>
+    <string name="provide_otp_to_worker">You have to provide this OTP to worker to start the job</string>
 
 </resources>

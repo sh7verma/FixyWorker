@@ -20,6 +20,6 @@ public class InterfacesCall {
     }
 
     public  interface IndexClick{
-        void clickIndex(String itemPosition, int pos);
+        void clickIndex( int pos);
     }
 }

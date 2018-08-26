@@ -9,22 +9,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.app.fixy.R;
+import com.app.fixy.interfaces.InterfacesCall;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
-public class BookingAdapter  extends RecyclerView.Adapter<BookingAdapter.ViewHolder> {
+public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHolder> {
 
     private final Context mContext;
-    Bitmap bitmap =null;
+    Bitmap bitmap = null;
 
     private Handler handler = new Handler();
-    Runnable runnable ;
-    private int progressStatus=0, count =0;
+    Runnable runnable;
+    private int progressStatus = 0, count = 25;
+    int start = 0,end = 75,next=0;
+    InterfacesCall.IndexClick click;
 
-    public BookingAdapter(Context con) {
+    public BookingAdapter(Context con, InterfacesCall.IndexClick click) {
         mContext = con;
+        this.click = click;
     }
 
     @NonNull
@@ -35,19 +44,102 @@ public class BookingAdapter  extends RecyclerView.Adapter<BookingAdapter.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
+        setView(holder,start);
 
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                progressStatus = progressStatus+30;
-                count  = count+25;
-                handler.postDelayed(runnable,10);
+                start+=25;
+                progressStatus=start;
+//                handler.postDelayed(runnable, 10);
+                setView(holder, start);
 
             }
         });
 
+        holder.viewBooking.llMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                click.clickIndex(position);
+            }
+        });
+
+
+    }
+
+    private void setView(@NonNull ViewHolder holder, int start) {
+        switch (start) {
+            case 0:
+                showPending(holder);
+                break;
+            case 25:
+                showAccepted(holder);
+                break;
+            case 50:
+                showOnWay(holder);
+                break;
+            case 75:
+                showConfirm(holder);
+                break;
+        }
+    }
+
+
+    private void showPending(ViewHolder holder) {
+        RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(R.dimen._3sdp, 0);
+        int l = (int) mContext.getResources().getDimension(R.dimen._10sdp);
+        int t = (int) mContext.getResources().getDimension(R.dimen._5sdp);
+        relativeLayout.setMargins(l, t, 0, 0);
+        holder.vprogressbar.setLayoutParams(relativeLayout);
+        holder.viewBooking.llRequest.setVisibility(View.VISIBLE);
+        holder.viewBooking.llAccepted.setVisibility(View.GONE);
+        holder.viewBooking.llOnWay.setVisibility(View.GONE);
+        holder.viewBooking.llConfirmed.setVisibility(View.GONE);
+    }
+
+    private void showAccepted(ViewHolder holder) {
+        int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
+        int h = (int) mContext.getResources().getDimension(R.dimen._51sdp);
+        RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
+        int l = (int) mContext.getResources().getDimension(R.dimen._10sdp);
+        int t = (int) mContext.getResources().getDimension(R.dimen._5sdp);
+        relativeLayout.setMargins(l, t, 0, 0);
+        holder.vprogressbar.setLayoutParams(relativeLayout);
+        holder.viewBooking.llRequest.setVisibility(View.VISIBLE);
+        holder.viewBooking.llAccepted.setVisibility(View.VISIBLE);
+        holder.viewBooking.llOnWay.setVisibility(View.GONE);
+        holder.viewBooking.llConfirmed.setVisibility(View.GONE);
+    }
+
+    private void showOnWay(ViewHolder holder) {
+        int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
+        int h = (int) mContext.getResources().getDimension(R.dimen._102sdp);
+        RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
+        int l = (int) mContext.getResources().getDimension(R.dimen._10sdp);
+        int t = (int) mContext.getResources().getDimension(R.dimen._5sdp);
+        relativeLayout.setMargins(l, t, 0, 0);
+        holder.vprogressbar.setLayoutParams(relativeLayout);
+        holder.viewBooking.llRequest.setVisibility(View.VISIBLE);
+        holder.viewBooking.llAccepted.setVisibility(View.VISIBLE);
+        holder.viewBooking.llOnWay.setVisibility(View.VISIBLE);
+        holder.viewBooking.llConfirmed.setVisibility(View.GONE);
+    }
+
+    private void showConfirm(ViewHolder holder) {
+        int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
+        int h = (int) mContext.getResources().getDimension(R.dimen._155sdp);
+        RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
+        int l = (int) mContext.getResources().getDimension(R.dimen._10sdp);
+        int t = (int) mContext.getResources().getDimension(R.dimen._5sdp);
+        relativeLayout.setMargins(l, t, 0, 0);
+        holder.vprogressbar.setLayoutParams(relativeLayout);
+        holder.viewBooking.llRequest.setVisibility(View.VISIBLE);
+        holder.viewBooking.llAccepted.setVisibility(View.VISIBLE);
+        holder.viewBooking.llOnWay.setVisibility(View.VISIBLE);
+        holder.viewBooking.llConfirmed.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -55,13 +147,29 @@ public class BookingAdapter  extends RecyclerView.Adapter<BookingAdapter.ViewHol
         return 1;
     }
 
+    public class ViewBooking {
+        @BindView(R.id.ll_request)
+        LinearLayout llRequest;
+        @BindView(R.id.ll_accepted)
+        LinearLayout llAccepted;
+        @BindView(R.id.ll_on_way)
+        LinearLayout llOnWay;
+        @BindView(R.id.ll_confirmed)
+        LinearLayout llConfirmed;
+        @BindView(R.id.ll_main)
+        LinearLayout llMain;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        View viewCircle1,viewCircle2,viewCircle3,viewCircle4;
+        View viewCircle1, viewCircle2, viewCircle3, viewCircle4;
         Button btn;
         ProgressBar vprogressbar;
-        public ViewHolder(View itemView) {
+        ViewBooking viewBooking = new ViewBooking();
+
+        public ViewHolder(final View itemView) {
             super(itemView);
+            ButterKnife.bind(viewBooking, itemView);
             viewCircle1 = itemView.findViewById(R.id.view_circle1);
             viewCircle2 = itemView.findViewById(R.id.view_circle2);
             viewCircle3 = itemView.findViewById(R.id.view_circle3);
@@ -69,37 +177,48 @@ public class BookingAdapter  extends RecyclerView.Adapter<BookingAdapter.ViewHol
             btn = itemView.findViewById(R.id.btn);
             vprogressbar = itemView.findViewById(R.id.vprogressbar);
 
+            viewBooking.llRequest.setVisibility(View.VISIBLE);
+            viewBooking.llAccepted.setVisibility(View.GONE);
+            viewBooking.llOnWay.setVisibility(View.GONE);
+            viewBooking.llConfirmed.setVisibility(View.GONE);
+//            runProgressbar();
+
+
+        }
+
+        private void runProgressbar() {
             runnable = new Runnable() {
                 @Override
                 public void run() {
-                    progressStatus++;
-                    if (progressStatus>0 && progressStatus<2){
+                    start++;
+                    if (start > 0 && start < 2) {
+                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.grey_oval));
+                    } else if (start > 24 && start < end) {
+
                         viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    }
-                    else if (progressStatus>24 && progressStatus<26){
-
                         viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    }
-                    else if (progressStatus>49 && progressStatus<52){
+                    } else if (start > 49 && start < end) {
 
+                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
+                        viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
                         viewCircle3.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    }
-                    else if (progressStatus>73 && progressStatus<76){
+                    } else if (start > 73 && start < end) {
 
+                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
+                        viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
+                        viewCircle3.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
                         viewCircle4.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
                     }
-                    vprogressbar.setProgress(progressStatus);
-                    if (progressStatus<count){
+                    vprogressbar.setProgress(start);
 
-                        handler.postDelayed(runnable,10);
-                    }
-                    else {
+                    if (start < end) {
+
+                        handler.postDelayed(runnable, 10);
+                    } else {
                         handler.removeCallbacks(runnable);
                     }
                 }
             };
-
-
         }
     }
 }

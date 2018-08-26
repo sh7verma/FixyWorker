@@ -194,7 +194,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         // Create the Snackbar
         mSnackbar = Snackbar.make(containerLayout, message, Snackbar.LENGTH_LONG);
         mSnackbar.getView().setBackgroundColor(Color.TRANSPARENT);
-        mSnackbar.getView().setBackground(mContext.getDrawable(R.drawable.primary_top_round));
+        mSnackbar.getView().setBackground(mContext.getResources().getDrawable(R.drawable.primary_top_round));
 
         // Get the Snackbar's layout view
         Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) mSnackbar.getView();
