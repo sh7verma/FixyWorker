@@ -1,8 +1,6 @@
 package com.app.fixy.activities;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,8 +57,14 @@ public class PendingDetailActivity extends BaseActivity {
         overridePendingTransition(R.anim.slide_right, R.anim.slide_out_right);
     }
 
-    @OnClick(R.id.img_back)
+    @OnClick(R.id.ic_back)
     void back() {
         onBackPressed();
+    }
+
+    @OnClick(R.id.txt_timer)
+    void infoClick() {
+
+        showCustomSnackBar(llMain, getString(R.string.time_left_title), getString(R.string.time_left_mess));
     }
 }

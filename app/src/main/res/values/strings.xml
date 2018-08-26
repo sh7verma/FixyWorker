@@ -118,5 +118,7 @@
     <string name="provide_otp_to_worker">You have to provide this OTP to worker to start the job</string>
     <string name="booking_detail">Booking Detail</string>
     <string name="pending_detail">pending_detail</string>
+    <string name="time_left_title">Time left to accept the request</string>
+    <string name="time_left_mess">Your request would be auto expired when time will be complete and your deducted coin would be credit to your coin.</string>
 
 </resources>

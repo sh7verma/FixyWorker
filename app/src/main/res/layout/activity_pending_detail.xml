@@ -249,6 +249,7 @@
             android:gravity="center">
 
             <com.app.fixy.customviews.BoldTextView
+                android:id="@+id/txt_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/grey_oval_stroke"

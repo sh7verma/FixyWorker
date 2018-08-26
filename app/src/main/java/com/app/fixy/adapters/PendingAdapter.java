@@ -48,7 +48,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
     public class ViewBooking {
         @BindView(R.id.ll_main)

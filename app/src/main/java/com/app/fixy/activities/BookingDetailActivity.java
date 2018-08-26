@@ -1,16 +1,11 @@
 package com.app.fixy.activities;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy.R;
-
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,7 +54,7 @@ public class BookingDetailActivity extends BaseActivity {
         overridePendingTransition(R.anim.slide_right, R.anim.slide_out_right);
     }
 
-    @OnClick(R.id.img_back)
+    @OnClick(R.id.ic_back)
     void back() {
         onBackPressed();
     }
