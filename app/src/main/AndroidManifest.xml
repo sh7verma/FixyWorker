@@ -94,7 +94,8 @@
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.ShowAddressActivity" />
         <activity android:name=".activities.BookingDetailActivity" />
-        <activity android:name=".activities.PendingDetailActivity"></activity>
+        <activity android:name=".activities.PendingDetailActivity" />
+        <activity android:name=".activities.SearchServiceActivity"></activity>
     </application>
 
 </manifest>

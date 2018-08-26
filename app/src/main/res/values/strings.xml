@@ -120,5 +120,6 @@
     <string name="pending_detail">pending_detail</string>
     <string name="time_left_title">Time left to accept the request</string>
     <string name="time_left_mess">Your request would be auto expired when time will be complete and your deducted coin would be credit to your coin.</string>
+    <string name="looking_for">Looking For</string>
 
 </resources>

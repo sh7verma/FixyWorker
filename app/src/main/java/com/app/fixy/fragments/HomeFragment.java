@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.app.fixy.R;
+import com.app.fixy.activities.BookingDetailActivity;
+import com.app.fixy.activities.SearchServiceActivity;
 import com.app.fixy.activities.ServicesListActivity;
 import com.app.fixy.activities.WorkersAdsListActivity;
 import com.app.fixy.adapters.RecommendedServicesAdapter;
 import com.app.fixy.adapters.WorkersAdsAdapter;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Shubham verma on 16-08-2018.
@@ -88,5 +91,13 @@ public class HomeFragment extends BaseFragment {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @OnClick(R.id.ic_search)
+    public void searchService(){
+
+        Intent intent = new Intent(getActivity(), SearchServiceActivity.class);
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.in,R.anim.out);
     }
 }
