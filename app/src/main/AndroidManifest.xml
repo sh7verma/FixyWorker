@@ -93,7 +93,8 @@
         <activity android:name=".activities.MapAddressActivity" />
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.ShowAddressActivity" />
-        <activity android:name=".activities.BookingDetailActivity"></activity>
+        <activity android:name=".activities.BookingDetailActivity" />
+        <activity android:name=".activities.PendingDetailActivity"></activity>
     </application>
 
 </manifest>

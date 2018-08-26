@@ -64,6 +64,6 @@ dependencies {
     /// circularimageview
     implementation 'com.mikhaellopez:circularimageview:3.2.0'
 
-    implementation project(':sdkui')
+//    implementation project(':sdkui')
 
 }

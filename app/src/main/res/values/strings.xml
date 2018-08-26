@@ -106,6 +106,7 @@
     <string name="change_no">Change no.</string>
     <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
     <string name="rate_us">Rate us</string>
+    <string name="track">Track</string>
     <string name="about_us">About us</string>
     <string name="faq">FAQ</string>
     <string name="refer_a_frient_earn"><![CDATA[Refer a Friend & Earn]]></string>
@@ -115,5 +116,7 @@
 
     <string name="otp">OTP</string>
     <string name="provide_otp_to_worker">You have to provide this OTP to worker to start the job</string>
+    <string name="booking_detail">Booking Detail</string>
+    <string name="pending_detail">pending_detail</string>
 
 </resources>

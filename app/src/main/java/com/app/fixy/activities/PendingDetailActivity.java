@@ -4,37 +4,37 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy.R;
 
-import java.util.Random;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class BookingDetailActivity extends BaseActivity {
+public class PendingDetailActivity extends BaseActivity {
+
 
     @BindView(R.id.ll_main)
     LinearLayout llMain;
     @BindView(R.id.txt_title)
     TextView txtTitle;
 
+
     @Override
     protected int getContentView() {
-        return R.layout.activity_booking_detail;
+        return R.layout.activity_pending_detail;
     }
 
     @Override
     protected void onCreateStuff() {
 
+        txtTitle.setText(R.string.pending_detail);
     }
 
     @Override
     protected void initUI() {
-        txtTitle.setText(R.string.booking_detail);
+
     }
 
     @Override
@@ -62,11 +62,5 @@ public class BookingDetailActivity extends BaseActivity {
     @OnClick(R.id.img_back)
     void back() {
         onBackPressed();
-    }
-
-    @OnClick(R.id.ic_info)
-    void infoClick() {
-
-        showCustomSnackBar(llMain, getString(R.string.otp), getString(R.string.provide_otp_to_worker));
     }
 }

@@ -1,6 +1,7 @@
 package com.app.fixy.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.fixy.R;
+import com.app.fixy.activities.BookingDetailActivity;
+import com.app.fixy.activities.PendingDetailActivity;
 import com.app.fixy.adapters.PendingAdapter;
+import com.app.fixy.interfaces.InterfacesCall;
 
 
 public class PendingFragment extends Fragment {
@@ -43,11 +47,20 @@ public class PendingFragment extends Fragment {
         rvPast.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         rvPast.setNestedScrollingEnabled(false);
 
-        mAdapter = new PendingAdapter(mContext);
+        mAdapter = new PendingAdapter(mContext,click);
         rvPast.setAdapter(mAdapter);
     }
 
     protected void initListeners() {
 
     }
+
+    InterfacesCall.IndexClick click = new InterfacesCall.IndexClick() {
+        @Override
+        public void clickIndex(int pos) {
+            Intent intent = new Intent(getActivity(), PendingDetailActivity.class);
+            startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.in,R.anim.out);
+        }
+    };
 }

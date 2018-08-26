@@ -400,7 +400,7 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="@string/on_the_way"
+                android:text="offer applied"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10ssp" />
 
@@ -410,7 +410,7 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/on_the_way"
+                android:text="30% off on original price $120"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp" />
 
