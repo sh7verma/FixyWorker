@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.app.fixy.customviews.BoldTextView
+            <com.app.fixy_worker.customviews.BoldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -40,7 +40,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_22ssp" />
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,7 +61,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/grey_round_stroke">
 
-                <com.app.fixy.customviews.BoldTextView
+                <com.app.fixy_worker.customviews.BoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?selectableItemBackground"
@@ -80,7 +80,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/black_round">
 
-                <com.app.fixy.customviews.BoldTextView
+                <com.app.fixy_worker.customviews.BoldTextView
                     android:id="@+id/txt_browse_service"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

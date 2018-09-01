@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.app.fixy.activities.SettingsActivity">
+    tools:context="com.app.fixy_worker.activities.SettingsActivity">
 
     <include layout="@layout/toolbar" />
 
@@ -28,7 +28,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_change_no" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -68,7 +68,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_noti_settings" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -109,7 +109,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_terms" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -150,7 +150,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_rate_setting" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -191,7 +191,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_about" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -232,7 +232,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_faq" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -272,7 +272,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_faq" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -307,7 +307,7 @@
             android:paddingEnd="@dimen/_10sdp"
             android:paddingStart="@dimen/_10sdp">
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -316,7 +316,7 @@
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

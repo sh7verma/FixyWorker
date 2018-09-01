@@ -10,7 +10,7 @@
         android:padding="@dimen/_5sdp"
         android:orientation="vertical">
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:id="@+id/txt_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp" />
 
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -10,7 +10,7 @@
     <include layout="@layout/toolbar" />
 
 
-    <com.app.fixy.customviews.SemiboldTextView
+    <com.app.fixy_worker.customviews.SemiboldTextView
         android:id="@+id/txt_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_10sdp">
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:id="@+id/txt_home"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
@@ -38,7 +38,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_9ssp" />
 
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:id="@+id/txt_work"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
@@ -51,7 +51,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_9ssp" />
 
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:id="@+id/txt_other"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_25sdp"
@@ -65,7 +65,7 @@
             android:textSize="@dimen/_9ssp" />
     </LinearLayout>
 
-    <com.app.fixy.customviews.FloatingEditText
+    <com.app.fixy_worker.customviews.FloatingEditText
         android:id="@+id/et_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
         android:layout_marginRight="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_10sdp">
 
-        <com.app.fixy.customviews.MaterialEditText
+        <com.app.fixy_worker.customviews.MaterialEditText
             android:id="@+id/txt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
             app:met_floatingLabelTextColor="@color/grey_color"
             app:met_hideUnderline="true" />
 
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:id="@+id/txt_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
             android:background="@color/grey_color" />
     </RelativeLayout>
 
-    <com.app.fixy.customviews.FloatingEditText
+    <com.app.fixy_worker.customviews.FloatingEditText
         android:id="@+id/et_house_flat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
         app:hintAnimationEnabled="true"
         app:hintEnabled="true" />
 
-    <com.app.fixy.customviews.FloatingEditText
+    <com.app.fixy_worker.customviews.FloatingEditText
         android:id="@+id/et_landmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp">
 
-        <com.app.fixy.customviews.BoldTextView
+        <com.app.fixy_worker.customviews.BoldTextView
             android:id="@+id/txt_done"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"

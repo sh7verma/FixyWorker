@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.app.fixy.activities.ServicesListActivity">
+    tools:context="com.app.fixy_worker.activities.ServicesListActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:padding="@dimen/_10sdp"
             android:src="@mipmap/ic_back" />
 
-        <com.app.fixy.customviews.BoldTextView
+        <com.app.fixy_worker.customviews.BoldTextView
             android:id="@+id/txt_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

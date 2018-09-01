@@ -14,7 +14,7 @@
             android:padding="@dimen/_10sdp"
             android:src="@mipmap/ic_notifications"/>
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/my_requests"
@@ -37,7 +37,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:id="@+id/txt_booked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:layout_width="match_parent"
                 android:id="@+id/txt_pending"
                 android:layout_height="wrap_content"

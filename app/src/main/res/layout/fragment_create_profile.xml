@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_20sdp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.app.fixy_worker.customviews.BoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:text="@string/create_profile"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp" />
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_background"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/circular_background"
+                        android:padding="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/img_service"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_15sdp"
+                            android:src="@mipmap/ic_profile" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@mipmap/ic_add_img" />
+
+                </RelativeLayout>
+
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="@string/full_name"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/_10ssp" />
+
+                <com.app.fixy_worker.customviews.MaterialEditText
+                    android:id="@+id/ed_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/enter"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey_color"
+                    android:textSize="@dimen/_12ssp" />
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/email"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/_10ssp" />
+
+                <com.app.fixy_worker.customviews.MaterialEditText
+                    android:id="@+id/ed_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/enter"
+                    android:lines="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey_color"
+                    android:textSize="@dimen/_12ssp"
+                    app:met_hideUnderline="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp">
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_referral_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="@string/referral_code"
+                        android:textColor="@color/grey_color"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <ImageView
+                        android:id="@+id/img_referral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:src="@mipmap/ic_info" />
+                </LinearLayout>
+
+                <com.app.fixy_worker.customviews.MaterialEditText
+                    android:id="@+id/ed_referral_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/enter"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey_color"
+                    android:textSize="@dimen/_12ssp" />
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/gender"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/_10ssp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/_45sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/male"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/female"
+                        android:textSize="@dimen/_10ssp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

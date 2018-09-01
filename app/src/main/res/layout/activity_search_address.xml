@@ -24,7 +24,7 @@
         android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
-        <com.app.fixy.customviews.FloatingEditText
+        <com.app.fixy_worker.customviews.FloatingEditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:layout_height="1dp"
             android:background="@color/light_grey" />
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_current_location"

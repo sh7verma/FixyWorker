@@ -25,7 +25,7 @@
             android:layout_marginRight="@dimen/_15sdp"
             android:src="@mipmap/ic_logo_login" />
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_15sdp"
@@ -36,7 +36,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp" />
 
-        <com.app.fixy.customviews.BoldTextView
+        <com.app.fixy_worker.customviews.BoldTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_15sdp"
@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@mipmap/ic_phone" />
 
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_15sdp"
@@ -70,7 +70,7 @@
             android:elevation="@dimen/_10sdp"
             android:orientation="horizontal">
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/_5sdp"
@@ -90,7 +90,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@color/grey_line" />
 
-            <com.app.fixy.customviews.MaterialEditText
+            <com.app.fixy_worker.customviews.MaterialEditText
                 android:id="@+id/ed_number"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_45sdp"

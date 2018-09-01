@@ -17,7 +17,7 @@
         android:background="@color/red">
 
 
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical">
-        <com.app.fixy.customviews.SemiboldTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -70,7 +70,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp"
             android:visibility="visible" />
-        <com.app.fixy.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.RegularTextView
             android:id="@+id/txt_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

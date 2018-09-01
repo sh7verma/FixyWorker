@@ -41,7 +41,7 @@
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_back"/>
 
-            <com.app.fixy.customviews.BoldTextView
+            <com.app.fixy_worker.customviews.BoldTextView
                 android:id="@+id/txt_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 android:layout_gravity="center_vertical"
                 android:padding="@dimen/_10sdp"
                 android:src="@mipmap/ic_search_main"/>
-            <com.app.fixy.customviews.MaterialEditText
+            <com.app.fixy_worker.customviews.MaterialEditText
                 android:id="@+id/et_address"
                 android:focusableInTouchMode="false"
                 android:layout_width="wrap_content"

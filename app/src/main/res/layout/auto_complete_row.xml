@@ -21,7 +21,7 @@
             android:layout_alignParentLeft="true"
             android:orientation="vertical">
 
-            <com.app.fixy.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.SemiboldTextView
                 android:id="@+id/place_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                 android:textSize="@dimen/_13ssp"
                 android:textColor="@color/black" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:id="@+id/place_name_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

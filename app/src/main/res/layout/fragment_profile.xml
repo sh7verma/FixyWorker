@@ -58,7 +58,7 @@
             android:layout_below="@id/ll_image_main"
             android:orientation="vertical">
 
-            <com.app.fixy.customviews.BoldTextView
+            <com.app.fixy_worker.customviews.BoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -67,7 +67,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp" />
 
-            <com.app.fixy.customviews.RegularTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -81,7 +81,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
 
-                <com.app.fixy.customviews.RegularTextView
+                <com.app.fixy_worker.customviews.RegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -90,7 +90,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10sdp" />
 
-                <com.app.fixy.customviews.RegularTextView
+                <com.app.fixy_worker.customviews.RegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -106,7 +106,7 @@
                 android:layout_marginBottom="@dimen/_15sdp"
                 android:orientation="horizontal">
 
-                <com.app.fixy.customviews.RegularTextView
+                <com.app.fixy_worker.customviews.RegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -115,7 +115,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10sdp" />
 
-                <com.app.fixy.customviews.RegularTextView
+                <com.app.fixy_worker.customviews.RegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -161,7 +161,7 @@
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/ic_bookins_his" />
 
-                    <com.app.fixy.customviews.RegularTextView
+                    <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/booking_history"
@@ -189,7 +189,7 @@
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/ic_my_address" />
 
-                    <com.app.fixy.customviews.RegularTextView
+                    <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_address"
@@ -223,7 +223,7 @@
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/ic_payment" />
 
-                    <com.app.fixy.customviews.RegularTextView
+                    <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/payment_method"
@@ -250,7 +250,7 @@
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/ic_settings" />
 
-                    <com.app.fixy.customviews.RegularTextView
+                    <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/account_settings"
@@ -290,21 +290,21 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <com.app.fixy.customviews.BoldTextView
+                        <com.app.fixy_worker.customviews.BoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="FixY85v"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_20sdp" />
 
-                        <com.app.fixy.customviews.RegularTextView
+                        <com.app.fixy_worker.customviews.RegularTextView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:text="@string/Lorem_Ipsum_large"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.app.fixy.customviews.RegularTextView
+                        <com.app.fixy_worker.customviews.RegularTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/primary_round"
