@@ -21,7 +21,19 @@ public interface InterConst {
     int WORK= 2;
     int DEFAULT= -1;
     int OTHER = 3;
+    String PROFILE_STATUS = "profile_status";
+    String PROFILE_IMAGE = "profile_image";
 
+    int ERROR_RESULT =404 ;
+    int CAMERA_PERMISSION_REQUEST_CODE = 1;
+    String SHOW_PIC = "show_pic";
+    String NULL = "null";
+    String TYPE = "type";
+    String EDIT_PROFILE = "1";
+    String CREATE_PROFILE = "0";
+    String MALE = "male";
+    String FEMALE = "female";
+    String USER = "1";
     public enum WEBVIEW{
         TERM_CONDITION;
     }

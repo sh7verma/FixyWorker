@@ -12,7 +12,7 @@
     <item android:id="@android:id/progress">
         <clip
             android:clipOrientation="horizontal"
-            android:gravity="top">
+            android:gravity="start">
             <shape>
                 <corners android:radius="0dip"/>
                 <solid android:color="@color/green"/>

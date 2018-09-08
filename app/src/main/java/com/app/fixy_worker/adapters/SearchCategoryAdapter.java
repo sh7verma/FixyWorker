@@ -10,7 +10,10 @@ import android.widget.LinearLayout;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.interfaces.InterfacesCall;
+import com.app.fixy_worker.models.SelectServiceModel;
 import com.app.fixy_worker.utils.Animations;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +24,7 @@ public class SearchCategoryAdapter extends RecyclerView.Adapter<SearchCategoryAd
     private int mHeight;
     InterfacesCall.IndexClick mcClick;
     int temp=-1;
+    ArrayList<SelectServiceModel> models = new ArrayList<>();
 
     public SearchCategoryAdapter(Context context,int height, InterfacesCall.IndexClick click) {
         mContext = context;
@@ -80,7 +84,7 @@ public class SearchCategoryAdapter extends RecyclerView.Adapter<SearchCategoryAd
 
     @Override
     public int getItemCount() {
-        return 10;
+        return models.size();
     }
 
 

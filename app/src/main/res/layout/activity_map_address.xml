@@ -60,7 +60,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:background="@drawable/grey_round_solid"
+            android:background="@drawable/white_round"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="wrap_content"

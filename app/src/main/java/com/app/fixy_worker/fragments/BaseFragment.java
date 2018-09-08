@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -118,7 +119,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         LoadingDialog.getLoader().dismissLoader();
     }
 
-    protected void showSnakbarAlert(View view, String message) {
+    protected void showSnakbarfragment(View view, String message) {
         mSnackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
         mSnackbar.getView().setBackgroundColor(Color.RED);
         mSnackbar.show();
@@ -167,6 +168,32 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         txtHeader.setText(header);
         txtHeader.setTextColor(Color.WHITE);
 
+        // Add the view to the Snackbar's layout
+        layout.addView(snackView, 0);
+        // Show the Snackbar
+        mSnackbar.show();
+    }
+
+ protected void showValidationSnackBar(View containerLayout,String message ) {
+        LayoutInflater mInflater = LayoutInflater.from(containerLayout.getContext());
+
+        // Create the Snackbar
+        mSnackbar = Snackbar.make(containerLayout, message, Snackbar.LENGTH_LONG);
+        mSnackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        mSnackbar.getView().setBackground(mContext.getResources().getDrawable(R.drawable.red_top_round));
+
+        // Get the Snackbar's layout view
+        Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) mSnackbar.getView();
+        // Hide the text
+        TextView textView = (TextView) layout.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setVisibility(View.INVISIBLE);
+
+        // Inflate our custom view
+        View snackView = mInflater.inflate(R.layout.validation_layout, null);
+        // Configure the view
+        TextView textViewTop = (TextView) snackView.findViewById(R.id.text);
+        textViewTop.setText(message);
+        textViewTop.setTextColor(Color.WHITE);
         // Add the view to the Snackbar's layout
         layout.addView(snackView, 0);
         // Show the Snackbar

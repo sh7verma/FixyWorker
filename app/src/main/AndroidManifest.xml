@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
-    <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
     <!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
     <!-- <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
@@ -58,11 +58,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <!--<activity-->
-            <!--android:name=".activities.CreateProfileActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppTheme"-->
-            <!--android:windowSoftInputMode="stateAlwaysVisible" />-->
+        <!-- <activity -->
+        <!-- android:name=".activities.CreateProfileActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppTheme" -->
+        <!-- android:windowSoftInputMode="stateAlwaysVisible" /> -->
         <!-- <activity -->
         <!-- android:name=".activities.LandingActivity" -->
         <!-- android:screenOrientation="portrait" -->
@@ -96,7 +96,16 @@
         <activity android:name=".activities.BookingDetailActivity" />
         <activity android:name=".activities.PendingDetailActivity" />
         <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.SearchServiceActivity"></activity>
+        <activity android:name=".activities.SearchServiceActivity" />
+        <activity android:name=".activities.SelectServiceActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.ViewImageActivity" />
+        <activity
+            android:name=".dialogs.PhotoSelectionDialog"
+            android:theme="@style/DialogActivityBottomUp"></activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

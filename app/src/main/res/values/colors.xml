@@ -35,6 +35,7 @@
     <color name="gmail">#dd4b39</color>
     <color name="gmail_tint">#9dd1231d</color>
     <color name="red">#ff0000</color>
+    <color name="red_light">#ef1818</color>
     <color name="dark_cyan">#2c896b</color>
     <color name="card_shadow">#10000000</color>
     <color name="dark_grey">#484848</color>

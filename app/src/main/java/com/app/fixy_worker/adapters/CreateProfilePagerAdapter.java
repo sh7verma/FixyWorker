@@ -16,23 +16,29 @@ public class CreateProfilePagerAdapter extends FragmentPagerAdapter {
 
     int mNumOfTabs;
     Context mContext;
+    CreateProfileFragment createProfileFragment;
+    SelectServiceFragment serviceFragment;
+    VerificationFragment verificationFragment;
 
     public CreateProfilePagerAdapter(FragmentManager fm, int NumOfTabs, Context con) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         mContext = con;
+        createProfileFragment = CreateProfileFragment.newInstance(mContext);
+        serviceFragment = SelectServiceFragment.newInstance(mContext);
+        verificationFragment = VerificationFragment.newInstance(mContext);
     }
 
     @Override
     public Fragment getItem(int pos) {
         switch (pos) {
             case 0:
-                return CreateProfileFragment.newInstance(mContext);
+                return createProfileFragment;
             case 1:
-                return SelectServiceFragment.newInstance(mContext);
+                return serviceFragment;
 
             default:
-                return VerificationFragment.newInstance(mContext);
+                return verificationFragment;
         }
     }
 

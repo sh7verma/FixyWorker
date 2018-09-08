@@ -1,15 +1,22 @@
 package com.app.fixy_worker.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.activities.SelectServiceActivity;
 import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
+import com.app.fixy_worker.adapters.SelectServiceAdapter;
 
 import butterknife.BindView;
 
 public class SelectServiceFragment  extends BaseFragment {
+
+    @BindView(R.id.ll_main)
+    LinearLayout llMain;
 
     public  static SelectServiceFragment fragment;
 
@@ -20,7 +27,9 @@ public class SelectServiceFragment  extends BaseFragment {
 
     // TODO: Rename and change types and number of parameters
     public static SelectServiceFragment newInstance(Context context) {
-        fragment = new SelectServiceFragment();
+        if (fragment == null) {
+            fragment = new SelectServiceFragment();
+        }
         mContext = context;
         return fragment;
     }
@@ -37,12 +46,18 @@ public class SelectServiceFragment  extends BaseFragment {
 
     @Override
     protected void initListeners() {
-
+        llMain.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        Intent intent;
+        switch (view.getId()){
+            case R.id.ll_main:
+                intent = new Intent(getActivity(), SelectServiceActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
 }
