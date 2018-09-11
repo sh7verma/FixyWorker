@@ -178,5 +178,7 @@
     <string name="no">No</string>
     <string name="select_photo_validation">Please add your picture</string>
     <string name="gender_validation">Please select your gender</string>
+    <string name="new_york">New York</string>
+    <string name="my_services">MY SERVICES</string>
 
 </resources>

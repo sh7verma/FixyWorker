@@ -3,18 +3,19 @@ package com.app.fixy_worker.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.activities.BookingDetailActivity;
 import com.app.fixy_worker.activities.SearchServiceActivity;
 import com.app.fixy_worker.activities.ServicesListActivity;
 import com.app.fixy_worker.activities.WorkersAdsListActivity;
-import com.app.fixy_worker.adapters.RecommendedServicesAdapter;
+import com.app.fixy_worker.adapters.MyServicesAdapter;
 import com.app.fixy_worker.adapters.WorkersAdsAdapter;
+import com.app.fixy_worker.customviews.GridSpacingItemDecoration;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,19 +29,10 @@ public class HomeFragment extends BaseFragment {
     @SuppressLint("StaticFieldLeak")
     static HomeFragment fragment;
 
-    @BindView(R.id.rv_recommended_services)
-    RecyclerView rvRecommendedServices;
+    @BindView(R.id.rv_my_services)
+    RecyclerView rvMyServices;
 
-    @BindView(R.id.rv_workers_ads)
-    RecyclerView rvWorkersAds;
-
-    @BindView(R.id.txt_view_all_services)
-    TextView txtViewAllServices;
-
-    @BindView(R.id.txt_view_all_ads)
-    TextView txtViewAllAds;
-
-    RecommendedServicesAdapter mAdapterServices;
+    MyServicesAdapter mAdapterServices;
     WorkersAdsAdapter mAdapterAds;
 
     LinearLayoutManager mLayoutManagerServices;
@@ -58,23 +50,26 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void onCreateStuff() {
-        mLayoutManagerServices = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        rvRecommendedServices.setLayoutManager(mLayoutManagerServices);
-        rvRecommendedServices.setNestedScrollingEnabled(false);
-        mAdapterServices = new RecommendedServicesAdapter(getActivity(), mHeight);
-        rvRecommendedServices.setAdapter(mAdapterServices);
 
-        mLayoutManagerAds = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        rvWorkersAds.setLayoutManager(mLayoutManagerAds);
-        rvWorkersAds.setNestedScrollingEnabled(false);
-        mAdapterAds = new WorkersAdsAdapter(getActivity(), mHeight);
-        rvWorkersAds.setAdapter(mAdapterAds);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(),
+                2, LinearLayoutManager.HORIZONTAL, false);
+        rvMyServices.setLayoutManager(mLayoutManager);
+        rvMyServices.setItemAnimator(new DefaultItemAnimator());
+        mAdapterServices = new MyServicesAdapter(getActivity(), mHeight);
+        rvMyServices.setAdapter(mAdapterServices);
+
+//        mLayoutManagerAds = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        rvWorkersAds.setLayoutManager(mLayoutManagerAds);
+//        rvWorkersAds.setNestedScrollingEnabled(false);
+//        mAdapterAds = new WorkersAdsAdapter(getActivity(), mHeight);
+//        rvWorkersAds.setAdapter(mAdapterAds);
     }
 
     @Override
     protected void initListeners() {
-        txtViewAllServices.setOnClickListener(this);
-        txtViewAllAds.setOnClickListener(this);
+//        txtViewAllServices.setOnClickListener(this);
+//        txtViewAllAds.setOnClickListener(this);
     }
 
     @Override
@@ -93,11 +88,11 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.ic_search)
-    public void searchService(){
-
-        Intent intent = new Intent(getActivity(), SearchServiceActivity.class);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.in,R.anim.out);
-    }
+//    @OnClick(R.id.ic_search)
+//    public void searchService(){
+//
+//        Intent intent = new Intent(getActivity(), SearchServiceActivity.class);
+//        startActivity(intent);
+//        getActivity().overridePendingTransition(R.anim.in,R.anim.out);
+//    }
 }

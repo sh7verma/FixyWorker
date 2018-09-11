@@ -25,6 +25,8 @@
     </LinearLayout>
 
     <com.app.fixy_worker.customviews.RegularTextView
+        android:id="@+id/txt_name"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/beauty"

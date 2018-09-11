@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_color"
@@ -18,26 +18,20 @@
             android:src="@mipmap/ic_notifications" />
 
         <com.app.fixy_worker.customviews.BoldTextView
-            android:id="@+id/txt_header"
-            android:layout_width="0dp"
+            android:id="@+id/txt_city"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableRight="@mipmap/ic_city_pin"
             android:gravity="center_horizontal"
             android:padding="@dimen/_10sdp"
-            android:text="@string/home"
+            android:text="@string/new_york"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/_15ssp" />
 
-        <ImageView
-            android:id="@+id/ic_search"
-            android:background="?selectableItemBackground"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
-            android:src="@mipmap/ic_search" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -45,267 +39,63 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_110sdp"
-                android:background="@color/app_color"
-                android:orientation="vertical" />
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/ll_main_services_header"
+                android:id="@+id/ll_my_services"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_15sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:paddingTop="@dimen/_5sdp">
-
-                <com.app.fixy_worker.customviews.SemiboldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-
-                    android:text="@string/main_services"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
-
-                <com.app.fixy_worker.customviews.SemiboldTextView
-                    android:id="@+id/txt_view_all_services"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableEnd="@mipmap/ic_view_all"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-
-                    android:text="@string/view_all"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10ssp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_main_services_items"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_145sdp"
-                android:layout_below="@id/ll_main_services_header"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:background="@drawable/white_round"
-                android:elevation="@dimen/_15sdp"
+                android:background="@color/white"
+                android:elevation="@dimen/_5sdp"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:padding="@dimen/_5sdp">
 
                 <LinearLayout
+                    android:id="@+id/ll_my_services_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingTop="@dimen/_5sdp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <com.app.fixy_worker.customviews.SemiboldTextView
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/my_services"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/_1sdp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_line" />
-
-                    <LinearLayout
+                    <com.app.fixy_worker.customviews.SemiboldTextView
+                        android:id="@+id/txt_view_all_services"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/_1sdp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_line" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
+                        android:drawableEnd="@mipmap/ic_view_all_black"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
 
                 </LinearLayout>
 
-                <View
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_my_services"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/_1sdp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_line" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/_1sdp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_line" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:src="@mipmap/ic_beauty" />
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-
-            <com.app.fixy_worker.customviews.SemiboldTextView
-                android:id="@+id/txt_recommended_services_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_main_services_items"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:text="@string/recommended_services"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_recommended_services"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_recommended_services_header"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp" />
-
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rv_recommended_services"
+                android:layout_below="@id/ll_my_services"
                 android:background="@color/white">
 
                 <LinearLayout

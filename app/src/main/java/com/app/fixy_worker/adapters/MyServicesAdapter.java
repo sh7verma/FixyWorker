@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.customviews.CircleTransform;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,12 +22,12 @@ import butterknife.ButterKnife;
  * Created by Shubham verma on 17-08-2018.
  */
 
-public class RecommendedServicesAdapter extends RecyclerView.Adapter<RecommendedServicesAdapter.ViewHolder> {
-
+public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.ViewHolder> {
     private Context mContext;
     private int mHeight;
 
-    public RecommendedServicesAdapter(Context context, int height) {
+
+    public MyServicesAdapter(Context context, int height) {
         mContext = context;
         mHeight = height;
     }
@@ -32,12 +35,28 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recommended_services, parent, false);
-        return new ViewHolder(v);
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_services, parent, false);
+        return new ViewHolder(v, viewType);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+
+        if (holder.getAdapterPosition() == 0) {
+
+            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+            bgShape.setColor(mContext.getResources().getColor(R.color.app_color));
+
+            Picasso.get()
+                    .load(R.mipmap.ic_plus_advr)
+                    .transform(new CircleTransform())
+                    .resize((int) (mHeight * 0.05), (int) (mHeight * 0.05))
+                    .into(holder.imgService);
+            holder.txtName.setText(mContext.getString(R.string.add_new));
+
+        } else {
+
 //            if (!TextUtils.isEmpty(mData.getProfilePicURL().getOriginal())) {
 //                Picasso.with(mContext)
 //                        .load(mData.getProfilePicURL().getOriginal())
@@ -48,16 +67,16 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 //                        .centerCrop()
 //                        .into(imgProfile);
 //            } else {
-        GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
-        bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
+            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+            bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
-//        Picasso.get()
-//                .load(R.mipmap.ic_beauty)
-//                .transform(new CircleTransform())
-//                .resize((int) (mHeight * 0.08), (int) (mHeight * 0.08))
-//                .into(holder.imgService);
+            Picasso.get()
+                    .load(R.mipmap.ic_beauty_w)
+                    .transform(new CircleTransform())
+                    .resize((int) (mHeight * 0.05), (int) (mHeight * 0.05))
+                    .into(holder.imgService);
 //            }
-
+        }
     }
 
     @Override
@@ -72,10 +91,13 @@ public class RecommendedServicesAdapter extends RecyclerView.Adapter<Recommended
 
         @BindView(R.id.img_service)
         ImageView imgService;
+        @BindView(R.id.txt_name)
+        TextView txtName;
 
-        ViewHolder(View itemView) {
+        ViewHolder(View itemView, int viewType) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
         }
 
     }

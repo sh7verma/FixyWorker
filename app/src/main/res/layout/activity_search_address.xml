@@ -65,7 +65,7 @@
         <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_current_location"
+            android:drawableLeft="@mipmap/ic_current_location"
             android:drawablePadding="@dimen/_10sdp"
             android:paddingBottom="@dimen/_15sdp"
             android:paddingTop="@dimen/_15sdp"
