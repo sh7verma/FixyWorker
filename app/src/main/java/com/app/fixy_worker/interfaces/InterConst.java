@@ -24,6 +24,13 @@ public interface InterConst {
     String PROFILE_STATUS = "profile_status";
     String PROFILE_IMAGE = "profile_image";
 
+    String ACCESS_TOKEN = "access_token";
+    String COUNTRY_CODE = "country_code";
+    String PHONE_NUMBER = "phone_number";
+    String GENDER = "gender";
+    String EMAIL = "email";
+    String USER_NAME = "username";
+    String USER_ID = "user_id";
     int ERROR_RESULT =404 ;
     int CAMERA_PERMISSION_REQUEST_CODE = 1;
     String SHOW_PIC = "show_pic";
@@ -33,7 +40,8 @@ public interface InterConst {
     String CREATE_PROFILE = "0";
     String MALE = "male";
     String FEMALE = "female";
-    String USER = "1";
+    String USER_ROLE = "1";
+    String WORKER_ROLE = "2";
     public enum WEBVIEW{
         TERM_CONDITION;
     }
@@ -44,5 +52,8 @@ public interface InterConst {
 
     public enum Address{
         HOME,WORK,OTHER
+    }
+    public enum Docs{
+        AADHAR,LICENCE;
     }
 }

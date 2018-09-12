@@ -3,6 +3,7 @@ package com.app.fixy_worker.adapters;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +26,14 @@ import butterknife.ButterKnife;
 public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.ViewHolder> {
     private Context mContext;
     private int mHeight;
+    int w,h;
 
 
     public MyServicesAdapter(Context context, int height) {
         mContext = context;
         mHeight = height;
+        w= (int) mContext.getResources().getDimension(R.dimen._50sdp);
+        h= (int) mContext.getResources().getDimension(R.dimen._50sdp);
     }
 
     @NonNull
@@ -45,14 +49,15 @@ public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.Vi
 
         if (holder.getAdapterPosition() == 0) {
 
-            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
-            bgShape.setColor(mContext.getResources().getColor(R.color.app_color));
+//            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//            bgShape.setColor(mContext.getResources().getColor(R.color.app_color));
 
-            Picasso.get()
-                    .load(R.mipmap.ic_plus_advr)
-                    .transform(new CircleTransform())
-                    .resize((int) (mHeight * 0.05), (int) (mHeight * 0.05))
-                    .into(holder.imgService);
+            holder.imgService.setImageDrawable(ContextCompat.getDrawable(mContext,R.mipmap.ic_add_ser_2));
+//            Picasso.get()
+//                    .load(R.mipmap.ic_add_ser_2)
+//                    .transform(new CircleTransform())
+//                    .resize((int) (mHeight * 0.05), (int) (mHeight * 0.05))
+//                    .into(holder.imgService);
             holder.txtName.setText(mContext.getString(R.string.add_new));
 
         } else {
@@ -67,13 +72,14 @@ public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.Vi
 //                        .centerCrop()
 //                        .into(imgProfile);
 //            } else {
-            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
-            bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
+//            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//            bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
+            holder.llBackground.setBackground(ContextCompat.getDrawable(mContext,R.drawable.circular_background));
+            holder.llBackground.setLayoutParams(new LinearLayout.LayoutParams(w,h));
             Picasso.get()
                     .load(R.mipmap.ic_beauty_w)
                     .transform(new CircleTransform())
-                    .resize((int) (mHeight * 0.05), (int) (mHeight * 0.05))
                     .into(holder.imgService);
 //            }
         }

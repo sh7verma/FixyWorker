@@ -47,7 +47,7 @@ public class SearchCategoryAdapter extends RecyclerView.Adapter<SearchCategoryAd
             Animations.AnimatedClick(mContext,holder.viewBooking.llMain);
         }
         else {
-            holder.viewBooking.llMain.setBackground(mContext.getResources().getDrawable(R.drawable.white_oval));
+            holder.viewBooking.llMain.setBackground(mContext.getResources().getDrawable(R.drawable.white_round_stroke));
 
         }
 //            if (!TextUtils.isEmpty(mData.getProfilePicURL().getOriginal())) {

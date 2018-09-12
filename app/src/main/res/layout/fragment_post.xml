@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.PostServiceFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.app.fixy_worker.customviews.SemiboldTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/dark_grey"
+        android:text="@string/which_service_do_you_want_to_give_discount" />
+    <com.app.fixy_worker.customviews.SemiboldTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/select_service" />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycleview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

@@ -1,10 +1,14 @@
 package com.app.fixy_worker.network;
 
 import com.app.fixy_worker.models.GooglePlaceModal;
+import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.models.NearbyPlaceModel;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
@@ -17,6 +21,19 @@ public interface ApiInterface {
 
     @GET
     public Call<NearbyPlaceModel> getGoogleNearByPlaces(@Url String url);
+
+    @FormUrlEncoded
+    @POST("phone_auth")
+    Call<LoginModel> userSignup(@Field("country_code") String country_code,
+                                @Field("phone") String phone,
+                                @Field("user_role") String user_role
+    );
+
+    @FormUrlEncoded
+    @POST("verify_otp")
+    Call<LoginModel> verify_otp(@Field("auth_token") String auth_token,
+                                @Field("otp") String otp,
+                                @Field("user_role") String user_role);
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

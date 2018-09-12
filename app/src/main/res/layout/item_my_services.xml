@@ -10,17 +10,14 @@
 
     <LinearLayout
         android:id="@+id/ll_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/circular_background"
-        android:padding="@dimen/_5sdp">
+        android:gravity="center"
+        android:layout_width="@dimen/_55sdp"
+        android:layout_height="@dimen/_55sdp">
 
         <ImageView
             android:id="@+id/img_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_5sdp"
             android:src="@mipmap/ic_beauty_w" />
     </LinearLayout>
 

@@ -9,7 +9,7 @@
         android:id="@+id/ll_veiw_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_top_round_corner"
+        android:background="@drawable/white_top_round_solid"
         android:orientation="horizontal"
         android:padding="@dimen/_10ssp">
 
@@ -98,7 +98,7 @@
             android:background="?android:selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"

@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="@dimen/_5sdp"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_oval">
+        android:background="@drawable/white_round_stroke">
 
         <com.app.fixy_worker.customviews.RegularTextView
             android:layout_width="wrap_content"

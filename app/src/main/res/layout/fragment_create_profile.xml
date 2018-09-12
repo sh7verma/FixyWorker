@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/root"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:overScrollMode="never"
         android:scrollbars="none">
 
         <RelativeLayout
@@ -73,12 +74,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="@dimen/_30sdp"
+                    android:animateLayoutChanges="true"
                     android:hint="@string/full_name"
-                    android:paddingTop="@dimen/_5sdp"
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:animateLayoutChanges="true"
+                    android:paddingTop="@dimen/_5sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey_color"
                     android:textSize="@dimen/_12ssp" />
@@ -88,12 +89,12 @@
                     android:id="@+id/ed_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_5sdp"
                     android:animateLayoutChanges="true"
                     android:hint="@string/email_id"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:paddingTop="@dimen/_5sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey_color"
                     android:textSize="@dimen/_12ssp"
@@ -102,8 +103,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="@dimen/_2sdp"
+                    android:orientation="horizontal"
                     android:paddingTop="@dimen/_10sdp">
 
                     <com.app.fixy_worker.customviews.RegularTextView
@@ -142,9 +143,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_2sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/gender"
-                    android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/grey_color"
                     android:textSize="@dimen/_10ssp" />
 
@@ -152,8 +153,8 @@
                     android:id="@+id/rd_group"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="@dimen/_2sdp"
                     android:layout_marginBottom="@dimen/_45sdp"
+                    android:layout_marginLeft="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 

@@ -141,7 +141,6 @@
     <string name="view_photo">View Photo</string>
 
 
-
     <string name="email_not_empty">Email field cannot be empty</string>
     <string name="email_not_valid">Please enter valid Email</string>
     <string name="password_empty">Password field cannot be empty</string>
@@ -178,7 +177,30 @@
     <string name="no">No</string>
     <string name="select_photo_validation">Please add your picture</string>
     <string name="gender_validation">Please select your gender</string>
+    <string name="name_ason_aadhar">Your Name as on AADHAAR CARD</string>
+    <string name="aadhar_number">AADHAAR NUMBER</string>
+    <string name="name_ason_licence">Your Name as on DRIVING LICENCE</string>
+    <string name="licence_number">LICENCE NUMBER</string>
+    <string name="add_front_image">Please add Front image of Document</string>
+    <string name="add_back_image">Please add Back image of Document</string>
+    <string name="document_number_validation">Please enter Document Number</string>
+    <string name="document_type_validation">Please select your Document type</string>
+    <string name="doc_name_empty">Document Name cannot be empty</string>
+    <string name="doc_name_invalid">Please enter name as on document</string>
+    <string name="add_title_mess">Increase your income by Post a add for a user with some discount</string>
+    <string name="select_service">Select Service</string>
+    <string name="which_service_do_you_want_to_give_discount">Which Service do you want to give discount?</string>
+    <string name="offer_detail">Offer Detail</string>
+    <string name="original_price">Original Price</string>
+    <string name="currency_name">Rs.</string>
+    <string name="offer_percentage">Offer percentage</string>
+    <string name="applicable_on_original_price">Percentage will be applicable on original price.</string>
+    <string name="offer_period">Offer Period</string>
+    <string name="offer_description">Offer Description</string>
+    <string name="post_new_add">Post New Add</string>
+    <string name="select">Select</string>
     <string name="new_york">New York</string>
     <string name="my_services">MY SERVICES</string>
+
 
 </resources>

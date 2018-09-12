@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rv_workers_ads"
                     android:layout_margin="@dimen/_15sdp"
-                    android:background="@drawable/white_round"
+                    android:background="@drawable/white_round_solid"
                     android:elevation="@dimen/_10sdp"
                     android:orientation="horizontal">
 

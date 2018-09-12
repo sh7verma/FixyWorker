@@ -58,11 +58,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <!-- <activity -->
-        <!-- android:name=".activities.CreateProfileActivity" -->
-        <!-- android:screenOrientation="portrait" -->
-        <!-- android:theme="@style/AppTheme" -->
-        <!-- android:windowSoftInputMode="stateAlwaysVisible" /> -->
+        <!--<activity-->
+            <!--android:name=".activities.CreateProfileActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppTheme"-->
+            <!--android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />-->
+
         <!-- <activity -->
         <!-- android:name=".activities.LandingActivity" -->
         <!-- android:screenOrientation="portrait" -->
@@ -89,7 +90,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/mapKey" />
 
-        <activity android:name=".activities.SplashActivity" />
+        <!-- <activity android:name=".activities.SplashActivity" /> -->
         <activity android:name=".activities.MapAddressActivity" />
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.ShowAddressActivity" />
@@ -97,15 +98,18 @@
         <activity android:name=".activities.PendingDetailActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.SearchServiceActivity" />
-        <activity android:name=".activities.SelectServiceActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activities.SelectServiceActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activities.ViewImageActivity" />
         <activity
             android:name=".dialogs.PhotoSelectionDialog"
-            android:theme="@style/DialogActivityBottomUp"></activity>
+            android:theme="@style/DialogActivityBottomUp" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".dialogs.ListDialog"
+            android:theme="@style/DialogActivityBottomUp" ></activity>
     </application>
 
 </manifest>

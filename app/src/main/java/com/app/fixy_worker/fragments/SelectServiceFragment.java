@@ -56,6 +56,7 @@ public class SelectServiceFragment  extends BaseFragment {
             case R.id.ll_main:
                 intent = new Intent(getActivity(), SelectServiceActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_up,R.anim.stay);
                 break;
         }
     }

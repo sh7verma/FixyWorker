@@ -7,8 +7,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/rv_main"
@@ -35,23 +35,34 @@
 
                 <RelativeLayout
                     android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_70sdp"
+                    android:layout_marginLeft="@dimen/_10sdp">
 
-                    <com.app.fixy_worker.customviews.SemiboldTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/front_image"
-                        android:padding="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/grey_color"
-                        android:textSize="@dimen/_10ssp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_height="match_parent">
+
+                        <com.app.fixy_worker.customviews.SemiboldTextView
+                            android:id="@+id/txt_no_front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/pink_stroke_round"
+                            android:gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/front_image"
+                            android:textColor="@color/grey_color"
+                            android:textSize="@dimen/_10ssp" />
+
+
+                    </RelativeLayout>
+
                     <ImageView
                         android:id="@+id/img_front"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/pink_stroke_round" />
-
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -59,21 +70,31 @@
                     android:layout_height="@dimen/_70sdp"
                     android:layout_marginLeft="@dimen/_10sdp">
 
-                    <com.app.fixy_worker.customviews.SemiboldTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/back_image"
-                        android:padding="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/grey_color"
-                        android:textSize="@dimen/_10ssp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_height="match_parent">
+
+                        <com.app.fixy_worker.customviews.SemiboldTextView
+                            android:id="@+id/txt_no_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/pink_stroke_round"
+                            android:gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/back_image"
+                            android:textColor="@color/grey_color"
+                            android:textSize="@dimen/_10ssp" />
+
+
+                    </RelativeLayout>
+
                     <ImageView
                         android:id="@+id/img_back"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:background="@drawable/pink_stroke_round" />
-
+                        android:visibility="gone" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -94,20 +115,21 @@
                 <com.app.fixy_worker.customviews.RegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/profile_pic_match_warning"
                     android:textColor="@color/red_dark"
-                    android:layout_gravity="center_vertical"
                     android:textSize="@dimen/_9ssp" />
             </LinearLayout>
 
             <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:text="@string/document_type"
                 android:textAllCaps="true"
-                android:layout_marginTop="@dimen/_20sdp"
                 android:textColor="@color/grey_color"
                 android:textSize="@dimen/_12ssp" />
+
             <RadioGroup
                 android:id="@+id/rd_group"
                 android:layout_width="match_parent"
@@ -144,8 +166,8 @@
                 android:hint="@string/name_on_document"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"
                 android:maxLength="50"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_color"
                 android:textSize="@dimen/_13ssp"
@@ -159,11 +181,11 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:hint="@string/document_number"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="textCapSentences"
-                android:textAllCaps="true"
-                android:maxLines="1"
                 android:maxLength="50"
+                android:maxLines="1"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_color"
                 android:textSize="@dimen/_13ssp"

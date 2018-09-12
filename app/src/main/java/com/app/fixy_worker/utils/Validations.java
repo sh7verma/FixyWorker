@@ -110,6 +110,30 @@ public class Validations {
             return "";
         }
     }
+    public static String checkDocNameValidation(Context con, FloatingEditText editText) {
+        String text =editText.getText().toString().trim();
+//        String valiation ="[a-zA-Z0-9._@ -]+";
+        String valiation ="[a-zA-Z0-9 -]+";
+        String digit ="[0-9]+";
+        if(TextUtils.isEmpty(text)){
+//            editText.setError(con.getString(R.string.full_name_empty));
+            return con.getString(R.string.doc_name_empty);
+        }
+        else if (!text.matches(valiation)){
+            editText.setError(con.getString(R.string.not_alphabet));
+            return con.getString(R.string.doc_name_invalid);
+        }
+        else if (text.length() <= 1){
+            editText.setError(con.getString(R.string.fullname_length));
+            return con.getString(R.string.doc_name_invalid);
+        }else if (text.matches(digit)){
+            editText.setError(con.getString(R.string.not_alphabet));
+            return con.getString(R.string.doc_name_invalid);
+        }
+        else {
+            return "";
+        }
+    }
     public static boolean checkBdayValidation(Context con, MaterialEditText editText) {
         String text =editText.getText().toString().trim();
         if(TextUtils.isEmpty(text)){

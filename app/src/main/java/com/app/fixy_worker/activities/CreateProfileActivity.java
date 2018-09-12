@@ -17,6 +17,8 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
 import com.app.fixy_worker.customviews.CustomViewPager;
 import com.app.fixy_worker.fragments.CreateProfileFragment;
+import com.app.fixy_worker.fragments.VerificationFragment;
+import com.app.fixy_worker.utils.Animations;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,6 +30,8 @@ public class CreateProfileActivity extends BaseActivity {
     CustomViewPager viewPager;
     @BindView(R.id.ic_back)
     ImageView icBack;
+    @BindView(R.id.txt_title)
+    TextView txtTitle;
     @BindView(R.id.txt_done)
     TextView txtDone;
     @BindView(R.id.txt_step_one)
@@ -55,7 +59,7 @@ public class CreateProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreateStuff() {
-
+        txtTitle.setText(getString(R.string.create_profile));
         txtStepOne.setBackground(getResources().getDrawable(R.drawable.green_oval));
         adapter = new CreateProfilePagerAdapter(getSupportFragmentManager(), 3,mContext);
         viewPager.setOffscreenPageLimit(3);
@@ -122,12 +126,14 @@ public class CreateProfileActivity extends BaseActivity {
     @OnClick(R.id.txt_step_one)
     void stepOne() {
         clickFirst(false);
+        Animations.AnimatedClick(this,txtStepOne);
     }
 
     @OnClick(R.id.txt_step_two)
     void stepTwo() {
         if (isFilledFirstForm) {
             clickSecond(false);
+            Animations.AnimatedClick(this,txtStepTwo);
         }
 
     }
@@ -136,13 +142,14 @@ public class CreateProfileActivity extends BaseActivity {
     void stepThree() {
         if (isFilledSecondForm) {
             clickThird(false);
+            Animations.AnimatedClick(this,txtStepThree);
         }
 
     }
     @OnClick(R.id.txt_done)
     void done() {
-//        if (currentPosition == 0 &&  ((CreateProfileFragment)adapter.getItem(0)).checkValidation()){
-        if (currentPosition == 0 ){//next
+        if (currentPosition == 0 &&  ((CreateProfileFragment)adapter.getItem(0)).checkValidation()){
+//        if (currentPosition == 0 ){//next
             clickSecond(true);
             isFilledFirstForm = true;
         }
@@ -150,8 +157,8 @@ public class CreateProfileActivity extends BaseActivity {
             clickThird(true);
             isFilledSecondForm = true;
         }
-        else {//done
-
+        else if (currentPosition == 2 &&  ((VerificationFragment)adapter.getItem(2)).checkValidation()){//done
+            showToast("done");
         }
     }
 

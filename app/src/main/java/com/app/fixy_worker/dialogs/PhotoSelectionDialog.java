@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,11 +14,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -25,7 +29,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.app.fixy_worker.BuildConfig;
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.activities.DialogBaseActivity;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Utils;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -46,7 +52,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 /**
  * Created by app on 9/19/2016.
  */
-public class PhotoSelectionDialog extends Activity {
+public class PhotoSelectionDialog extends DialogBaseActivity {
 
     final int CAMERA_INTENT = 4;
     final int GALLERY_INTENT = 5;
@@ -73,18 +79,27 @@ public class PhotoSelectionDialog extends Activity {
     LinearLayout llDelete;
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        WindowManager.LayoutParams wmlp = this.getWindow().getAttributes();
-        wmlp.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        setContentView(R.layout.alert_dialog_photo_selection);
+    public void onCreateStuff() {
         getDefaults();
         getWindow().setLayout((int)(mScreenwidth), ViewGroup.LayoutParams.WRAP_CONTENT);
         ButterKnife.bind(this);
         initUI();
+    }
+
+    @Override
+    public int getContentView() {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        WindowManager.LayoutParams wmlp = this.getWindow().getAttributes();
+        wmlp.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+        return R.layout.alert_dialog_photo_selection;
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     void getDefaults() {
@@ -102,7 +117,7 @@ public class PhotoSelectionDialog extends Activity {
             llDelete.setVisibility(View.GONE);
         } else {
             llView.setVisibility(View.VISIBLE);
-            llDelete.setVisibility(View.VISIBLE);
+            llDelete.setVisibility(View.GONE);
         }
 
 
@@ -156,9 +171,10 @@ public class PhotoSelectionDialog extends Activity {
 
     protected void startCameraActivity() {
 
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA_INTENT);
-        /*Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//        intent.putExtra(android.provider.MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        startActivityForResult(intent, CAMERA_INTENT);
+       /* Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         mSystemTime = System.currentTimeMillis();
         File f = new File(Environment.getExternalStorageDirectory(), "OryxHub" + mSystemTime + ".png");
         if (android.os.Build.VERSION.SDK_INT >= 24) {
@@ -355,6 +371,11 @@ public class PhotoSelectionDialog extends Activity {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 
 //    public void copy(String urls, long dst) throws IOException {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.app.fixy_worker.customviews.SemiboldTextView
+            android:id="@+id/txt_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:padding="@dimen/_10sdp"
+            android:text="option 1"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_16ssp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1ssp"
+            android:background="@color/grey_line" />
+    </LinearLayout>
+</LinearLayout>

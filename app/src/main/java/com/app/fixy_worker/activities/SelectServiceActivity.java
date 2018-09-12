@@ -1,6 +1,7 @@
 package com.app.fixy_worker.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,25 +12,32 @@ import android.widget.TextView;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.SelectServiceAdapter;
 import com.app.fixy_worker.customviews.HeaderItemDecoration;
+import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.SelectServiceModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class SelectServiceActivity extends BaseActivity {
 
     @BindView(R.id.recycleview)
     RecyclerView recyclerView;
+    @BindView(R.id.ic_back)
+    ImageView icBack;
+    @BindView(R.id.txt_done)
+    TextView txtDone;
 
     List<SelectServiceModel> models = new ArrayList<>();
     private LinearLayoutManager mLayoutManager;
     SelectServiceAdapter adapter;
     private boolean isChange;
-    HashMap<Integer,String> selectedList = new HashMap<>();
+    LinkedHashMap<Integer,String> selectedList = new LinkedHashMap<>();
 
     @Override
     protected int getContentView() {
@@ -42,8 +50,10 @@ public class SelectServiceActivity extends BaseActivity {
         for (int i = 0; i<50;i++){
             SelectServiceModel serviceModel = new SelectServiceModel();
             serviceModel.setId(i+"");
+            int po = 0;
             if (i%5==0){
 
+                  po = i%5;
                 serviceModel.setHeader(true);
                 if (isChange){
                     isChange=!isChange;
@@ -58,7 +68,6 @@ public class SelectServiceActivity extends BaseActivity {
             else {
                 serviceModel.setHeader(false);
             }
-            int po = i%5;
             serviceModel.setHeaderPos(po);
             serviceModel.setSelected(false);
             serviceModel.setName(""+i+" item");
@@ -180,7 +189,7 @@ public class SelectServiceActivity extends BaseActivity {
             for (int i = pos+1; i<models.size();i++){
                 if (!models.get(i).isHeader()){
                     models.get(i).setSelected(true);
-                    selectedList.put(models.get(i).getHeaderPos(),models.get(i).getName());
+                    selectedList.put(Integer.valueOf(models.get(i).getId()),models.get(i).getName());
                 }
                 else {
                     break;
@@ -201,5 +210,25 @@ public class SelectServiceActivity extends BaseActivity {
             }
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        overridePendingTransition(R.anim.stay,R.anim.slide_down_out);
+    }
+
+    @OnClick(R.id.ic_back)
+    public void back(){
+        onBackPressed();
+    }
+
+    @OnClick(R.id.txt_done)
+    public void done(){
+        Intent intent = new Intent();
+        intent.putExtra(InterConst.RESULT_DATA_KEY,selectedList);
+        setResult(RESULT_OK,intent);
+        onBackPressed();
     }
 }
