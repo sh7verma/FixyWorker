@@ -201,6 +201,13 @@
     <string name="select">Select</string>
     <string name="new_york">New York</string>
     <string name="my_services">MY SERVICES</string>
+    <string name="write_description">write description..</string>
+    <string name="add_service_validation">Please select your Services to offer</string>
+    <string name="search_your_services">Search your Services..</string>
+    <string name="read_phone_state">Permission is must to continue. Please allow it from setting</string>
+    <string name="where_you_want_to_give">Where you want to give the Service</string>
+    <string name="select_city">Select City</string>
+    <string name="choose_your_service_where_you_want_to_give">Choose your service where you want to give the service.</string>
 
 
 </resources>

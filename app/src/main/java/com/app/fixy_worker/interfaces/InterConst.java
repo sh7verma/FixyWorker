@@ -31,7 +31,7 @@ public interface InterConst {
     String EMAIL = "email";
     String USER_NAME = "username";
     String USER_ID = "user_id";
-    int ERROR_RESULT =404 ;
+    int ERROR_RESULT =405 ;
     int CAMERA_PERMISSION_REQUEST_CODE = 1;
     String SHOW_PIC = "show_pic";
     String NULL = "null";
@@ -42,6 +42,16 @@ public interface InterConst {
     String FEMALE = "female";
     String USER_ROLE = "1";
     String WORKER_ROLE = "2";
+    String DEVICE_ID= "device_id";
+    String PHONE_STATE = "phone_state";
+
+    // for api purpose
+    String USER_TYPE = "2";
+    String PLATFORM_TYPE= "1";
+    String APPLICATION_MODE = "1";
+    String CITY_NAME = "city_name";
+    String CITY_ID = "city_id";
+
     public enum WEBVIEW{
         TERM_CONDITION;
     }

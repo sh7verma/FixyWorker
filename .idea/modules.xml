@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:/Work/Live/FixyWorker/FixyWorker.iml" filepath="D:/Work/Live/FixyWorker/FixyWorker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FixyWorker.iml" filepath="$PROJECT_DIR$/FixyWorker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/FixyWorker.iml" filepath="$PROJECT_DIR$/.idea/FixyWorker.iml" />
+      <module fileurl="file://D:/Work/Live/FixyWorker/FixyWorker.iml" filepath="D:/Work/Live/FixyWorker/FixyWorker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cropper/cropper.iml" filepath="$PROJECT_DIR$/cropper/cropper.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />

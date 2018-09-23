@@ -1,16 +1,13 @@
 package com.app.fixy_worker.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,11 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.helper.MarshMallowPermission;
 import com.app.fixy_worker.utils.Connection_Detector;
-import com.app.fixy_worker.utils.Consts;
 import com.app.fixy_worker.utils.Encode;
 import com.app.fixy_worker.utils.LoadingDialog;
-import com.app.fixy_worker.utils.MarshMallowPermission;
 import com.app.fixy_worker.utils.Utils;
 import com.google.gson.Gson;
 

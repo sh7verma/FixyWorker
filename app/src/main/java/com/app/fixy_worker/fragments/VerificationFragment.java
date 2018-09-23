@@ -12,21 +12,36 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.activities.SelectServiceActivity;
 import com.app.fixy_worker.activities.ViewImageActivity;
+import com.app.fixy_worker.adapters.SelectServiceAdapter;
 import com.app.fixy_worker.customviews.CircleTransform;
 import com.app.fixy_worker.customviews.FloatingEditText;
+import com.app.fixy_worker.customviews.HeaderItemDecoration;
 import com.app.fixy_worker.customviews.RoundedTransformation;
 import com.app.fixy_worker.dialogs.PhotoSelectionDialog;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.models.AllServiceModel;
+import com.app.fixy_worker.models.CreateActivityModel;
+import com.app.fixy_worker.models.LoginModel;
+import com.app.fixy_worker.models.SelectServiceModel;
+import com.app.fixy_worker.network.ApiInterface;
+import com.app.fixy_worker.network.RetrofitClient;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Validations;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -54,6 +69,7 @@ public class VerificationFragment  extends BaseFragment {
     private String imagePathFront ="";
     private File pathImageFileBack =null;
     private String imagePathBack ="";
+    CreateActivityModel model;
 
     public VerificationFragment() {
         // Required empty public constructor
@@ -76,6 +92,7 @@ public class VerificationFragment  extends BaseFragment {
 
     @Override
     protected void onCreateStuff() {
+        model = CreateActivityModel.getInstance();
         rdGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
@@ -126,6 +143,12 @@ public class VerificationFragment  extends BaseFragment {
             showValidationSnackBar(imgBack,getString(R.string.document_number_validation));
         }
         else {
+            model.setFront_image(imagePathFront);
+            model.setBack_image(imagePathBack);
+            model.setDocument_number(etNumber.getText().toString().trim());
+            model.setDocumented_name(etName.getText().toString().trim());
+            model.setBack_image(imagePathBack);
+            CreateActivityModel.setInstance(model);
             return true;
         }
         return false;
@@ -293,7 +316,6 @@ public class VerificationFragment  extends BaseFragment {
         }
 
     }
-
 }
 
 

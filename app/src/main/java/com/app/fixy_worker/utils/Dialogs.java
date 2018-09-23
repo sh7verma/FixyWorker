@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,6 +157,34 @@ public class Dialogs {
         Animations.scaleUpView(popup.getContentView(), 0, 1, 200);
 
     }
+
+    public static void showValidationSnackBar(Context mContext,View containerLayout,String message ) {
+        LayoutInflater mInflater = LayoutInflater.from(containerLayout.getContext());
+        Snackbar mSnackbar;
+        // Create the Snackbar
+        mSnackbar = Snackbar.make(containerLayout, message, Snackbar.LENGTH_LONG);
+        mSnackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        mSnackbar.getView().setBackground(mContext.getResources().getDrawable(R.drawable.red_top_round));
+
+        // Get the Snackbar's layout view
+        Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) mSnackbar.getView();
+        // Hide the text
+        TextView textView = (TextView) layout.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setVisibility(View.INVISIBLE);
+
+        // Inflate our custom view
+        View snackView = mInflater.inflate(R.layout.validation_layout, null);
+        // Configure the view
+        TextView textViewTop = (TextView) snackView.findViewById(R.id.text);
+        textViewTop.setText(message);
+        textViewTop.setTextColor(Color.WHITE);
+        // Add the view to the Snackbar's layout
+        layout.addView(snackView, 0);
+        // Show the Snackbar
+        mSnackbar.show();
+    }
+
+
     /*
     public static class DilogViewOk {
         @BindView(R.id.txt_title)

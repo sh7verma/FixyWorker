@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.MaterialEditText;
 import com.app.fixy_worker.dialogs.ListDialog;
+import com.app.fixy_worker.dialogs.UpdateDialog;
 import com.app.fixy_worker.interfaces.InterConst;
 
 import java.util.ArrayList;
@@ -36,8 +37,8 @@ public class AdsDetailFragment extends BaseFragment {
     TextView txtPercentage;
     @BindView(R.id.txt_period)
     TextView txtPeriod;
-    @BindView(R.id.txt_description)
-    TextView txtDescription;
+    @BindView(R.id.ed_description)
+    MaterialEditText edDescription;
     @BindView(R.id.ed_price)
     MaterialEditText edPrice;
 
@@ -87,7 +88,6 @@ public class AdsDetailFragment extends BaseFragment {
     protected void initListeners() {
 
         icInfo.setOnClickListener(this);
-        txtDescription.setOnClickListener(this);
         txtPercentage.setOnClickListener(this);
         txtPeriod.setOnClickListener(this);
     }
@@ -101,19 +101,28 @@ public class AdsDetailFragment extends BaseFragment {
     @Override
     public void onClick(View view) {
         Intent intent;
+        ListDialog dialog;
         switch (view.getId()) {
             case R.id.ic_info_per:
                 showCustomSnackBar(icInfo, getString(R.string.offer_percentage), getString(R.string.applicable_on_original_price));
                 break;
             case R.id.txt_percentage:
-                intent = new Intent(getActivity(), ListDialog.class);
-                intent.putStringArrayListExtra(InterConst.EXTRA, percentageList);
-                startActivityForResult(intent, PERCENTAGE_RESULT);
+                  dialog = new ListDialog(getActivity(), R.style.DialogSlideAnim, percentageList, new ListDialog.dialogClick() {
+                    @Override
+                    public void click(int pos) {
+                        txtPercentage.setText(percentageList.get(pos));
+                    }
+                });
+                dialog.show();
                 break;
             case R.id.txt_period:
-                intent = new Intent(getActivity(), ListDialog.class);
-                intent.putStringArrayListExtra(InterConst.EXTRA, daysList);
-                startActivityForResult(intent, DAY_RESULT_CODE);
+                  dialog = new ListDialog(getActivity(), R.style.DialogSlideAnim, daysList, new ListDialog.dialogClick() {
+                    @Override
+                    public void click(int pos) {
+                        txtPeriod.setText(daysList.get(pos));
+                    }
+                });
+                dialog.show();
                 break;
         }
     }
@@ -125,12 +134,12 @@ public class AdsDetailFragment extends BaseFragment {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case PERCENTAGE_RESULT:
-                    pos = data.getIntExtra(InterConst.EXTRA, 0);
-                    txtPercentage.setText(percentageList.get(pos));
+//                    pos = data.getIntExtra(InterConst.EXTRA, 0);
+//                    txtPercentage.setText(percentageList.get(pos));
                     break;
                 case DAY_RESULT_CODE:
-                    pos = data.getIntExtra(InterConst.EXTRA, 0);
-                    txtPeriod.setText(daysList.get(pos));
+//                    pos = data.getIntExtra(InterConst.EXTRA, 0);
+//                    txtPeriod.setText(daysList.get(pos));
                     break;
             }
         }

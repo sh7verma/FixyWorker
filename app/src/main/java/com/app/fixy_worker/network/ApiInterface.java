@@ -1,14 +1,22 @@
 package com.app.fixy_worker.network;
 
+import com.app.fixy_worker.models.AllServiceModel;
+import com.app.fixy_worker.models.CItyModel;
 import com.app.fixy_worker.models.GooglePlaceModal;
 import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.models.NearbyPlaceModel;
 
+import java.util.List;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
@@ -23,17 +31,48 @@ public interface ApiInterface {
     public Call<NearbyPlaceModel> getGoogleNearByPlaces(@Url String url);
 
     @FormUrlEncoded
-    @POST("phone_auth")
-    Call<LoginModel> userSignup(@Field("country_code") String country_code,
-                                @Field("phone") String phone,
-                                @Field("user_role") String user_role
+    @POST("users/create_user")
+    Call<LoginModel> create_user(@Field("country_code") String country_code,
+                                @Field("phone_number") String phone_number,
+                                @Field("user_type") String user_type,
+                                @Field("application_mode") String application_mode,
+                                @Field("platform_type") String platform_type,
+                                @Field("device_token") String device_token
     );
 
     @FormUrlEncoded
-    @POST("verify_otp")
-    Call<LoginModel> verify_otp(@Field("auth_token") String auth_token,
+    @POST("users/confirm_otp")
+    Call<LoginModel> confirm_otp(@Field("access_token") String access_token,
                                 @Field("otp") String otp,
-                                @Field("user_role") String user_role);
+                                @Field("device_token") String device_token);
+
+
+    @FormUrlEncoded
+    @POST("users/city")
+    Call<CItyModel> city(@Field("access_token") String access_token, @Field("device_token") String device_token);
+
+    @FormUrlEncoded
+    @POST("services")
+    Call<AllServiceModel> services(@Field("auth_token") String auth_token);
+
+    @Multipart
+    @POST("users/create_profile")
+    Call<LoginModel> create_profile(@Part("access_token") RequestBody access_token,
+                                           @Part("fullname") RequestBody fullname,
+                                           @Part("email") RequestBody email,
+                                           @Part("gender") RequestBody gender,
+                                           @Part("referral_code") RequestBody referral_code,
+                                           @Part("device_token") RequestBody device_token,
+                                           @Part("city") RequestBody city,
+                                           @Part("city_id") RequestBody city_id,
+                                           @Part("service_ids") RequestBody service_ids,
+                                           @Part("document_type") RequestBody document_type,
+                                           @Part("document_name") RequestBody document_name,
+                                           @Part("document_number") RequestBody document_number,
+                                           @Part MultipartBody.Part profile_pic,
+                                           @Part MultipartBody.Part front,
+                                           @Part MultipartBody.Part back
+    );
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

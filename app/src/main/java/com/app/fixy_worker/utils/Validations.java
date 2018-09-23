@@ -1,5 +1,6 @@
 package com.app.fixy_worker.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
@@ -58,15 +59,18 @@ public class Validations {
         String text =editText.getText().toString().trim();
         if(TextUtils.isEmpty(text)){
 //            editText.setError(con.getString(R.string.enter_phone_number));
-            Dialogs.showPopup(con,editText,con.getString(R.string.enter_phone_number));
+            Dialogs.showValidationSnackBar(con,editText,con.getString(R.string.enter_phone_number));
+//            Dialogs.showPopup(con,editText,con.getString(R.string.enter_phone_number));
             return false;        }
         else  if (text.length() < 5){
-            Dialogs.showPopup(con,editText,con.getString(R.string.invalid_phone_number));
+//            Dialogs.showPopup(con,editText,con.getString(R.string.invalid_phone_number));
+            Dialogs.showValidationSnackBar(con,editText,con.getString(R.string.invalid_phone_number));
 //            editText.setError(con.getString(R.string.invalid_phone_number));
             return false;
         }
         else  if (text.startsWith("0")){
-            Dialogs.showPopup(con,editText,con.getString(R.string.start_with_zero));
+//            Dialogs.showPopup(con,editText,con.getString(R.string.start_with_zero));
+            Dialogs.showValidationSnackBar(con,editText,con.getString(R.string.start_with_zero));
 //            editText.setError(con.getString(R.string.start_with_zero));
             return false;
         }
@@ -79,7 +83,8 @@ public class Validations {
         String text =editText.getText().toString().trim();
         if(TextUtils.isEmpty(text)){
 //            editText.setError(con.getString(R.string.enter_otp));
-            Dialogs.showPopup(con,editText,con.getString(R.string.enter_otp));
+//            Dialogs.showPopup(con,editText,con.getString(R.string.enter_otp));
+            Dialogs.showValidationSnackBar(con,editText,con.getString(R.string.enter_otp));
             return false;
         }
         else {
@@ -96,15 +101,15 @@ public class Validations {
             return con.getString(R.string.full_name_empty);
         }
         else if (!text.matches(valiation)){
-            editText.setError(con.getString(R.string.not_alphabet));
-            return con.getString(R.string.full_name_empty);
+//            editText.setError(con.getString(R.string.not_alphabet));
+            return con.getString(R.string.not_alphabet);
         }
         else if (text.length() <= 1){
-            editText.setError(con.getString(R.string.fullname_length));
-            return con.getString(R.string.full_name_empty);
+//            editText.setError(con.getString(R.string.fullname_length));
+            return con.getString(R.string.fullname_length);
         }else if (text.matches(digit)){
-            editText.setError(con.getString(R.string.not_alphabet));
-            return con.getString(R.string.full_name_empty);
+//            editText.setError(con.getString(R.string.not_alphabet));
+            return con.getString(R.string.not_alphabet);
         }
         else {
             return "";
@@ -120,14 +125,11 @@ public class Validations {
             return con.getString(R.string.doc_name_empty);
         }
         else if (!text.matches(valiation)){
-            editText.setError(con.getString(R.string.not_alphabet));
+//            editText.setError(con.getString(R.string.not_alphabet));
             return con.getString(R.string.doc_name_invalid);
         }
         else if (text.length() <= 1){
-            editText.setError(con.getString(R.string.fullname_length));
-            return con.getString(R.string.doc_name_invalid);
-        }else if (text.matches(digit)){
-            editText.setError(con.getString(R.string.not_alphabet));
+//            editText.setError(con.getString(R.string.fullname_length));
             return con.getString(R.string.doc_name_invalid);
         }
         else {

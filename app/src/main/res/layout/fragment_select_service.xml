@@ -3,6 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <com.app.fixy_worker.customviews.RegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/where_you_want_to_give"/>
+
+    <LinearLayout
+        android:id="@+id/ll_main_city"
+        android:layout_width="match_parent"
+        android:background="@drawable/grey_round_stroke"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+
+        <com.app.fixy_worker.customviews.RegularTextView
+            android:id="@+id/txt_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_13sdp"
+            android:drawableRight="@mipmap/ic_arrow_search"
+            android:text="@string/select_city"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
 <com.app.fixy_worker.customviews.RegularTextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -26,8 +55,25 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_13sdp"
             android:drawableRight="@mipmap/ic_arrow_search"
-            android:text="@string/beauty"
+            android:text="@string/select_service"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
     </LinearLayout>
-</LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_height="match_parent">
+    <com.app.fixy_worker.customviews.FlowLayout
+        android:id="@+id/flow_layout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        app:flFlow="true"
+        app:flChildSpacingForLastRow="@dimen/_10sdp"
+        app:flChildSpacing="@dimen/_10sdp"
+        app:flRowSpacing="@dimen/_10sdp"
+        android:layout_height="wrap_content"></com.app.fixy_worker.customviews.FlowLayout>
+
+</ScrollView>
+   </LinearLayout>

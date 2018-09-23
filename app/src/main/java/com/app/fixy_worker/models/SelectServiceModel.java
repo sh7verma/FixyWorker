@@ -2,8 +2,32 @@ package com.app.fixy_worker.models;
 
 public class SelectServiceModel {
 
-    String id,name,cat_name;
-    int headerPos;
+    String name,cat_name,cat_id;
+    int headerPos,id,sub_id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCat_id() {
+        return cat_id;
+    }
+
+    public void setCat_id(String cat_id) {
+        this.cat_id = cat_id;
+    }
+
+    public int getSub_id() {
+        return sub_id;
+    }
+
+    public void setSub_id(int sub_id) {
+        this.sub_id = sub_id;
+    }
 
     public int getHeaderPos() {
         return headerPos;
@@ -39,13 +63,6 @@ public class SelectServiceModel {
         isSelected = selected;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

@@ -1,20 +1,14 @@
 package com.app.fixy_worker.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,19 +16,14 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.activities.CreateProfileActivity;
 import com.app.fixy_worker.activities.ViewImageActivity;
-import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
-import com.app.fixy_worker.adapters.MyPagerAdapter;
 import com.app.fixy_worker.customviews.CircleTransform;
 import com.app.fixy_worker.customviews.FloatingEditText;
-import com.app.fixy_worker.customviews.MaterialEditText;
 import com.app.fixy_worker.dialogs.PhotoSelectionDialog;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.models.CreateActivityModel;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Validations;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -77,6 +66,7 @@ public class CreateProfileFragment extends BaseFragment {
     private File pathImageFile = null;
     private String imagePath;
     private String gender;
+    CreateActivityModel model;
 
     public CreateProfileFragment() {
         // Required empty public constructor
@@ -100,7 +90,7 @@ public class CreateProfileFragment extends BaseFragment {
 
     @Override
     protected void onCreateStuff() {
-
+        model = CreateActivityModel.getInstance();
         edName.setTypeface(typefaceMedium);
         edEmail.setTypeface(typefaceMedium);
         edReferralCode.setTypeface(typefaceMedium);
@@ -277,6 +267,12 @@ public class CreateProfileFragment extends BaseFragment {
         }
 
         else {
+            model.setUser_image(imagePath);
+            model.setUser_name(edName.getText().toString().trim());
+            model.setUser_email(edEmail.getText().toString().trim());
+            model.setReferal_code(edReferralCode.getText().toString().trim());
+            model.setGender(gender);
+            CreateActivityModel.setInstance(model);
             return true;
         }
     }

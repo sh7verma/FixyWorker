@@ -69,12 +69,12 @@
                 android:src="@mipmap/ic_search_main" />
 
             <com.app.fixy_worker.customviews.MaterialEditText
-                android:id="@+id/et_address"
+                android:id="@+id/et_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:hint="@string/address"
+                android:hint="@string/search_your_services"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingRight="@dimen/_5sdp"

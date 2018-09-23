@@ -3,9 +3,11 @@ package com.app.fixy_worker.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.interfaces.InterConst;
 
 
 public class SplashActivity extends BaseActivity {
@@ -46,10 +48,19 @@ public class SplashActivity extends BaseActivity {
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
+                Intent in;
                 // TODO Auto-generated method stub
-                Intent in = new Intent(SplashActivity.this, EnterNumberActivity.class);
-                startActivity(in);
-                finish();
+                if (TextUtils.isEmpty(utils.getString(InterConst.ACCESS_TOKEN,""))) {
+                      in = new Intent(SplashActivity.this, EnterNumberActivity.class);
+                    startActivity(in);
+                    finish();
+                }
+                else {
+                    in = new Intent(SplashActivity.this, CreateProfileActivity.class);
+                    startActivity(in);
+                    finish();
+
+                }
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         }, TIME_OUT);

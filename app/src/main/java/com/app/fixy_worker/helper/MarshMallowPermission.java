@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -235,5 +236,59 @@ public class MarshMallowPermission {
             }
             util.setBoolean(InterConst.READ_PHONE_STATE_PERMISSION, true);
         }
+    }
+    public boolean checkPermissionsList(String[] permissionList) {
+        boolean flag = false;
+        for (int i=0 ; i<permissionList.length; i++){
+            int result = ContextCompat.checkSelfPermission(activity, permissionList[i]);
+            if (result == PackageManager.PERMISSION_GRANTED) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+
+    public void openPermissions(String[] permissionList, final String statusStore, int permissionCode, int message) {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permissionList[0])) {
+            util.setBoolean(statusStore, true);
+            ActivityCompat.requestPermissions(activity, permissionList, permissionCode);
+
+        } else {
+            if (!util.getBoolean(statusStore, false))
+                ActivityCompat.requestPermissions(activity, permissionList, permissionCode);
+            if (util.getBoolean(statusStore, false)) {
+                showSnackbar2(message,
+                        android.R.string.ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+// Request permission
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                                intent.setData(Uri.parse("package:" + activity.getPackageName()));
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                activity.startActivity(intent);
+                            }
+                        });
+            }
+        }
+    }
+    private void showSnackbar2(final int mainTextStringId, final int actionStringId, View.OnClickListener listener) {
+        Snackbar snackbar;
+        snackbar = Snackbar.make(activity.findViewById(android.R.id.content), activity.getString(mainTextStringId), Snackbar.LENGTH_LONG);
+        View snackBarView = snackbar.getView();
+        snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.black));
+        TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(ContextCompat.getColor(activity, R.color.white));
+        textView.setMaxLines(3);
+        snackbar.setActionTextColor(ContextCompat.getColor(activity, R.color.yellow));
+        snackbar.setAction(activity.getString(actionStringId),listener).show();
+        snackbar.show();
     }
 }

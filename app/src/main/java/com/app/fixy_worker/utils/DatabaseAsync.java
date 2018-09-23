@@ -31,7 +31,7 @@
 //////        university.setName("MyUniversity");
 //////
 //////        College college = new College();
-//////        college.setId(1);
+//////        college.setid(1);
 //////        college.setName("MyCollege");
 //////
 //////        university.setCollege(college);

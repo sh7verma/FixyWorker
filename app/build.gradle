@@ -56,4 +56,7 @@ dependencies {
     //    implementation project(':sdkui')
     //cropper library
     implementation project(':cropper')
+
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
+apply plugin: 'com.google.gms.google-services'

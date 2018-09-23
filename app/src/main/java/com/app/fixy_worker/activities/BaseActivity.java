@@ -18,11 +18,11 @@ import android.widget.Toast;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.database.Db;
+import com.app.fixy_worker.helper.MarshMallowPermission;
 import com.app.fixy_worker.interfaces.AddressInterface;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Encode;
 import com.app.fixy_worker.utils.LoadingDialog;
-import com.app.fixy_worker.utils.MarshMallowPermission;
 import com.app.fixy_worker.utils.Utils;
 import com.google.gson.Gson;
 
@@ -88,9 +88,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
         db = new Db(this);
         encode = new Encode();
+        mPermission = new MarshMallowPermission(this);
         getDefaults();
         onCreateStuff();
-        mPermission = new MarshMallowPermission(this);
         errorInternet = getResources().getString(R.string.internet);
         errorAPI = getResources().getString(R.string.error);
         errorAccessToken = getResources().getString(R.string.invalid_access_token);

@@ -52,7 +52,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/grey_oval"
+                android:background="@drawable/yellow_oval"
                 android:padding="@dimen/_12sdp"
                 android:src="@mipmap/ic_gallery_pic" />
 

@@ -17,6 +17,7 @@ import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.network.RetrofitClient;
 import com.app.fixy_worker.utils.Consts;
+import com.app.fixy_worker.utils.Dialogs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -376,27 +377,32 @@ public class OtpActivity extends BaseActivity {
 
     public void hitOTPapi() {
 
-        Call<LoginModel> call = RetrofitClient.getInstance().verify_otp(utils.getString(InterConst.ACCESS_TOKEN, ""),
-                makeOTP(),
-                InterConst.WORKER_ROLE);
-        call.enqueue(new Callback<LoginModel>() {
-            @Override
-            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-                if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
-                    Intent intent = new Intent(OtpActivity.this, CreateProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-                } else if (response.body().getCode() == InterConst.ERROR_RESULT) {
-                    showAlert(llNext, response.body().getError().getMessage());
+        if (connectedToInternet()) {
+            Call<LoginModel> call = RetrofitClient.getInstance().confirm_otp(utils.getString(InterConst.ACCESS_TOKEN, ""),
+                    makeOTP(),
+                    utils.getString(InterConst.DEVICE_ID, ""));
+            call.enqueue(new Callback<LoginModel>() {
+                @Override
+                public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                    if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
+                        Intent intent = new Intent(OtpActivity.this, CreateProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                    } else if (response.body().getError().getCode() == InterConst.ERROR_RESULT) {
+                        Dialogs.showValidationSnackBar(mContext, llNext, response.body().getError().getMessage());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<LoginModel> call, Throwable t) {
-
-            }
-        });
+                @Override
+                public void onFailure(Call<LoginModel> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+        }
+        else {
+            showInternetAlert(llCall);
+        }
 
     }
 
