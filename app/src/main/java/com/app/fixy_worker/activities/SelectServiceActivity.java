@@ -216,7 +216,7 @@ public class SelectServiceActivity extends BaseActivity {
                 models.get(models.get(pos).getPosition()).setSelected(false);//header uncheck
                 selectedList.remove(pos);
                 adapter.notifyItemChanged(models.get(pos).getPosition());
-            }
+            }//
             else {
                 models.get(pos).setSelected(true);
                 selectedList.put(models.get(pos).getSub_id(),models.get(pos).getName());
