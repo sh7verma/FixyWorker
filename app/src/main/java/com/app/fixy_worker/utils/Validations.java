@@ -100,16 +100,9 @@ public class Validations {
 //            editText.setError(con.getString(R.string.full_name_empty));
             return con.getString(R.string.full_name_empty);
         }
-        else if (!text.matches(valiation)){
-//            editText.setError(con.getString(R.string.not_alphabet));
-            return con.getString(R.string.not_alphabet);
-        }
         else if (text.length() <= 1){
 //            editText.setError(con.getString(R.string.fullname_length));
             return con.getString(R.string.fullname_length);
-        }else if (text.matches(digit)){
-//            editText.setError(con.getString(R.string.not_alphabet));
-            return con.getString(R.string.not_alphabet);
         }
         else {
             return "";
@@ -131,6 +124,21 @@ public class Validations {
         else if (text.length() <= 1){
 //            editText.setError(con.getString(R.string.fullname_length));
             return con.getString(R.string.doc_name_invalid);
+        }
+        else {
+            return "";
+        }
+    }
+    public static String checkPriceValidation(Context con, MaterialEditText editText) {
+        String text =editText.getText().toString().trim();
+//        String valiation ="[a-zA-Z0-9._@ -]+";
+        if(TextUtils.isEmpty(text)){
+//            editText.setError(con.getString(R.string.full_name_empty));
+            return con.getString(R.string.price_empty);
+        }
+        else if (Integer.parseInt(text) == 0){
+//            editText.setError(con.getString(R.string.fullname_length));
+            return con.getString(R.string.price_zero);
         }
         else {
             return "";

@@ -70,20 +70,19 @@ public class GoogleMapInitiate extends AppCompatActivity implements OnMapReadyCa
         mapInterface = location;
     }
 
-    public GoogleMapInitiate(Activity context, SupportMapFragment mapFragment, int activity) {
+    public GoogleMapInitiate(Activity context, SupportMapFragment mapFragment) {
         this.context = context;
         supportMapFragment = mapFragment;
         marshMallowPermission = new MarshMallowPermission(context);
         onCreate();
         utils = new Utils(context);
-        switch (activity) {
-            case 1:
-                AddAddressActivity.setInterface(this);
-                break;
-            case 2:
-                MapAddressActivity.setInterface(this);
-                break;
+        if (context instanceof AddAddressActivity){
+            AddAddressActivity.setInterface(this);
         }
+        else if(context instanceof  MapAddressActivity){
+            MapAddressActivity.setInterface(this);
+        }
+
         width = utils.getInt("width", 0);
         height = utils.getInt("height", 0);
     }

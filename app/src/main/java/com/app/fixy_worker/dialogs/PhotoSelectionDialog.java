@@ -159,45 +159,48 @@ public class PhotoSelectionDialog extends DialogBaseActivity {
     @OnClick(R.id.ll_gallery)
     void onGallery() {
 
-        if (ContextCompat.checkSelfPermission(PhotoSelectionDialog.this, READ_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(PhotoSelectionDialog.this, WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(PhotoSelectionDialog.this, new String[]{READ_EXTERNAL_STORAGE}, READ_EXTERNAL_ID);
+            ActivityCompat.requestPermissions(PhotoSelectionDialog.this, new String[]{WRITE_EXTERNAL_STORAGE}, READ_EXTERNAL_ID);
         } else {
             showGallery();
         }
     }
 
 
+    Uri imageUriPath;
 
     protected void startCameraActivity() {
 
 //        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 //        intent.putExtra(android.provider.MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        startActivityForResult(intent, CAMERA_INTENT);
-       /* Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         mSystemTime = System.currentTimeMillis();
-        File f = new File(Environment.getExternalStorageDirectory(), "OryxHub" + mSystemTime + ".png");
+        File f = new File(Environment.getExternalStorageDirectory(), "FIxyWorker" + mSystemTime + ".png");
         if (android.os.Build.VERSION.SDK_INT >= 24) {
             Uri photoURI = FileProvider.getUriForFile(PhotoSelectionDialog.this,
                     BuildConfig.APPLICATION_ID + ".provider", f);
+            imageUriPath = photoURI;
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
         } else {
+            imageUriPath = Uri.fromFile(f);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
         }
         cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        startActivityForResult(cameraIntent, CAMERA_INTENT);*/
+        startActivityForResult(cameraIntent, CAMERA_INTENT);
     }
 
     void showGallery() {
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, GALLERY_INTENT);
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, GALLERY_INTENT);
 
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        startActivityForResult(galleryIntent, GALLERY_INTENT);
+//        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+//                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//
+//        startActivityForResult(galleryIntent, GALLERY_INTENT);
     }
 
     @Override
@@ -206,8 +209,8 @@ public class PhotoSelectionDialog extends DialogBaseActivity {
             case CAMERA_INTENT:
                 if (resultCode == RESULT_OK) {
 
-                    Uri selectedImage = data.getData();
-                    cropImage(selectedImage);
+//                    Uri selectedImage = data.getData();
+                    cropImage(imageUriPath);
                    /* File dir = Environment.getExternalStorageDirectory();
                     File f = new File(dir, "OryxHub" + mSystemTime + ".png");
                     Log.e("camera photo", "is " + f.getAbsolutePath());
@@ -221,6 +224,7 @@ public class PhotoSelectionDialog extends DialogBaseActivity {
                     cropImage(selectedImage);
 
                 }
+
                 break;
             case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);

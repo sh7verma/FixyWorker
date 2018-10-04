@@ -50,16 +50,21 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 Intent in;
                 // TODO Auto-generated method stub
-                if (TextUtils.isEmpty(utils.getString(InterConst.ACCESS_TOKEN,""))) {
-                      in = new Intent(SplashActivity.this, EnterNumberActivity.class);
+               if (Integer.parseInt(utils.getString(InterConst.PROFILE_STATUS, "0")) == InterConst.PROFILE_VERIFY) {
+
+                    in = new Intent(SplashActivity.this, LandingActivity.class);
                     startActivity(in);
                     finish();
                 }
-                else {
+                else if(Integer.parseInt(utils.getString(InterConst.NUMBER_VERIFY, "0")) == InterConst.VERIFY){
+
                     in = new Intent(SplashActivity.this, CreateProfileActivity.class);
                     startActivity(in);
                     finish();
-
+                }else {
+                    in = new Intent(SplashActivity.this, EnterNumberActivity.class);
+                    startActivity(in);
+                    finish();
                 }
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }

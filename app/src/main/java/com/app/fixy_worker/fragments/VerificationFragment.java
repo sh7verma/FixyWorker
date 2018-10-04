@@ -64,7 +64,7 @@ public class VerificationFragment  extends BaseFragment {
     public  static VerificationFragment fragment;
 
     public static Context mContext;
-    private InterConst.Docs documentType;
+    private String documentType;
     private File pathImageFileFront =null;
     private String imagePathFront ="";
     private File pathImageFileBack =null;
@@ -102,12 +102,12 @@ public class VerificationFragment  extends BaseFragment {
                     case R.id.rd_aadhar:
                         etName.setHint(getString(R.string.name_ason_aadhar));
                         etNumber.setHint(getString(R.string.aadhar_number));
-                        documentType = InterConst.Docs.AADHAR;
+                        documentType = InterConst.AADHAR;
                         break;
                     case R.id.rd_licence:
                         etName.setHint(getString(R.string.name_ason_licence));
                         etNumber.setHint(getString(R.string.licence_number));
-                        documentType = InterConst.Docs.LICENCE;
+                        documentType = InterConst.LICENCE;
                         break;
                 }
             }
@@ -148,6 +148,7 @@ public class VerificationFragment  extends BaseFragment {
             model.setDocument_number(etNumber.getText().toString().trim());
             model.setDocumented_name(etName.getText().toString().trim());
             model.setBack_image(imagePathBack);
+            model.setDocument_type("front,back");
             CreateActivityModel.setInstance(model);
             return true;
         }

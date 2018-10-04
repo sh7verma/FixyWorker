@@ -72,7 +72,7 @@ public class SelectServiceAdapter extends RecyclerView.Adapter<RecyclerView.View
                 @Override
                 public void onClick(View view) {
                     click.clickCategory(position);
-                    Toast.makeText(mContext, list.get(position).getCat_name(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, list.get(position).getCat_name(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -94,7 +94,7 @@ public class SelectServiceAdapter extends RecyclerView.Adapter<RecyclerView.View
 
                     Animations.AnimatedClick(mContext,itemHolder.viewBooking.icCheck);
 
-                    Toast.makeText(mContext, list.get(position).getName(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, list.get(position).getName(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

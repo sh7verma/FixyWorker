@@ -37,21 +37,25 @@ public class SelectServiceActivity extends BaseActivity {
 
     @BindView(R.id.recycleview)
     RecyclerView recyclerView;
+    @BindView(R.id.search_recycleview)
+    RecyclerView searchRecycleView;
     @BindView(R.id.ic_back)
     ImageView icBack;
+    @BindView(R.id.ic_cancel)
+    ImageView icCancel;
     @BindView(R.id.txt_done)
     TextView txtDone;
     @BindView(R.id.et_search)
     MaterialEditText etSearch;
 
     List<SelectServiceModel> models = new ArrayList<>();
-    private LinearLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager,mLyoutManagerSearch;
     SelectServiceAdapter adapter;
     private boolean isChange;
     LinkedHashMap<Integer,String> selectedList = new LinkedHashMap<>();
     HashMap<Integer,String> alreadySelected = new HashMap<>();
-    private List<AllServiceModel.ResponseBean> responseList;
-    private List<SelectServiceModel> allList;
+    private List<AllServiceModel.ResponseBean.CategoriesBean> responseList;
+    private List<SelectServiceModel> allList = new ArrayList<>();
 
     @Override
     protected int getContentView() {
@@ -65,7 +69,9 @@ public class SelectServiceActivity extends BaseActivity {
         hitAllService();
 
         mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        mLyoutManagerSearch = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
+        searchRecycleView.setLayoutManager(mLyoutManagerSearch);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -76,9 +82,12 @@ public class SelectServiceActivity extends BaseActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() > 0){
                     searchFilter(charSequence);
+                    icCancel.setVisibility(View.VISIBLE);
                 }
                 else {
-
+                    models = allList;
+                    icCancel.setVisibility(View.GONE);
+                    setMainAdapter();
                 }
             }
 
@@ -91,13 +100,35 @@ public class SelectServiceActivity extends BaseActivity {
 
     }
 
+    private void setMainAdapter() {
+        recyclerView.setVisibility(View.VISIBLE);
+        searchRecycleView.setVisibility(View.GONE);
+        adapter = new SelectServiceAdapter(SelectServiceActivity.this, mHeight, clickInterface, models);
+        recyclerView.addItemDecoration(new HeaderItemDecoration(recyclerView, stickyHeaderInterface));
+        recyclerView.setHasFixedSize(true);
+        adapter.setHasStableIds(true);
+        recyclerView.setAdapter(adapter);
+    }
+
     private void searchFilter(CharSequence text) {
+        models = new ArrayList<>();
         for (int j=0 ; j < allList.size(); j++){
-            if (!allList.get(j).isHeader() && allList.get(j).getName() != null && allList.get(j).getName().contains(text)){
+            if ((!allList.get(j).isHeader()) && (allList.get(j).getName() != null)
+                    && (allList.get(j).getName().toLowerCase().contains(text.toString().toLowerCase()))){
                 models.add(allList.get(j));
             }
         }
-        adapter.notifyDataSetChanged();
+        if (models.size()>0){
+            recyclerView.setVisibility(View.GONE);
+            searchRecycleView.setVisibility(View.VISIBLE);
+            adapter = new SelectServiceAdapter(SelectServiceActivity.this, mHeight, clickInterface, models);
+            searchRecycleView.setHasFixedSize(true);
+            adapter.setHasStableIds(true);
+            searchRecycleView.setAdapter(adapter);
+        }
+        else {
+            setMainAdapter();
+        }
     }
 
     HeaderItemDecoration.StickyHeaderInterface stickyHeaderInterface = new HeaderItemDecoration.StickyHeaderInterface() {
@@ -160,7 +191,7 @@ public class SelectServiceActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+    icCancel.setOnClickListener(this);
     }
 
     @Override
@@ -170,7 +201,11 @@ public class SelectServiceActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.ic_cancel:
+                etSearch.setText("");
+                break;
+        }
     }
 
     InterfacesCall.ItemCategoryClick clickInterface = new InterfacesCall.ItemCategoryClick() {
@@ -178,14 +213,15 @@ public class SelectServiceActivity extends BaseActivity {
         public void clickItem(int pos) {//ITEM
             if (models.get(pos).isSelected()){
                 models.get(pos).setSelected(false);//item uncheck
-                models.get(models.get(pos).getHeaderPos()).setSelected(false);//header uncheck
+                models.get(models.get(pos).getPosition()).setSelected(false);//header uncheck
                 selectedList.remove(pos);
+                adapter.notifyItemChanged(models.get(pos).getPosition());
             }
             else {
                 models.get(pos).setSelected(true);
                 selectedList.put(models.get(pos).getSub_id(),models.get(pos).getName());
                 boolean flag = false;
-                for (int i = models.get(pos).getHeaderPos()+1; i<models.size();i++){
+                for (int i = models.get(pos).getPosition()+1; i<models.size();i++){
                     if (!models.get(i).isHeader()){
                         if (models.get(i).isSelected()){
                             flag = true;
@@ -200,7 +236,8 @@ public class SelectServiceActivity extends BaseActivity {
                     }
                 }
                 if (flag){
-                    models.get(models.get(pos).getHeaderPos()).setSelected(true);//header checked if all sub items checked
+                    models.get(models.get(pos).getPosition()).setSelected(true);//header checked if all sub items checked
+                    adapter.notifyItemChanged(models.get(pos).getPosition());
                 }
             }
             adapter.notifyItemChanged(pos);
@@ -271,64 +308,71 @@ public class SelectServiceActivity extends BaseActivity {
 
     int position=-1;
     public void hitAllService() {
-        ApiInterface apiInterface = RetrofitClient.getInstance();
+        if (connectedToInternet()) {
+            showProgress();
+            ApiInterface apiInterface = RetrofitClient.getInstance();
 
-        Call<AllServiceModel> call = apiInterface.services(utils.getString(InterConst.ACCESS_TOKEN,""));
-        call.enqueue(new Callback<AllServiceModel>() {
-            @Override
-            public void onResponse(Call<AllServiceModel> call, Response<AllServiceModel> response) {
+            Call<AllServiceModel> call = apiInterface.services(utils.getString(InterConst.ACCESS_TOKEN, ""),
+                    utils.getString(InterConst.DEVICE_ID, ""),
+                    utils.getString(InterConst.CITY_ID, ""));
+            call.enqueue(new Callback<AllServiceModel>() {
+                @Override
+                public void onResponse(Call<AllServiceModel> call, Response<AllServiceModel> response) {
 
-                responseList = response.body().getResponse();
-                if ( response.body().getCode() == InterConst.SUCCESS_RESULT){
-                    for (int i = 0; i< responseList.size(); i++){
-                        position++;
-                        SelectServiceModel serviceModel = new SelectServiceModel();
-                        serviceModel.setCat_id(responseList.get(i).getCategory_id()+"");
-                        serviceModel.setId(position);
-                        serviceModel.setCat_name(responseList.get(i).getName());
-                        serviceModel.setSelected(false);
-                        serviceModel.setHeader(true);
-                        models.add(serviceModel);
-                        for (int j = 0; j< responseList.get(i).getSub_categories().size(); j++){
-                            position++;
-                            SelectServiceModel subModel = new SelectServiceModel();
-                            serviceModel.setId(position);
-                            subModel.setHeader(false);
-                            subModel.setHeaderPos(i);
-                            subModel.setSub_id(Integer.parseInt(responseList.get(i).getSub_categories().get(j).getSub_category_id()));
-                            // this is used when already selected item would be checked in the list
-                            if (alreadySelected.size()>0){
-                                if (alreadySelected.containsKey(Integer.parseInt(responseList.get(i).getSub_categories().get(j).getSub_category_id()))){
-                                    subModel.setSelected(true);
+                    hideProgress();
+                    int pos;
+                    responseList = response.body().getResponse().getCategories();
+                    if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
+                        for (int i = 0; i < responseList.size(); i++) {
+                             position+=1;
+                            pos = position;
+                            SelectServiceModel serviceModel = new SelectServiceModel();
+                            serviceModel.setCat_id(responseList.get(i).getId() + "");
+                            serviceModel.setPosition(position);
+                            serviceModel.setCat_name(responseList.get(i).getCategory_name());
+                            serviceModel.setSelected(false);
+                            serviceModel.setHeader(true);
+                            models.add(serviceModel);
+                            for (int j = 0; j < responseList.get(i).getSubcategories().size(); j++) {
+                                position+=1;
+                                SelectServiceModel subModel = new SelectServiceModel();
+                                subModel.setPosition(pos);
+                                subModel.setHeader(false);
+                                subModel.setHeaderPos(i);
+                                subModel.setSub_id(Integer.parseInt(responseList.get(i).getSubcategories().get(j).getId()));
+                                // this is used when already selected item would be checked in the list
+                                if (alreadySelected.size() > 0) {
+                                    if (alreadySelected.containsKey(Integer.parseInt(responseList.get(i).getSubcategories().get(j).getId()))) {
+                                        subModel.setSelected(true);
+                                    } else {
+                                        subModel.setSelected(false);
+                                    }
                                 }
-                                else {
-                                    subModel.setSelected(false);
-                                }
+                                subModel.setName(responseList.get(i).getSubcategories().get(j).getCategory_name());
+                                models.add(subModel);
+
                             }
-                            subModel.setName(responseList.get(i).getSub_categories().get(j).getName());
-                            models.add(subModel);
 
                         }
+                        allList.addAll(models);
 
+                        setMainAdapter();
+
+                    } else if (response.body().getCode() == InterConst.ERROR_RESULT) {
+                        showAlert(txtDone, response.body().getError().getMessage());
                     }
-                    allList = models;
-                    adapter = new SelectServiceAdapter(SelectServiceActivity.this,mHeight, clickInterface,models);
-                    recyclerView.addItemDecoration(new HeaderItemDecoration(recyclerView,stickyHeaderInterface));
-                    recyclerView.setHasFixedSize(true);
-                    adapter.setHasStableIds(true);
-                    recyclerView.setAdapter(adapter);
-
                 }
-                else if (response.body().getCode() == InterConst.ERROR_RESULT){
-                    showAlert(txtDone,response.body().getError().getMessage());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<AllServiceModel> call, Throwable t) {
-            t.printStackTrace();
-            }
-        });
+                @Override
+                public void onFailure(Call<AllServiceModel> call, Throwable t) {
+                    t.printStackTrace();
+                    hideProgress();
+                }
+            });
+        }
+        else {
+            showInternetAlert(txtDone);
+        }
 
     }
 

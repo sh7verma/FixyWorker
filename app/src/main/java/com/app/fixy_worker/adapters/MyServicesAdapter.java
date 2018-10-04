@@ -1,7 +1,6 @@
 package com.app.fixy_worker.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.CircleTransform;
+import com.app.fixy_worker.interfaces.InterfacesCall;
+import com.app.fixy_worker.models.LoginModel;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,14 +30,20 @@ import butterknife.ButterKnife;
 public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.ViewHolder> {
     private Context mContext;
     private int mHeight;
-    int w,h;
+    int w,h,margin;
+    List<LoginModel.ResponseBean.SelectedServicesBean> serList;
+    InterfacesCall.ServiceOffer clicks;
+    int pos;
 
-
-    public MyServicesAdapter(Context context, int height) {
+    public MyServicesAdapter(Context context, List<LoginModel.ResponseBean.SelectedServicesBean> servicesList,
+                             int height, InterfacesCall.ServiceOffer interfaces) {
         mContext = context;
         mHeight = height;
         w= (int) mContext.getResources().getDimension(R.dimen._50sdp);
         h= (int) mContext.getResources().getDimension(R.dimen._50sdp);
+        serList = servicesList;
+        clicks = interfaces;
+        margin= (int) mContext.getResources().getDimension(R.dimen._1sdp);
     }
 
     @NonNull
@@ -46,10 +56,10 @@ public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
+        pos = position-1;
         if (holder.getAdapterPosition() == 0) {
 
-//            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//            GradientDrawable bgShape = (GradientDrawable) holder.rlBackground.getBackground();
 //            bgShape.setColor(mContext.getResources().getColor(R.color.app_color));
 
             holder.imgService.setImageDrawable(ContextCompat.getDrawable(mContext,R.mipmap.ic_add_ser_2));
@@ -72,28 +82,41 @@ public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.Vi
 //                        .centerCrop()
 //                        .into(imgProfile);
 //            } else {
-//            GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//            GradientDrawable bgShape = (GradientDrawable) holder.rlBackground.getBackground();
 //            bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
-            holder.llBackground.setBackground(ContextCompat.getDrawable(mContext,R.drawable.circular_background));
-            holder.llBackground.setLayoutParams(new LinearLayout.LayoutParams(w,h));
+            holder.rlBackground.setBackground(ContextCompat.getDrawable(mContext,R.drawable.circular_background));
+
+            holder.txtName.setText(serList.get(pos).getCategory_name());
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(w,h);
+            params.setMargins(0,margin,0,0);
+            holder.rlBackground.setLayoutParams(params);
             Picasso.get()
                     .load(R.mipmap.ic_beauty_w)
                     .transform(new CircleTransform())
                     .into(holder.imgService);
+            holder.rlBackground.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clicks.serviceClick(position);
+                }
+            });
 //            }
         }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        if (serList.size()>8){
+            return 9;
+        }
+        return serList.size()+1;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.ll_background)
-        LinearLayout llBackground;
+        @BindView(R.id.rl_background)
+        RelativeLayout rlBackground;
 
         @BindView(R.id.img_service)
         ImageView imgService;

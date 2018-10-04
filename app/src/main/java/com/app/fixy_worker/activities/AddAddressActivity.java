@@ -72,7 +72,7 @@ public class AddAddressActivity extends BaseActivity implements OnMapReadyCallba
 
     @Override
     protected void onCreateStuff() {
-        new GoogleMapInitiate(this, null,1);
+        new GoogleMapInitiate(this, null);
         mResultReceiver = new AddressResultReceiver(new Handler());
     }
 

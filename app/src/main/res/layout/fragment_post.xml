@@ -8,6 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <com.app.fixy_worker.customviews.SemiboldTextView
+        android:id="@+id/txt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_15sdp"

@@ -29,4 +29,9 @@ public class InterfacesCall {
         void clickItem( int pos);
         void clickCategory( int pos);
     }
+    public interface ServiceOffer{
+        void serviceClick( int pos);
+        void adsClick( int pos);
+        void recomendClick( int pos);
+    }
 }

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/corner"
         android:right="@dimen/_60sdp"
-        android:bottom="@dimen/_100sdp">
+        android:bottom="@dimen/_85sdp">
         <shape android:shape="rectangle">
 
             <corners

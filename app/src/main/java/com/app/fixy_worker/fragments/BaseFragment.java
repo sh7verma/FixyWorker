@@ -37,11 +37,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     protected String errorAPI;
     protected String errorAccessToken;
     protected String terminateAccount;
-//    protected Db db;
+    //    protected Db db;
     Utils utils;
     Gson mGson = new Gson();
     Encode encode;
-    public Typeface typefaceRegular,typefaceBold,typefaceMedium;
+    public Typeface typefaceRegular, typefaceBold, typefaceMedium;
 //    RoomDb mRoomDb;
 
     private Snackbar mSnackbar;
@@ -66,6 +66,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         errorInternet = getResources().getString(R.string.internet);
         errorAPI = getResources().getString(R.string.error);
         errorAccessToken = getResources().getString(R.string.invalid_access_token);
+    }
+
+    public int calculateNoOfColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int noOfColumns = (int) (dpWidth / getResources().getDimension(R.dimen._60sdp));
+        return noOfColumns;
     }
 
     @Nullable
@@ -135,11 +142,16 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
     }
 
+    public void moveToSplash() {
+
+    }
+
     protected void showInternetAlert(View view) {
         mSnackbar = Snackbar.make(view, "Internet connection not available!", Snackbar.LENGTH_SHORT);
         mSnackbar.show();
     }
-    protected void showCustomSnackBar(View containerLayout,String header,String message ) {
+
+    protected void showCustomSnackBar(View containerLayout, String header, String message) {
         LayoutInflater mInflater = LayoutInflater.from(containerLayout.getContext());
 
         // Create the Snackbar
@@ -170,7 +182,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         mSnackbar.show();
     }
 
- protected void showValidationSnackBar(View containerLayout,String message ) {
+    protected void showValidationSnackBar(View containerLayout, String message) {
         LayoutInflater mInflater = LayoutInflater.from(containerLayout.getContext());
 
         // Create the Snackbar
@@ -200,8 +212,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void toast(String message) {
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
-
-
 
 
 }

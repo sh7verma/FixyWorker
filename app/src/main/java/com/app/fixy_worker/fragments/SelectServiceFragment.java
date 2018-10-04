@@ -42,6 +42,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 import butterknife.BindView;
+import okhttp3.Interceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -87,6 +88,9 @@ public class SelectServiceFragment extends BaseFragment {
     @Override
     protected void onCreateStuff() {
         model = CreateActivityModel.getInstance();
+       if (!TextUtils.isEmpty(utils.getString(InterConst.CITY_ID,""))){
+            txtCity.setText(utils.getString(InterConst.CITY_NAME,""));
+        }
     }
 
     @Override
@@ -100,10 +104,16 @@ public class SelectServiceFragment extends BaseFragment {
         Intent intent;
         switch (view.getId()) {
             case R.id.ll_main:
-                intent = new Intent(getActivity(), SelectServiceActivity.class);
-                intent.putExtra(InterConst.EXTRA,selectedList);
-                startActivityForResult(intent, SERVICE_RESULT);
-                getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
+                if (TextUtils.isEmpty(utils.getString(InterConst.CITY_ID,""))){
+                    showValidationSnackBar(txtCity,getString(R.string.choose_city_validation));
+                }
+                else {
+
+                    intent = new Intent(getActivity(), SelectServiceActivity.class);
+                    intent.putExtra(InterConst.EXTRA,selectedList);
+                    startActivityForResult(intent, SERVICE_RESULT);
+                    getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
+                }
                 break;
             case R.id.ll_main_city:
                 if (cityList == null) {
@@ -168,11 +178,13 @@ public class SelectServiceFragment extends BaseFragment {
     public void hitCityApi() {
 
         if (connectedToInternet()) {
+            showProgress();
             Call<CItyModel> call = RetrofitClient.getInstance().city(utils.getString(InterConst.ACCESS_TOKEN, ""),
                     utils.getString(InterConst.DEVICE_ID, ""));
             call.enqueue(new Callback<CItyModel>() {
                 @Override
                 public void onResponse(Call<CItyModel> call, Response<CItyModel> response) {
+                    hideProgress();
                     if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
                         cityList = response.body().getResponse();
                         openAvailableCity();
@@ -183,6 +195,7 @@ public class SelectServiceFragment extends BaseFragment {
 
                 @Override
                 public void onFailure(Call<CItyModel> call, Throwable t) {
+                    hideProgress();
                     t.printStackTrace();
                     showSnackBar(llMain,t.getMessage());
                 }
@@ -195,7 +208,7 @@ public class SelectServiceFragment extends BaseFragment {
     }
 
     private void openAvailableCity() {
-        SelectCityDialog dialog = new SelectCityDialog(getContext(), R.style.pullBottomfromTop, cityList, new InterfacesCall.Callback() {
+        SelectCityDialog dialog = new SelectCityDialog(getContext(),true, R.style.pullBottomfromTop, cityList, new InterfacesCall.Callback() {
             @Override
             public void selected(int pos) {
                 utils.setString(InterConst.CITY_NAME,cityList.get(pos).getCity_name());

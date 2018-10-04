@@ -1,5 +1,6 @@
 package com.app.fixy_worker.network;
 
+import com.app.fixy_worker.models.AdsModel;
 import com.app.fixy_worker.models.AllServiceModel;
 import com.app.fixy_worker.models.CItyModel;
 import com.app.fixy_worker.models.GooglePlaceModal;
@@ -52,12 +53,21 @@ public interface ApiInterface {
     Call<CItyModel> city(@Field("access_token") String access_token, @Field("device_token") String device_token);
 
     @FormUrlEncoded
+    @POST("users/update_city")
+    Call<LoginModel> update_city(@Field("access_token") String access_token, @Field("device_token") String device_token,
+                                @Field("city") String city,
+                                @Field("city_id") String city_id);
+
+    @FormUrlEncoded
     @POST("services")
-    Call<AllServiceModel> services(@Field("auth_token") String auth_token);
+    Call<AllServiceModel> services(@Field("access_token") String access_token,
+                                   @Field("device_token") String device_token,
+                                   @Field("city_id") String city_id);
 
     @Multipart
     @POST("users/create_profile")
     Call<LoginModel> create_profile(@Part("access_token") RequestBody access_token,
+                                           @Part("user_type") RequestBody user_type,
                                            @Part("fullname") RequestBody fullname,
                                            @Part("email") RequestBody email,
                                            @Part("gender") RequestBody gender,
@@ -73,6 +83,21 @@ public interface ApiInterface {
                                            @Part MultipartBody.Part front,
                                            @Part MultipartBody.Part back
     );
+
+    @FormUrlEncoded
+    @POST("users/fetch_current_service")
+    Call<LoginModel> fetch_current_service(@Field("access_token") String access_token,
+                                   @Field("device_token") String device_token);
+    @FormUrlEncoded
+    @POST("services/add_new_offer")
+    Call<AdsModel> add_new_offer(@Field("access_token") String access_token,
+                                 @Field("device_token") String device_token,
+                                 @Field("category_id") String category_id,
+                                 @Field("original_price") String original_price,
+                                 @Field("offer_percentage") String offer_percentage ,
+                                 @Field("offer_period") String offer_period,
+                                 @Field("offer_description") String offer_description
+                                   );
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

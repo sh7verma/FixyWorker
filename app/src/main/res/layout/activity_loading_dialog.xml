@@ -11,12 +11,17 @@
         android:background="@android:color/transparent"
         android:gravity="center_vertical|center"
         android:orientation="vertical">
-
+        <ProgressBar
+            android:id="@+id/google_progress"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"/>/>
+<!--
         <com.app.filetrackingsystem.customviews.ProgressBarCircularIndeterminate
             android:id="@+id/progressBarCircularIndetermininate"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/colorPrimary" />-->
 
     </LinearLayout>
 </LinearLayout>

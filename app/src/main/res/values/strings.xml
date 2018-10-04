@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Fixy Worker</string>
     <string name="mapKey">AIzaSyBp-ZPIvxfguT0ohgpA4uCza8tHqR4zOrQ</string>//fixy
-
+    <string-array name="Loading">
+        <item>Loading...</item>
+        <item>Please wait...</item>
+    </string-array>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
@@ -189,6 +192,7 @@
     <string name="doc_name_invalid">Please enter name as on document</string>
     <string name="add_title_mess">Increase your income by Post a add for a user with some discount</string>
     <string name="select_service">Select Service</string>
+    <string name="select_service_validation">Please Select Service to give discount</string>
     <string name="which_service_do_you_want_to_give_discount">Which Service do you want to give discount?</string>
     <string name="offer_detail">Offer Detail</string>
     <string name="original_price">Original Price</string>
@@ -197,7 +201,6 @@
     <string name="applicable_on_original_price">Percentage will be applicable on original price.</string>
     <string name="offer_period">Offer Period</string>
     <string name="offer_description">Offer Description</string>
-    <string name="post_new_add">Post New Add</string>
     <string name="select">Select</string>
     <string name="new_york">New York</string>
     <string name="my_services">MY SERVICES</string>
@@ -207,7 +210,19 @@
     <string name="read_phone_state">Permission is must to continue. Please allow it from setting</string>
     <string name="where_you_want_to_give">Where you want to give the Service</string>
     <string name="select_city">Select City</string>
-    <string name="choose_your_service_where_you_want_to_give">Choose your service where you want to give the service.</string>
+    <string name="choose_your_service_where_you_want_to_give">Choose your City where you want to give the service.</string>
+    <string name="choose_city_validation">Please choose city first</string>
+    <string name="post_new_add">Post New Add</string>
+    <string name="give_discount_and_get_more_requests">Give discount and get more requests</string>
+    <string name="getting_token">getting device token.</string>
+    <string name="price_empty">Price cannot be empty</string>
+    <string name="price_zero">Price cannot be zero</string>
+    <string name="select_percentage">Please select percentage to give discount</string>
+    <string name="select_period_validation">Please select period of time</string>
+    <string name="your_post_is_uploaded">Your post is Uploaded</string>
+    <string name="enter_your_price">Enter your price</string>
+    <string name="select_percentage_validation">Select percentage</string>
+    <string name="select_period">Select Period</string>
 
 
 </resources>

@@ -3,14 +3,15 @@ package com.app.fixy_worker.models;
 public class SelectServiceModel {
 
     String name,cat_name,cat_id;
-    int headerPos,id,sub_id;
+    int headerPos,position,sub_id;
+    boolean isHeader,isSelected;
 
-    public int getId() {
-        return id;
+    public int getPosition() {
+        return position;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public String getCat_id() {
@@ -45,7 +46,6 @@ public class SelectServiceModel {
         this.cat_name = cat_name;
     }
 
-    boolean isHeader,isSelected;
 
     public boolean isHeader() {
         return isHeader;

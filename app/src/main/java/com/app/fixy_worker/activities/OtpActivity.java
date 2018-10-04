@@ -378,29 +378,63 @@ public class OtpActivity extends BaseActivity {
     public void hitOTPapi() {
 
         if (connectedToInternet()) {
+            showProgress();
             Call<LoginModel> call = RetrofitClient.getInstance().confirm_otp(utils.getString(InterConst.ACCESS_TOKEN, ""),
                     makeOTP(),
                     utils.getString(InterConst.DEVICE_ID, ""));
             call.enqueue(new Callback<LoginModel>() {
                 @Override
                 public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                    hideProgress();
                     if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
-                        Intent intent = new Intent(OtpActivity.this, CreateProfileActivity.class);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+
+                        utils.setString(InterConst.ACCESS_TOKEN, response.body().getResponse().getAccess_token());
+                        utils.setString(InterConst.USER_ID, response.body().getResponse().getId());
+                        utils.setString(InterConst.USER_NAME, response.body().getResponse().getFullname());
+                        utils.setString(InterConst.PROFILE_STATUS, response.body().getResponse().getProfile_status());
+                        utils.setString(InterConst.GENDER, response.body().getResponse().getGender());
+                        utils.setString(InterConst.PROFILE_IMAGE, response.body().getResponse().getProfile_pic());
+                        utils.setString(InterConst.EMAIL, response.body().getResponse().getEmail());
+                        utils.setString(InterConst.COUNTRY_CODE, response.body().getResponse().getCountry_code());
+                        utils.setString(InterConst.PHONE_NUMBER, response.body().getResponse().getPhone_number());
+                        utils.setString(InterConst.NUMBER_VERIFY, response.body().getResponse().getNumber_verify());
+                        utils.setString(InterConst.REFFERAL_CODE, response.body().getResponse().getRefferal_code());
+                        utils.setString(InterConst.NEW_USER_COIN, response.body().getResponse().getCoins());
+                        utils.setString(InterConst.REFFERAL_COIN, response.body().getResponse().getRefferal_coins());
+                        utils.setString(InterConst.CITY_NAME, response.body().getResponse().getCity());
+                        utils.setString(InterConst.CITY_ID, response.body().getResponse().getCity_id());
+                        Intent intent;
+                        if (Integer.parseInt(utils.getString(InterConst.PROFILE_STATUS, "0")) == InterConst.PROFILE_VERIFY) {
+
+                            intent = new Intent(OtpActivity.this, LandingActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } else {
+                            intent = new Intent(OtpActivity.this, CreateProfileActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+
+                        }
+                        overridePendingTransition(R.anim.slide_left, R.anim.slide_left_out);
                     } else if (response.body().getError().getCode() == InterConst.ERROR_RESULT) {
                         Dialogs.showValidationSnackBar(mContext, llNext, response.body().getError().getMessage());
+                    } else if (response.body().getError().getCode() == InterConst.INVALID_ACCESS_TOKEN) {
+                        moveToSplash();
+                    }
+                    else {
+                        showSnackBar(txtTimer,response.body().getError().getMessage());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<LoginModel> call, Throwable t) {
+                    hideProgress();
                     t.printStackTrace();
                 }
             });
-        }
-        else {
+        } else {
             showInternetAlert(llCall);
         }
 

@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import com.app.fixy_worker.customviews.MaterialEditText;
 import com.app.fixy_worker.dialogs.ListDialog;
 import com.app.fixy_worker.dialogs.UpdateDialog;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.models.AdsModel;
+import com.app.fixy_worker.utils.Validations;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,8 @@ public class AdsDetailFragment extends BaseFragment {
     ArrayList<String> percentageList = new ArrayList<>();
     public static AdsDetailFragment fragment;
     static Context mContext;
+    AdsModel model;
+    String percentNo, dayNo;
 
 
     public static AdsDetailFragment newInstance(Context mcon) {
@@ -64,6 +69,7 @@ public class AdsDetailFragment extends BaseFragment {
 
     @Override
     protected void onCreateStuff() {
+        model = AdsModel.getInstance();
         daysList.add("1 day");
         daysList.add("2 days");
         daysList.add("3 days");
@@ -71,6 +77,7 @@ public class AdsDetailFragment extends BaseFragment {
         daysList.add("5 days");
         daysList.add("6 days");
         daysList.add("7 days");
+
 
         percentageList.add("5%");
         percentageList.add("10%");
@@ -80,6 +87,7 @@ public class AdsDetailFragment extends BaseFragment {
         percentageList.add("30%");
         percentageList.add("35%");
         percentageList.add("40%");
+        percentageList.add("45%");
         percentageList.add("50%");
     }
 
@@ -111,6 +119,7 @@ public class AdsDetailFragment extends BaseFragment {
                     @Override
                     public void click(int pos) {
                         txtPercentage.setText(percentageList.get(pos));
+                        model.setPercentage(String.valueOf(pos*5));
                     }
                 });
                 dialog.show();
@@ -120,6 +129,7 @@ public class AdsDetailFragment extends BaseFragment {
                     @Override
                     public void click(int pos) {
                         txtPeriod.setText(daysList.get(pos));
+                        model.setPeriod(String.valueOf(pos+1));
                     }
                 });
                 dialog.show();
@@ -143,5 +153,25 @@ public class AdsDetailFragment extends BaseFragment {
                     break;
             }
         }
+    }
+
+    public boolean validate() {
+        if (!TextUtils.isEmpty(Validations.checkPriceValidation(fragment.getContext(),edPrice))){
+            showValidationSnackBar(txtPercentage,Validations.checkPriceValidation(fragment.getContext(),edPrice));
+        }
+        else if (TextUtils.isEmpty(model.getPercentage())){ 
+            showValidationSnackBar(txtPercentage,getString(R.string.select_percentage));
+        }
+        else if (TextUtils.isEmpty(model.getPeriod())){ 
+            showValidationSnackBar(txtPercentage,getString(R.string.select_period_validation));
+        }
+        else {
+            model.setOriginal_price(edPrice.getText().toString());
+            model.setDescription(edDescription.getText().toString());
+            AdsModel.setInstance(model);
+            return true;
+        }
+
+        return false;
     }
 }

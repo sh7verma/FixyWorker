@@ -61,7 +61,7 @@ public class SearchCategoryAdapter extends RecyclerView.Adapter<SearchCategoryAd
 //                        .into(imgProfile);
 //            } else {
 
-//        GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//        GradientDrawable bgShape = (GradientDrawable) holder.rlBackground.getBackground();
 //        bgShape.setColor(Color.BLACK);
 
 //        Picasso.get()

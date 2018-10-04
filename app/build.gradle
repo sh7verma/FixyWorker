@@ -57,6 +57,8 @@ dependencies {
     //cropper library
     implementation project(':cropper')
 
-    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'com.google.firebase:firebase-messaging:17.3.2'
 }
 apply plugin: 'com.google.gms.google-services'

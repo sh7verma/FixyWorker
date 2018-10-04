@@ -32,6 +32,7 @@ public interface InterConst {
     String USER_NAME = "username";
     String USER_ID = "user_id";
     int ERROR_RESULT =405 ;
+    int INVALID_ACCESS_TOKEN =404 ;
     int CAMERA_PERMISSION_REQUEST_CODE = 1;
     String SHOW_PIC = "show_pic";
     String NULL = "null";
@@ -51,6 +52,16 @@ public interface InterConst {
     String APPLICATION_MODE = "1";
     String CITY_NAME = "city_name";
     String CITY_ID = "city_id";
+    int VERIFY = 1;
+    int PROFILE_VERIFY = 4;
+    int NOT_VERIFY = 0;
+    String NUMBER_VERIFY = "number_verify";
+    String AADHAR = "AADHAR";
+    String LICENCE= "LICENCE";
+    String REFFERAL_CODE = "refferal_code";
+    String REFFERAL_COIN = "refferal_coin";
+    String NEW_USER_COIN = "new_user_coin";
+    String PASS_CONGRATULATION = "PASS_CONGRATULATION";
 
     public enum WEBVIEW{
         TERM_CONDITION;

@@ -45,7 +45,7 @@ public class AdsAdapter  extends RecyclerView.Adapter<AdsAdapter.ViewHolder> {
 //                        .into(imgProfile);
 //            } else {
 
-//        GradientDrawable bgShape = (GradientDrawable) holder.llBackground.getBackground();
+//        GradientDrawable bgShape = (GradientDrawable) holder.rlBackground.getBackground();
 //        bgShape.setColor(Color.BLACK);
 
 //        Picasso.get()

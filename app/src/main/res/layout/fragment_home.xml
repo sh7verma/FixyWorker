@@ -88,7 +88,8 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_my_services"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
             </LinearLayout>
 
             <RelativeLayout
@@ -138,7 +139,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ll_worker_ads_header"
-                    android:layout_marginBottom="@dimen/_5sdp" />
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:overScrollMode="never" />
 
 
                 <LinearLayout
@@ -171,18 +173,20 @@
                             android:orientation="vertical">
 
                             <com.app.fixy_worker.customviews.BoldTextView
+                                android:id="@+id/txt_referral_code"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="FixY85v"
+                                android:text="--"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_20sdp" />
+                                android:textSize="@dimen/_18ssp" />
 
                             <com.app.fixy_worker.customviews.RegularTextView
+                                android:id="@+id/txt_referral_code_benefit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:text="@string/Lorem_Ipsum_large"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                             <com.app.fixy_worker.customviews.RegularTextView
                                 android:layout_width="wrap_content"

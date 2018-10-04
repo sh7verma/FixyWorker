@@ -6,7 +6,7 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="transparent_black">#d0000000</color>
+    <color name="transparent_black">#c8000000</color>
     <color name="transparent_white">#00ffffff</color>
 
     <color name="app_color">#EB655D</color>
@@ -44,10 +44,13 @@
     <color name="grey_color">#a6a6a6</color>
     <color name="blue">#585fe7</color>
 
-    <color name="yellow">#f6c02f</color>
     <color name="gold">#FFCF02</color>
     <color name="cleaner">#1DD0CA</color>
     <color name="plumber">#5E9CEB</color>
+
+    <color name="purple">#AB65CE</color>
+    <color name="yellow">#f6c02f</color>
+    <color name="green_light">#99CC00</color>
 
     <color name="trasparent_light">#55ffffff</color>
     <!---->

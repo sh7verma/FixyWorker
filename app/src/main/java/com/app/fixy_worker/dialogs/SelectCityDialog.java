@@ -49,7 +49,7 @@ public class SelectCityDialog extends BaseDialog {
         return this;
     }
 
-    public SelectCityDialog(@NonNull Context context, int themeResId, ArrayList<CItyModel.ResponseBean> cityList,InterfacesCall.Callback call) {
+    public SelectCityDialog(@NonNull Context context, boolean cancelOnTouch,int themeResId, ArrayList<CItyModel.ResponseBean> cityList,InterfacesCall.Callback call) {
         super(context, themeResId);
         list = cityList;
         callback = call;
@@ -57,6 +57,7 @@ public class SelectCityDialog extends BaseDialog {
         WindowManager.LayoutParams wmlp = this.getWindow().getAttributes();
         wmlp.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         getWindow().setAttributes(wmlp);
+        setCanceledOnTouchOutside(cancelOnTouch);
     }
 
     @Override

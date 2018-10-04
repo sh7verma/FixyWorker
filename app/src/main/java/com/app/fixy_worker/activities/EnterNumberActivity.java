@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.MaterialEditText;
@@ -23,7 +24,10 @@ import com.app.fixy_worker.network.RetrofitClient;
 import com.app.fixy_worker.utils.Consts;
 import com.app.fixy_worker.utils.Dialogs;
 import com.app.fixy_worker.utils.Validations;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,7 +44,7 @@ public class EnterNumberActivity extends BaseActivity {
     @BindView(R.id.ed_number)
     MaterialEditText edNumber;
     @BindView(R.id.txt_country_code)
-    TextView txtCountryCode; 
+    TextView txtCountryCode;
     String[] permissions = new String[]{Manifest.permission.READ_PHONE_STATE};
 
     @Override
@@ -50,12 +54,12 @@ public class EnterNumberActivity extends BaseActivity {
 
     @Override
     protected void onCreateStuff() {
-        if (mPermission.checkPermissionsList(permissions)){
+        getDeviceToken();
+       /* if (mPermission.checkPermissionsList(permissions)) {
             getImeiNumber();
-        }
-        else {
-            mPermission.openPermissions(permissions,InterConst.PHONE_STATE,PERMISSIONS_CODE,R.string.read_phone_state);
-        }
+        } else {
+            mPermission.openPermissions(permissions, InterConst.PHONE_STATE, PERMISSIONS_CODE, R.string.read_phone_state);
+        }*/
     }
 
     @Override
@@ -69,23 +73,22 @@ public class EnterNumberActivity extends BaseActivity {
         super.onResume();
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case PERMISSIONS_CODE:
                 boolean flag = false;
-                for (int i=0 ; i<grantResults.length; i++) {
+                for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                         flag = true;
-                    }
-                    else {
+                    } else {
                         flag = false;
                     }
-                    if (flag){
+                    if (flag) {
                         getImeiNumber();
-                    }
-                    else {
-                        mPermission.openPermissions(permissions,InterConst.PHONE_STATE,PERMISSIONS_CODE,R.string.read_phone_state);
+                    } else {
+                        mPermission.openPermissions(permissions, InterConst.PHONE_STATE, PERMISSIONS_CODE, R.string.read_phone_state);
 
                     }
                 }
@@ -96,7 +99,7 @@ public class EnterNumberActivity extends BaseActivity {
 
     public void hitUserSignup() {
         if (connectedToInternet()) {
-
+            showProgress();
             ApiInterface apiInterface = RetrofitClient.getInstance();
 
             Call<LoginModel> call = apiInterface.create_user(txtCountryCode.getText().toString(),
@@ -105,7 +108,7 @@ public class EnterNumberActivity extends BaseActivity {
             call.enqueue(new Callback<LoginModel>() {
                 @Override
                 public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-
+                    hideProgress();
                     if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
 
                         utils.setString(InterConst.ACCESS_TOKEN, response.body().getResponse().getAccess_token());
@@ -115,24 +118,35 @@ public class EnterNumberActivity extends BaseActivity {
                         utils.setString(InterConst.GENDER, response.body().getResponse().getGender());
                         utils.setString(InterConst.PROFILE_IMAGE, response.body().getResponse().getProfile_pic());
                         utils.setString(InterConst.EMAIL, response.body().getResponse().getEmail());
-//                    utils.setString(InterConst.COUNTRY_CODE,response.body().getResponse().ge());
-//                    utils.setString(InterConst.PHONE_NUMBER,response.body().getResponse().getp());
+                        utils.setString(InterConst.COUNTRY_CODE, response.body().getResponse().getCountry_code());
+                        utils.setString(InterConst.PHONE_NUMBER, response.body().getResponse().getPhone_number());
+                        utils.setString(InterConst.NUMBER_VERIFY, response.body().getResponse().getNumber_verify());
+                        utils.setString(InterConst.REFFERAL_CODE, response.body().getResponse().getRefferal_code());
+                        utils.setString(InterConst.NEW_USER_COIN, response.body().getResponse().getCoins());
+                        utils.setString(InterConst.REFFERAL_COIN, response.body().getResponse().getRefferal_coins());
+                        utils.setString(InterConst.CITY_NAME, response.body().getResponse().getCity());
+                        utils.setString(InterConst.CITY_ID, response.body().getResponse().getCity_id());
                         Intent intent = new Intent(EnterNumberActivity.this, OtpActivity.class);
                         startActivity(intent);
-                        finish();
-                        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                        overridePendingTransition(R.anim.slide_left, R.anim.slide_left_out);
+//                        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
                     } else if (response.body().getCode() == InterConst.ERROR_RESULT) {
-                        Dialogs.showValidationSnackBar(mContext,llNext, response.body().getError().getMessage());
+                        Dialogs.showValidationSnackBar(mContext, llNext, response.body().getError().getMessage());
+                    } else if (response.body().getError().getCode() == InterConst.INVALID_ACCESS_TOKEN) {
+                        moveToSplash();
+                    }
+                    else {
+                        showSnackBar(llNext,response.body().getError().getMessage());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<LoginModel> call, Throwable t) {
-                t.printStackTrace();
+                    t.printStackTrace();
+                    hideProgress();
                 }
             });
-        }
-        else {
+        } else {
             showInternetAlert(llNext);
         }
 
@@ -150,15 +164,16 @@ public class EnterNumberActivity extends BaseActivity {
 
     @OnClick(R.id.ll_next)
     void next() {
+        if (TextUtils.isEmpty(utils.getString(InterConst.DEVICE_ID, ""))) {
+            getDeviceToken();// next
+            showToast(getString(R.string.getting_token));
+            return;
+        }
         Consts.hideKeyboard(this);
-        if (mPermission.checkPermissionsList(permissions)){
-            if (Validations.checkPhoneValidation(this,edNumber) && mPermission.checkPermissionsList(permissions)) {
-                hitUserSignup();
-            }
+        if (Validations.checkPhoneValidation(this, edNumber)) {
+            hitUserSignup();
         }
-        else {
-            mPermission.openPermissions(permissions,InterConst.PHONE_STATE,PERMISSIONS_CODE,R.string.read_phone_state);
-        }
+
 
     }
 
@@ -171,7 +186,7 @@ public class EnterNumberActivity extends BaseActivity {
     void getImeiNumber() {
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-        utils.setString(InterConst.DEVICE_ID,telephonyManager.getDeviceId() );
+        utils.setString(InterConst.DEVICE_ID, telephonyManager.getDeviceId());
         /*countryCode = telephonyManager.getNetworkCountryIso().toUpperCase();
         String[] rl = this.getResources().getStringArray(R.array.CountryCodes);
 
@@ -205,5 +220,22 @@ public class EnterNumberActivity extends BaseActivity {
                         utils.setString(Consts.REFRESH_TOKEN,token);
                     }
                 });*/
+    }
+
+    public void getDeviceToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("", "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+                        utils.setString(InterConst.DEVICE_ID, token);
+                    }
+                });
     }
 }

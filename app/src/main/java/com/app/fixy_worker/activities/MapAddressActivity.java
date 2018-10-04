@@ -60,7 +60,7 @@ public class MapAddressActivity extends BaseActivity implements OnMapReadyCallba
     protected void onCreateStuff() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        new GoogleMapInitiate(this, mapFragment,2);
+        new GoogleMapInitiate(this, mapFragment);
         setData();
         mResultReceiver = new AddressResultReceiver(new Handler());
 
