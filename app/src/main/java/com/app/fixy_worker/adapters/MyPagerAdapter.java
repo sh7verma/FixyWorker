@@ -29,6 +29,8 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         switch (pos) {
             case 0:
                 return bookedFragment;
+            case 1:
+                return pendingFragment;
 
             default:
                 return pendingFragment;

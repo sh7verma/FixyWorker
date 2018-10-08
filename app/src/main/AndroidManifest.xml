@@ -103,7 +103,7 @@
         <activity android:name=".activities.MapAddressActivity" />
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.ShowAddressActivity" />
-        <activity android:name=".activities.BookingDetailActivity" />
+        <activity android:name=".activities.NewRequestDetailActivity" />
         <activity android:name=".activities.PendingDetailActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.SearchServiceActivity" />

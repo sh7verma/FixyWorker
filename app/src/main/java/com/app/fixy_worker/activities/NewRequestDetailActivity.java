@@ -10,7 +10,7 @@ import com.app.fixy_worker.R;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class BookingDetailActivity extends BaseActivity {
+public class NewRequestDetailActivity extends BaseActivity {
 
     @BindView(R.id.ll_main)
     LinearLayout llMain;
@@ -19,7 +19,7 @@ public class BookingDetailActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_booking_detail;
+        return R.layout.activity_new_request_detail;
     }
 
     @Override

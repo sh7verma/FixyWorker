@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/ll_option"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:background="@drawable/white_round_solid"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/black_round" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Body Massage"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20 coins"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID: 1293K46NH3"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:background="@mipmap/ic_line2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/black_round" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alex Martin"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <android.support.v7.widget.AppCompatRatingBar
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progress="55"
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBar" />
+                </LinearLayout>
+
+                <com.app.fixy_worker.customviews.BoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="OTP: 5345"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp" />
+
+                <ImageView
+                    android:id="@+id/ic_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@mipmap/ic_info" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:background="@mipmap/ic_line2" />
+
+            <com.app.fixy_worker.customviews.RegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_location_marker"
+                android:drawablePadding="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:text="@string/Lorem_Ipsum_large"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/view_circle1"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:background="@drawable/circle_grey" />
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:text="12 Aug at 6:00 pm"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grey_round_stroke">
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingLeft="@dimen/_6sdp"
+                        android:paddingRight="@dimen/_6sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:text="22:10 pm"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@mipmap/ic_line2" />
+
+            <com.app.fixy_worker.customviews.RegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="@string/additional_notes"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10ssp" />
+
+            <com.app.fixy_worker.customviews.RegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/on_the_way"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1ssp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/grey_line" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/ll_option"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/pink_bottom_round">
+
+        <com.app.fixy_worker.customviews.SemiboldTextView
+            android:id="@+id/txt_decline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/decline"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp" />
+
+        <View
+            android:layout_width="@dimen/_1ssp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/white_tint" />
+
+        <com.app.fixy_worker.customviews.SemiboldTextView
+            android:id="@+id/txt_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/accept"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp" />
+    </LinearLayout>
+
+</RelativeLayout>

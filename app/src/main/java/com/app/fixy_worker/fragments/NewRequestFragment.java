@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.activities.BookingDetailActivity;
+import com.app.fixy_worker.activities.NewRequestDetailActivity;
 import com.app.fixy_worker.adapters.NewRequestAdapter;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.interfaces.InterfacesCall;
@@ -67,7 +67,7 @@ public class NewRequestFragment extends BaseFragment   {
     InterfacesCall.IndexClick click = new InterfacesCall.IndexClick() {
         @Override
         public void clickIndex(int pos) {
-            Intent intent = new Intent(getActivity(), BookingDetailActivity.class);
+            Intent intent = new Intent(getActivity(), NewRequestDetailActivity.class);
             startActivity(intent);
             getActivity().overridePendingTransition(R.anim.in,R.anim.out);
         }
