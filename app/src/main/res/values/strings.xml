@@ -230,6 +230,8 @@
     <string name="click_to_see_full_detail">Click to see full detail</string>
     <string name="new">New</string>
     <string name="scheduled">Scheduled</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
 
 
 </resources>
