@@ -98,13 +98,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/_10sdp"
-                android:textColorHint="@color/grey_color"
+                android:textColorHint="@color/grey_text"
                 android:paddingTop="@dimen/_5sdp"
                 android:drawableRight="@mipmap/ic_offer_arrow_down"
                 android:paddingLeft="@dimen/_5sdp"
                 android:hint="@string/select_percentage_validation"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_14ssp"
                 app:met_hideUnderline="true" />
 
             <View
@@ -134,7 +134,7 @@
                 android:hint="@string/select_period"
                 android:textColorHint="@color/grey_color"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_14ssp"
                 app:met_hideUnderline="true" />
 
             <View

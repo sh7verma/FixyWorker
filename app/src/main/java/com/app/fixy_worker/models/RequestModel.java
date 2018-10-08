@@ -5,22 +5,26 @@ import java.util.List;
 public class RequestModel {
 
     /**
-     * response : {"id":"3","user_id":"12","worker_id":null,"category_id":"1","city_id":"1","address":"sfsfsgfdgsdgfdgdfgdfgsdg","additional_notes":"fdgsdgfdsg","request_price":"44","request_offer":null,"request_otp":"1111","otp_status":"0","request_status":"0","user_coins":"44","worker_coins":null,"cancel_request_charge":null,"accepted_time":null,"onthe_way_time":null,"completed_time":null,"request_latitude":"6436354364.664","request_longitude":"45654363563.564","cancel_by":"0","created_at":"2018-10-06 04:10:48"}
-     * message : Create request is successfully.
+     * response : [{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""},{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""}]
+     * message : Incomming request.
      * code : 200
      */
+    public static RequestModel instance;
 
-    private List<ResponseBean> response;
+    public static RequestModel getInstance() {
+        if (instance == null){
+            instance = new RequestModel();
+        }
+        return instance;
+    }
+
+    public static void setInstance(RequestModel insta ) {
+        instance = insta;
+    }
+
     private String message;
     private String code;
-
-    public List<ResponseBean> getResponse() {
-        return response;
-    }
-
-    public void setResponse(List<ResponseBean> response) {
-        this.response = response;
-    }
+    private List<ResponseBean> response;
 
     public String getMessage() {
         return message;
@@ -38,54 +42,60 @@ public class RequestModel {
         this.code = code;
     }
 
+    public List<ResponseBean> getResponse() {
+        return response;
+    }
+
+    public void setResponse(List<ResponseBean> response) {
+        this.response = response;
+    }
+
     public static class ResponseBean {
         /**
-         * id : 3
-         * user_id : 12
-         * worker_id : null
-         * category_id : 1
-         * city_id : 1
-         * address : sfsfsgfdgsdgfdgdfgdfgsdg
-         * additional_notes : fdgsdgfdsg
-         * request_price : 44
-         * request_offer : null
-         * request_otp : 1111
-         * otp_status : 0
+         * id : 9
+         * worker_id : 6
+         * user_id : 16
+         * original_price :
+         * offer_percentage :
+         * offer_period :
+         * offer_description : null
+         * category_name : Beauty
+         * category_pic :
+         * request_price : 1
+         * fullname : hsgh
+         * address : hsgh
+         * additional_notes : gfhf
          * request_status : 0
-         * user_coins : 44
-         * worker_coins : null
-         * cancel_request_charge : null
-         * accepted_time : null
-         * onthe_way_time : null
-         * completed_time : null
-         * request_latitude : 6436354364.664
-         * request_longitude : 45654363563.564
-         * cancel_by : 0
-         * created_at : 2018-10-06 04:10:48
+         * email : dsfgsd@ds.fh
+         * request_otp : 1111
+         * accepted_time :
+         * completed_time :
+         * created_at : 2018-10-08 07:10:59
+         * average_rating : 5
+         * profile_pic :
          */
 
         private String id;
+        private String worker_id;
         private String user_id;
-        private Object worker_id;
-        private String category_id;
-        private String city_id;
+        private String original_price;
+        private String offer_percentage;
+        private String offer_period;
+        private Object offer_description;
+        private String category_name;
+        private String category_pic;
+        private String request_price;
+        private String fullname;
         private String address;
         private String additional_notes;
-        private String request_price;
-        private Object request_offer;
-        private String request_otp;
-        private String otp_status;
         private String request_status;
-        private String user_coins;
-        private Object worker_coins;
-        private Object cancel_request_charge;
-        private Object accepted_time;
-        private Object onthe_way_time;
-        private Object completed_time;
-        private String request_latitude;
-        private String request_longitude;
-        private String cancel_by;
+        private String email;
+        private String request_otp;
+        private String accepted_time;
+        private String completed_time;
         private String created_at;
+        private String average_rating;
+        private String profile_pic;
 
         public String getId() {
             return id;
@@ -93,6 +103,14 @@ public class RequestModel {
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public String getWorker_id() {
+            return worker_id;
+        }
+
+        public void setWorker_id(String worker_id) {
+            this.worker_id = worker_id;
         }
 
         public String getUser_id() {
@@ -103,28 +121,68 @@ public class RequestModel {
             this.user_id = user_id;
         }
 
-        public Object getWorker_id() {
-            return worker_id;
+        public String getOriginal_price() {
+            return original_price;
         }
 
-        public void setWorker_id(Object worker_id) {
-            this.worker_id = worker_id;
+        public void setOriginal_price(String original_price) {
+            this.original_price = original_price;
         }
 
-        public String getCategory_id() {
-            return category_id;
+        public String getOffer_percentage() {
+            return offer_percentage;
         }
 
-        public void setCategory_id(String category_id) {
-            this.category_id = category_id;
+        public void setOffer_percentage(String offer_percentage) {
+            this.offer_percentage = offer_percentage;
         }
 
-        public String getCity_id() {
-            return city_id;
+        public String getOffer_period() {
+            return offer_period;
         }
 
-        public void setCity_id(String city_id) {
-            this.city_id = city_id;
+        public void setOffer_period(String offer_period) {
+            this.offer_period = offer_period;
+        }
+
+        public Object getOffer_description() {
+            return offer_description;
+        }
+
+        public void setOffer_description(Object offer_description) {
+            this.offer_description = offer_description;
+        }
+
+        public String getCategory_name() {
+            return category_name;
+        }
+
+        public void setCategory_name(String category_name) {
+            this.category_name = category_name;
+        }
+
+        public String getCategory_pic() {
+            return category_pic;
+        }
+
+        public void setCategory_pic(String category_pic) {
+            this.category_pic = category_pic;
+        }
+
+        public String getRequest_price() {
+            return request_price;
+        }
+
+        public void setRequest_price(String request_price) {
+            this.request_price = request_price;
+        }
+
+        public String getFullname() {
+            return fullname;
+        }
+
+        public void setFullname(String fullname) {
+            this.fullname = fullname;
         }
 
         public String getAddress() {
@@ -143,20 +201,20 @@ public class RequestModel {
             this.additional_notes = additional_notes;
         }
 
-        public String getRequest_price() {
-            return request_price;
+        public String getRequest_status() {
+            return request_status;
         }
 
-        public void setRequest_price(String request_price) {
-            this.request_price = request_price;
+        public void setRequest_status(String request_status) {
+            this.request_status = request_status;
         }
 
-        public Object getRequest_offer() {
-            return request_offer;
+        public String getEmail() {
+            return email;
         }
 
-        public void setRequest_offer(Object request_offer) {
-            this.request_offer = request_offer;
+        public void setEmail(String email) {
+            this.email = email;
         }
 
         public String getRequest_otp() {
@@ -167,92 +225,20 @@ public class RequestModel {
             this.request_otp = request_otp;
         }
 
-        public String getOtp_status() {
-            return otp_status;
-        }
-
-        public void setOtp_status(String otp_status) {
-            this.otp_status = otp_status;
-        }
-
-        public String getRequest_status() {
-            return request_status;
-        }
-
-        public void setRequest_status(String request_status) {
-            this.request_status = request_status;
-        }
-
-        public String getUser_coins() {
-            return user_coins;
-        }
-
-        public void setUser_coins(String user_coins) {
-            this.user_coins = user_coins;
-        }
-
-        public Object getWorker_coins() {
-            return worker_coins;
-        }
-
-        public void setWorker_coins(Object worker_coins) {
-            this.worker_coins = worker_coins;
-        }
-
-        public Object getCancel_request_charge() {
-            return cancel_request_charge;
-        }
-
-        public void setCancel_request_charge(Object cancel_request_charge) {
-            this.cancel_request_charge = cancel_request_charge;
-        }
-
-        public Object getAccepted_time() {
+        public String getAccepted_time() {
             return accepted_time;
         }
 
-        public void setAccepted_time(Object accepted_time) {
+        public void setAccepted_time(String accepted_time) {
             this.accepted_time = accepted_time;
         }
 
-        public Object getOnthe_way_time() {
-            return onthe_way_time;
-        }
-
-        public void setOnthe_way_time(Object onthe_way_time) {
-            this.onthe_way_time = onthe_way_time;
-        }
-
-        public Object getCompleted_time() {
+        public String getCompleted_time() {
             return completed_time;
         }
 
-        public void setCompleted_time(Object completed_time) {
+        public void setCompleted_time(String completed_time) {
             this.completed_time = completed_time;
-        }
-
-        public String getRequest_latitude() {
-            return request_latitude;
-        }
-
-        public void setRequest_latitude(String request_latitude) {
-            this.request_latitude = request_latitude;
-        }
-
-        public String getRequest_longitude() {
-            return request_longitude;
-        }
-
-        public void setRequest_longitude(String request_longitude) {
-            this.request_longitude = request_longitude;
-        }
-
-        public String getCancel_by() {
-            return cancel_by;
-        }
-
-        public void setCancel_by(String cancel_by) {
-            this.cancel_by = cancel_by;
         }
 
         public String getCreated_at() {
@@ -261,6 +247,22 @@ public class RequestModel {
 
         public void setCreated_at(String created_at) {
             this.created_at = created_at;
+        }
+
+        public String getAverage_rating() {
+            return average_rating;
+        }
+
+        public void setAverage_rating(String average_rating) {
+            this.average_rating = average_rating;
+        }
+
+        public String getProfile_pic() {
+            return profile_pic;
+        }
+
+        public void setProfile_pic(String profile_pic) {
+            this.profile_pic = profile_pic;
         }
     }
 }

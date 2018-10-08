@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_15sdp"
-                    android:background="@drawable/white_round_solid"
+                    android:background="@drawable/black_stroke_white_solid_corner_round"
                     android:elevation="@dimen/_10sdp"
                     android:orientation="horizontal">
 

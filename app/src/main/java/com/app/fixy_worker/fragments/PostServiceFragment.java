@@ -1,20 +1,14 @@
 package com.app.fixy_worker.fragments;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.adapters.MyServicesAdapter;
 import com.app.fixy_worker.adapters.PostServiceAdapter;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.AdsModel;
@@ -58,7 +52,7 @@ public class PostServiceFragment extends BaseFragment {
     }
     private void updateServiceAdapter() {
         RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new GridLayoutManager(getActivity(), calculateNoOfColumns(getContext()), LinearLayoutManager.HORIZONTAL, false);
+        mLayoutManager = new GridLayoutManager(getActivity(), calculateNoOfColumns(getContext()), LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

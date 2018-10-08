@@ -2,9 +2,6 @@ package com.app.fixy_worker.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,13 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
 import com.app.fixy_worker.adapters.LandingPagerAdapter;
 import com.app.fixy_worker.customviews.CustomViewPager;
-import com.app.fixy_worker.fragments.MyRequestFragment;
-import com.app.fixy_worker.fragments.CoinsFragment;
-import com.app.fixy_worker.fragments.HomeFragment;
-import com.app.fixy_worker.fragments.ProfileFragment;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Consts;
 
@@ -93,15 +85,19 @@ public class LandingActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         loadFragment(Consts.FRAG_HOME);
+                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
                         break;
                     case 1:
                         loadFragment(Consts.FRAG_BOOKINGS);
+                        utils.setInt(InterConst.ON_BOOKING,InterConst.ONE);
                         break;
                     case 2:
                         loadFragment(Consts.FRAG_COINS);
+                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
                         break;
                     case 3:
                         loadFragment(Consts.FRAG_PROFILE);
+                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
                         break;
                 }
             }
@@ -118,6 +114,7 @@ public class LandingActivity extends BaseActivity {
         super.onNewIntent(intent);
         if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST)){
             viewPager.setCurrentItem(1);
+            // call in myRequestFragment
             sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
         }
     }
@@ -180,8 +177,6 @@ public class LandingActivity extends BaseActivity {
             txtProfile.setTextColor(getContext().getResources().getColor(R.color.app_color));
             viewProfile.setBackgroundColor(getContext().getResources().getColor(R.color.app_color));
         }
-
-
 
     }
 

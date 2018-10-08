@@ -21,7 +21,6 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.database.Db;
 import com.app.fixy_worker.dialogs.InternetDialog;
 import com.app.fixy_worker.helper.MarshMallowPermission;
-import com.app.fixy_worker.helper.ServiceJob;
 import com.app.fixy_worker.interfaces.AddressInterface;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Connection_Detector;
@@ -241,7 +240,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     protected void showInternetAlert(View view) {
 
-        ServiceJob.scheduleJob(getContext());
         Intent intent1 = new Intent(getContext(),InternetDialog.class);
         intent1.putExtra(InterConst.EXTRA,InterConst.DISCONNECT);
         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);

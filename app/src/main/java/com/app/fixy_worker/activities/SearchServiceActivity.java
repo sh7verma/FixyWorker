@@ -1,18 +1,13 @@
 package com.app.fixy_worker.activities;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.adapters.BookingAdapter;
 import com.app.fixy_worker.adapters.SearchCategoryAdapter;
 import com.app.fixy_worker.adapters.SearchServiceAdapter;
 import com.app.fixy_worker.customviews.MaterialEditText;

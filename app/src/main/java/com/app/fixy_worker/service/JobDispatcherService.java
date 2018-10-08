@@ -12,6 +12,7 @@ import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.models.RequestModel;
 import com.app.fixy_worker.network.ApiInterface;
 import com.app.fixy_worker.network.RetrofitClient;
+import com.app.fixy_worker.utils.Consts;
 import com.app.fixy_worker.utils.Utils;
 
 import retrofit2.Call;
@@ -50,9 +51,16 @@ public class JobDispatcherService extends JobService {
                 @Override
                 public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
 
-                    Intent intent  = new Intent(InterConst.INCOMING_BROADCAST);
-                    intent.putExtra(InterConst.EXTRA,InterConst.SHOW);
-                    sendBroadcast(intent);
+                    if(utils.getBoolean(Consts.FOURGROUND,false) &&
+                            utils.getInt(InterConst.ON_BOOKING,InterConst.ZERO) == InterConst.ZERO){
+
+                        Intent intent  = new Intent(InterConst.INCOMING_BROADCAST);
+                        intent.putExtra(InterConst.EXTRA,InterConst.SHOW);
+                        // call broadcast of NewIncomingPopoupActivity
+                        if (response.body().getResponse().size()>0){
+                            sendBroadcast(intent);
+                        }
+                    }
                 }
 
                 @Override

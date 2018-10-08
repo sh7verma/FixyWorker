@@ -5,23 +5,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.app.fixy_worker.fragments.BookedFragment;
-import com.app.fixy_worker.fragments.PendingFragment;
+import com.app.fixy_worker.fragments.NewRequestFragment;
+import com.app.fixy_worker.fragments.ScheduledFragment;
 
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
     int mNumOfTabs;
     Context mContext;
-    BookedFragment bookedFragment;
-    PendingFragment pendingFragment;
+    NewRequestFragment bookedFragment;
+    ScheduledFragment pendingFragment;
 
     public MyPagerAdapter(FragmentManager fm, int NumOfTabs, Context con) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         mContext = con;
-        bookedFragment =  BookedFragment.newInstance(mContext);
-        pendingFragment =  PendingFragment.newInstance(mContext);
+        bookedFragment =  NewRequestFragment.newInstance(mContext);
+        pendingFragment =  ScheduledFragment.newInstance(mContext);
     }
 
     @Override

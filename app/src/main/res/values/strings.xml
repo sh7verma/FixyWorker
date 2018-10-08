@@ -228,6 +228,8 @@
     <string name="got_internet">Got the Internet. Enjoy!</string>
     <string name="new_incoming_request">New Incoming Request</string>
     <string name="click_to_see_full_detail">Click to see full detail</string>
+    <string name="new">New</string>
+    <string name="scheduled">Scheduled</string>
 
 
 </resources>

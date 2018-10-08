@@ -4,11 +4,8 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 
-import com.app.fixy_worker.fragments.BookedFragment;
 import com.app.fixy_worker.fragments.CreateProfileFragment;
-import com.app.fixy_worker.fragments.PendingFragment;
 import com.app.fixy_worker.fragments.SelectServiceFragment;
 import com.app.fixy_worker.fragments.VerificationFragment;
 

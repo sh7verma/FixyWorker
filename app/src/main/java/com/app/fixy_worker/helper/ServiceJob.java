@@ -5,11 +5,8 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
-import com.app.fixy_worker.service.CallService;
 import com.app.fixy_worker.service.JobDispatcherService;
 import com.app.fixy_worker.service.JobServiceSchedule;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -42,8 +39,8 @@ public class ServiceJob {
             builder = new JobInfo.Builder(10, serviceComponent);
 //            builder.setMinimumLatency(3 * 1000); // wait at least
 //            builder.setOverrideDeadline(3 * 1000); // maximum delay
-            builder.setPeriodic(10000);
-            builder.setBackoffCriteria(6000, JobInfo.BACKOFF_POLICY_LINEAR);
+            builder.setPeriodic(20000);
+//            builder.setBackoffCriteria(6000, JobInfo.BACKOFF_POLICY_LINEAR);
 //            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY); // require unmetered network
             //builder.setRequiresDeviceIdle(true); // device should be idle
             //builder.setRequiresCharging(false); // we don't care if the device is charging or not

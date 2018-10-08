@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.customviews.CircleTransform;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.LoginModel;
 import com.squareup.picasso.Picasso;
@@ -23,24 +22,23 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PostServiceAdapter  extends RecyclerView.Adapter<PostServiceAdapter.ViewHolder> {
+public class PostServiceAdapter extends RecyclerView.Adapter<PostServiceAdapter.ViewHolder> {
     private Context mContext;
     private int mHeight;
-    int w,h,margin;
+    int w, h, margin;
     List<LoginModel.ResponseBean.SelectedServicesBean> serList;
     InterfacesCall.ServiceOffer clicks;
-    int pos;
-    private int selectPos =-1;
+    private int selectPos = -1;
 
     public PostServiceAdapter(Context context, List<LoginModel.ResponseBean.SelectedServicesBean> servicesList,
-                             int height, InterfacesCall.ServiceOffer interfaces) {
+                              int height, InterfacesCall.ServiceOffer interfaces) {
         mContext = context;
         mHeight = height;
-        w= (int) mContext.getResources().getDimension(R.dimen._50sdp);
-        h= (int) mContext.getResources().getDimension(R.dimen._50sdp);
+        w = (int) mContext.getResources().getDimension(R.dimen._50sdp);
+        h = (int) mContext.getResources().getDimension(R.dimen._50sdp);
         serList = servicesList;
         clicks = interfaces;
-        margin= (int) mContext.getResources().getDimension(R.dimen._1sdp);
+        margin = (int) mContext.getResources().getDimension(R.dimen._1sdp);
     }
 
     @NonNull
@@ -68,30 +66,26 @@ public class PostServiceAdapter  extends RecyclerView.Adapter<PostServiceAdapter
 //            GradientDrawable bgShape = (GradientDrawable) holder.rlBackground.getBackground();
 //            bgShape.setColor(mContext.getResources().getColor(R.color.cleaner));
 
-        if (selectPos == position){
+        if (selectPos == position) {
             holder.llSelect.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             holder.llSelect.setVisibility(View.GONE);
         }
-            holder.rlBackground.setBackground(ContextCompat.getDrawable(mContext,R.drawable.circular_background));
 
-            holder.txtName.setText(serList.get(pos).getCategory_name());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(w,h);
-            params.setMargins(0,margin,0,0);
-            holder.rlBackground.setLayoutParams(params);
-            Picasso.get()
-                    .load(R.mipmap.ic_beauty_w)
-                    .transform(new CircleTransform())
-                    .into(holder.imgService);
-            holder.rlBackground.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    selectPos = position;
-                    clicks.serviceClick(position);
-                    notifyDataSetChanged();
-                }
-            });
+        holder.rlBackground.setBackground(ContextCompat.getDrawable(mContext, R.drawable.circular_background));
+
+        holder.txtName.setText(serList.get(position).getCategory_name());
+        Picasso.get()
+                .load(R.mipmap.ic_beauty_w)
+                .into(holder.imgService);
+        holder.rlBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectPos = position;
+                clicks.serviceClick(position);
+                notifyDataSetChanged();
+            }
+        });
 //            }
     }
 

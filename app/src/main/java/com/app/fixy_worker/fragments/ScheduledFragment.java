@@ -2,52 +2,47 @@ package com.app.fixy_worker.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.activities.BookingDetailActivity;
 import com.app.fixy_worker.activities.PendingDetailActivity;
-import com.app.fixy_worker.adapters.PendingAdapter;
+import com.app.fixy_worker.adapters.ScheduledAdapter;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 
+import butterknife.BindView;
 
-public class PendingFragment extends Fragment {
 
-    static PendingFragment fragment;
+public class ScheduledFragment extends BaseFragment {
+
+    static ScheduledFragment fragment;
     private static Context mContext;
 
+    @BindView(R.id.recycleview)
     RecyclerView rvPast;
 
 
 
-    PendingAdapter mAdapter;
+    ScheduledAdapter mAdapter;
 
-    public static PendingFragment newInstance(Context context) {
-        fragment = new PendingFragment();
+    public static ScheduledFragment newInstance(Context context) {
+        fragment = new ScheduledFragment();
         mContext = context;
 //        textView.setText("PAST");
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pending, container, false);
-        rvPast =   view.findViewById(R.id.recycleview);
-        onCreateStuff();
-        return view;
+    protected int getContentView() {
+        return R.layout.fragment_scheduled;
     }
+
     protected void onCreateStuff() {
         rvPast.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         rvPast.setNestedScrollingEnabled(false);
 
-        mAdapter = new PendingAdapter(mContext,click);
+        mAdapter = new ScheduledAdapter(mContext,click);
         rvPast.setAdapter(mAdapter);
     }
 
@@ -63,4 +58,9 @@ public class PendingFragment extends Fragment {
             getActivity().overridePendingTransition(R.anim.in,R.anim.out);
         }
     };
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

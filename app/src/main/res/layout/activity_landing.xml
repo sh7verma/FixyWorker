@@ -11,13 +11,14 @@
     <com.app.fixy_worker.customviews.CustomViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.app.fixy_worker.customviews.CustomViewPager>
-    <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_above="@+id/bottom_bar"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent"></com.app.fixy_worker.customviews.CustomViewPager>
+    <!--<FrameLayout-->
+        <!--android:id="@+id/frame_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_above="@+id/bottom_bar"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
     <include
         android:id="@+id/bottom_bar"

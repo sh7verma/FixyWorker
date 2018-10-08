@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.dialogs.InternetDialog;
 import com.app.fixy_worker.helper.MarshMallowPermission;
-import com.app.fixy_worker.helper.ServiceJob;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Encode;
@@ -74,8 +73,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public int calculateNoOfColumns(Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int noOfColumns = (int) (dpWidth / getResources().getDimension(R.dimen._60sdp));
+        float dpWidth = displayMetrics.widthPixels ;
+        int noOfColumns = (int) (dpWidth / getResources().getDimension(R.dimen._70sdp));
         return noOfColumns;
     }
 
@@ -152,7 +151,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     protected void showInternetAlert(View view) {
 
-        ServiceJob.scheduleJob(getContext());
         Intent intent1 = new Intent(getContext(),InternetDialog.class);
         intent1.putExtra(InterConst.EXTRA,InterConst.DISCONNECT);
         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);

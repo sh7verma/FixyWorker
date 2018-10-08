@@ -68,6 +68,7 @@ public interface InterConst {
     int DISMISS = 0;
     String INCOMING_BROADCAST = "incoming";
     String NEW_REQUEST_BROADCAST = "new_request_broadcast";
+    String ON_BOOKING = "onbooking";
 
     public enum WEBVIEW{
         TERM_CONDITION;

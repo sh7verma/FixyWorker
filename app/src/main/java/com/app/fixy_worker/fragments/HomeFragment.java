@@ -244,7 +244,7 @@ public class HomeFragment extends BaseFragment{
 
     private void updateServiceAdapter() {
         RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new GridLayoutManager(getActivity(), calculateNoOfColumns(getContext()), LinearLayoutManager.HORIZONTAL, false);
+        mLayoutManager = new GridLayoutManager(getActivity(), calculateNoOfColumns(getContext()), LinearLayoutManager.VERTICAL, false);
         rvMyServices.setLayoutManager(mLayoutManager);
         rvMyServices.setItemAnimator(new DefaultItemAnimator());
         mAdapterServices = new MyServicesAdapter(getActivity(),servicesList, mHeight,interfaces);

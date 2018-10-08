@@ -20,33 +20,40 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHolder> {
+public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.ViewHolder> {
 
     private final Context mContext;
-    Bitmap bitmap = null;
+    Bitmap bitmap =null;
+    InterfacesCall.IndexClick mClick;
 
     private Handler handler = new Handler();
     Runnable runnable;
     private int progressStatus = 0, count = 25;
-    int start = 0,end = 75,next=0;
-    InterfacesCall.IndexClick click;
-
-    public BookingAdapter(Context con, InterfacesCall.IndexClick click) {
+    int start = 0,end = 75,next=0; 
+    public ScheduledAdapter(Context con, InterfacesCall.IndexClick click) {
         mContext = con;
-        this.click = click;
+        mClick = click;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_booked, parent, false);
+    public ScheduledAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_scheduled, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ScheduledAdapter.ViewHolder holder, final int position) {
+
 
         setView(holder,start);
+        holder.viewBooking.llMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClick.clickIndex(position);
+            }
+        });
+
 
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,18 +66,25 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
             }
         });
-
-        holder.viewBooking.llMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                click.clickIndex(position);
-            }
-        });
-
-
     }
 
-    private void setView(@NonNull ViewHolder holder, int start) {
+    @Override
+    public int getItemCount() {
+        return 3;
+    }
+    public class ViewBooking {
+        @BindView(R.id.ll_request)
+        LinearLayout llRequest;
+        @BindView(R.id.ll_accepted)
+        LinearLayout llAccepted;
+        @BindView(R.id.ll_on_way)
+        LinearLayout llOnWay;
+        @BindView(R.id.ll_confirmed)
+        LinearLayout llConfirmed;
+        @BindView(R.id.ll_main)
+        LinearLayout llMain;
+    } 
+    private void setView(@NonNull ScheduledAdapter.ViewHolder holder, int start) {
         switch (start) {
             case 0:
                 showPending(holder);
@@ -86,9 +100,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                 break;
         }
     }
-
-
-    private void showPending(ViewHolder holder) {
+    private void showPending(ScheduledAdapter.ViewHolder holder) {
         RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(R.dimen._3sdp, 0);
         int l = (int) mContext.getResources().getDimension(R.dimen._10sdp);
         int t = (int) mContext.getResources().getDimension(R.dimen._5sdp);
@@ -99,8 +111,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.viewBooking.llOnWay.setVisibility(View.GONE);
         holder.viewBooking.llConfirmed.setVisibility(View.GONE);
     }
-
-    private void showAccepted(ViewHolder holder) {
+    private void showAccepted(ScheduledAdapter.ViewHolder holder) {
         int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
         int h = (int) mContext.getResources().getDimension(R.dimen._51sdp);
         RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
@@ -114,7 +125,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.viewBooking.llConfirmed.setVisibility(View.GONE);
     }
 
-    private void showOnWay(ViewHolder holder) {
+    private void showOnWay(ScheduledAdapter.ViewHolder holder) {
         int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
         int h = (int) mContext.getResources().getDimension(R.dimen._102sdp);
         RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
@@ -128,7 +139,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.viewBooking.llConfirmed.setVisibility(View.GONE);
     }
 
-    private void showConfirm(ViewHolder holder) {
+    private void showConfirm(ScheduledAdapter.ViewHolder holder) {
         int w = (int) mContext.getResources().getDimension(R.dimen._3sdp);
         int h = (int) mContext.getResources().getDimension(R.dimen._155sdp);
         RelativeLayout.LayoutParams relativeLayout = new RelativeLayout.LayoutParams(w, h);
@@ -141,31 +152,12 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.viewBooking.llOnWay.setVisibility(View.VISIBLE);
         holder.viewBooking.llConfirmed.setVisibility(View.VISIBLE);
     }
-
-    @Override
-    public int getItemCount() {
-        return 1;
-    }
-
-    public class ViewBooking {
-        @BindView(R.id.ll_request)
-        LinearLayout llRequest;
-        @BindView(R.id.ll_accepted)
-        LinearLayout llAccepted;
-        @BindView(R.id.ll_on_way)
-        LinearLayout llOnWay;
-        @BindView(R.id.ll_confirmed)
-        LinearLayout llConfirmed;
-        @BindView(R.id.ll_main)
-        LinearLayout llMain;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         View viewCircle1, viewCircle2, viewCircle3, viewCircle4;
         Button btn;
         ProgressBar vprogressbar;
-        ViewBooking viewBooking = new ViewBooking();
+        ScheduledAdapter.ViewBooking viewBooking = new ScheduledAdapter.ViewBooking();
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -184,41 +176,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 //            runProgressbar();
 
 
-        }
-
-        private void runProgressbar() {
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    start++;
-                    if (start > 0 && start < 2) {
-                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.grey_oval));
-                    } else if (start > 24 && start < end) {
-
-                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    } else if (start > 49 && start < end) {
-
-                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle3.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    } else if (start > 73 && start < end) {
-
-                        viewCircle1.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle2.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle3.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                        viewCircle4.setBackground(mContext.getResources().getDrawable(R.drawable.circle_green));
-                    }
-                    vprogressbar.setProgress(start);
-
-                    if (start < end) {
-
-                        handler.postDelayed(runnable, 10);
-                    } else {
-                        handler.removeCallbacks(runnable);
-                    }
-                }
-            };
         }
     }
 }

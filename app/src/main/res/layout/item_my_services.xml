@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/_5sdp"
-    android:layout_marginStart="@dimen/_5sdp"
+    android:foreground="?selectableItemBackground"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/_5sdp">
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/rl_background"
-        android:background="?android:selectableItemBackground"
+        android:background="@drawable/circular_background"
         android:layout_width="@dimen/_55sdp"
         android:layout_height="@dimen/_55sdp">
 
@@ -41,7 +41,9 @@
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/beauty"
+        android:text=""
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_5sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_10ssp" />

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -88,9 +87,9 @@ public class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.Vi
             holder.rlBackground.setBackground(ContextCompat.getDrawable(mContext,R.drawable.circular_background));
 
             holder.txtName.setText(serList.get(pos).getCategory_name());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(w,h);
-            params.setMargins(0,margin,0,0);
-            holder.rlBackground.setLayoutParams(params);
+//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(w,h);
+//            params.setMargins(0,margin,0,0);
+//            holder.rlBackground.setLayoutParams(params);
             Picasso.get()
                     .load(R.mipmap.ic_beauty_w)
                     .transform(new CircleTransform())

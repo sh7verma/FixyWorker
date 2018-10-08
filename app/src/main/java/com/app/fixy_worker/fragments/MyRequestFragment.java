@@ -98,7 +98,7 @@ public class MyRequestFragment extends BaseFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d("myRequest","fragment hit");
-            ((BookedFragment)myPagerAdapter.getItem(0)).updateAdater();
+            ((NewRequestFragment)myPagerAdapter.getItem(0)).updateAdater();
 
         }
     }
