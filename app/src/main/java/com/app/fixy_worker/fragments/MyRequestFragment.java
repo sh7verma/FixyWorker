@@ -1,7 +1,10 @@
 package com.app.fixy_worker.fragments;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ public class MyRequestFragment extends BaseFragment {
     @BindView(R.id.txt_pending)
     TextView txtPending;
     public static Context mContext;
+    public static MyPagerAdapter myPagerAdapter;
 
     public static MyRequestFragment newInstance(Context mCont) {
         fragment = new MyRequestFragment();
@@ -44,7 +48,8 @@ public class MyRequestFragment extends BaseFragment {
 
     private void setviewpager() {
         viewPager.setOffscreenPageLimit(0);
-        viewPager.setAdapter(new MyPagerAdapter(getChildFragmentManager(), 2,mContext));
+        myPagerAdapter = new MyPagerAdapter(getChildFragmentManager(), 2,mContext);
+        viewPager.setAdapter(myPagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -86,5 +91,15 @@ public class MyRequestFragment extends BaseFragment {
                viewPager.setCurrentItem(1);
                break;
        }
+    }
+
+    public static class NewRequestBroadcast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("myRequest","fragment hit");
+            ((BookedFragment)myPagerAdapter.getItem(0)).updateAdater();
+
+        }
     }
 }

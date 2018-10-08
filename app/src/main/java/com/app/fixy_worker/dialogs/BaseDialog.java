@@ -22,7 +22,7 @@ import com.app.fixy_worker.utils.Utils;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseDialog extends Dialog implements InterfacesCall.IndexClick{
+public abstract class BaseDialog extends Dialog implements InterfacesCall.IndexClick,View.OnClickListener{
     private int contentView;
     private Context context;
     private Typeface typefaceMedium,typefaceRegular,typefaceBold;

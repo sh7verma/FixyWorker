@@ -2,31 +2,22 @@ package com.app.fixy_worker.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.app.fixy_worker.BuildConfig;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.activities.PostNewAddActivity;
-import com.app.fixy_worker.activities.SearchServiceActivity;
 import com.app.fixy_worker.activities.ServicesListActivity;
 import com.app.fixy_worker.activities.WorkersAdsListActivity;
 import com.app.fixy_worker.adapters.MyServicesAdapter;
 import com.app.fixy_worker.adapters.WorkersAdsAdapter;
-import com.app.fixy_worker.customviews.GridSpacingItemDecoration;
 import com.app.fixy_worker.dialogs.SelectCityDialog;
 import com.app.fixy_worker.helper.ServiceJob;
 import com.app.fixy_worker.interfaces.InterConst;
@@ -34,27 +25,15 @@ import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.CItyModel;
 import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.network.RetrofitClient;
-import com.app.fixy_worker.service.JobDispatcherService;
 import com.app.fixy_worker.utils.Dialogs;
-import com.firebase.jobdispatcher.Constraint;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Lifetime;
-import com.firebase.jobdispatcher.RetryStrategy;
-import com.firebase.jobdispatcher.Trigger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.content.Context.JOB_SCHEDULER_SERVICE;
 
 /**
  * Created by Shubham verma on 16-08-2018.

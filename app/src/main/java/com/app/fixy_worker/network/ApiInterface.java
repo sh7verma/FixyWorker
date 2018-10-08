@@ -6,6 +6,7 @@ import com.app.fixy_worker.models.CItyModel;
 import com.app.fixy_worker.models.GooglePlaceModal;
 import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.models.NearbyPlaceModel;
+import com.app.fixy_worker.models.RequestModel;
 
 import java.util.List;
 
@@ -98,6 +99,13 @@ public interface ApiInterface {
                                  @Field("offer_period") String offer_period,
                                  @Field("offer_description") String offer_description
                                    );
+
+
+    @FormUrlEncoded
+    @POST("requests/incomming_request")
+    Call<RequestModel> incomming_request(@Field("access_token") String access_token,
+                                         @Field("device_token") String device_token);
+
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

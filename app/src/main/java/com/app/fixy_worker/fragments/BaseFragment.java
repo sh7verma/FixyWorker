@@ -2,6 +2,7 @@ package com.app.fixy_worker.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,7 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.dialogs.InternetDialog;
 import com.app.fixy_worker.helper.MarshMallowPermission;
+import com.app.fixy_worker.helper.ServiceJob;
+import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Encode;
 import com.app.fixy_worker.utils.LoadingDialog;
@@ -147,8 +151,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     protected void showInternetAlert(View view) {
-        mSnackbar = Snackbar.make(view, "Internet connection not available!", Snackbar.LENGTH_SHORT);
-        mSnackbar.show();
+
+        ServiceJob.scheduleJob(getContext());
+        Intent intent1 = new Intent(getContext(),InternetDialog.class);
+        intent1.putExtra(InterConst.EXTRA,InterConst.DISCONNECT);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent1);
+//        mSnackbar = Snackbar.make(view, "Internet connection not available!", Snackbar.LENGTH_SHORT);
+//        mSnackbar.show();
     }
 
     protected void showCustomSnackBar(View containerLayout, String header, String message) {

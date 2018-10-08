@@ -8,6 +8,10 @@
     android:fitsSystemWindows="true"
     tools:context="com.app.fixy_worker.activities.LandingActivity">
 
+    <com.app.fixy_worker.customviews.CustomViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.app.fixy_worker.customviews.CustomViewPager>
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"

@@ -5,9 +5,11 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import com.app.fixy_worker.service.CallService;
 import com.app.fixy_worker.service.JobDispatcherService;
 import com.app.fixy_worker.service.JobServiceSchedule;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -21,6 +23,8 @@ public class ServiceJob {
     public static String JOB_NAME = "job_incoming";
     public static JobScheduler jobScheduler = null;
     public static FirebaseJobDispatcher dispatcher= null;
+
+
     public static void stopJob(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             jobScheduler.cancelAll();
@@ -30,13 +34,15 @@ public class ServiceJob {
         }
     }
     public static void scheduleJob(Context context) {
+
+//        context.startService(new Intent(context, CallService.class));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ComponentName serviceComponent = new ComponentName(context, JobDispatcherService.class);
             JobInfo.Builder builder = null;
             builder = new JobInfo.Builder(10, serviceComponent);
-            builder.setMinimumLatency(3 * 1000); // wait at least
-            builder.setOverrideDeadline(3 * 1000); // maximum delay
-//            builder.setPeriodic(3000);
+//            builder.setMinimumLatency(3 * 1000); // wait at least
+//            builder.setOverrideDeadline(3 * 1000); // maximum delay
+            builder.setPeriodic(10000);
             builder.setBackoffCriteria(6000, JobInfo.BACKOFF_POLICY_LINEAR);
 //            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY); // require unmetered network
             //builder.setRequiresDeviceIdle(true); // device should be idle

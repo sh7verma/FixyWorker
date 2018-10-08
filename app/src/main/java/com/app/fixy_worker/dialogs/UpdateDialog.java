@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -41,6 +42,11 @@ public class UpdateDialog extends BaseDialog {
 
     @Override
     public void clickIndex(int pos) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

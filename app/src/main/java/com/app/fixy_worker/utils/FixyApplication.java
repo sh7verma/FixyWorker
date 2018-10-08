@@ -22,6 +22,7 @@ public class FixyApplication extends Application {
         super.onCreate();
         instance = this;
         MultiDex.install(this);
+        Foreground.init(this);
 
     }
 

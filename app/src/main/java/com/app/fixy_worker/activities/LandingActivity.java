@@ -1,19 +1,25 @@
 package com.app.fixy_worker.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
+import com.app.fixy_worker.adapters.LandingPagerAdapter;
+import com.app.fixy_worker.customviews.CustomViewPager;
 import com.app.fixy_worker.fragments.MyRequestFragment;
 import com.app.fixy_worker.fragments.CoinsFragment;
 import com.app.fixy_worker.fragments.HomeFragment;
 import com.app.fixy_worker.fragments.ProfileFragment;
+import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.utils.Consts;
 
 import butterknife.BindView;
@@ -46,6 +52,8 @@ public class LandingActivity extends BaseActivity {
     TextView txtCoins;
     @BindView(R.id.view_coins)
     View viewCoins;
+    @BindView(R.id.viewPager)
+    CustomViewPager viewPager;
 
     @BindView(R.id.ll_profile)
     LinearLayout llProfile;
@@ -58,6 +66,7 @@ public class LandingActivity extends BaseActivity {
 
     // Current fragment selected
     int mViewSelection = Consts.FRAG_NULL;
+    private LandingPagerAdapter adapter;
 
     @Override
     protected int getContentView() {
@@ -66,11 +75,56 @@ public class LandingActivity extends BaseActivity {
 
     @Override
     protected void onCreateStuff() {
-        loadFragment(HomeFragment.newInstance(mContext), Consts.FRAG_HOME);
+
+        adapter = new LandingPagerAdapter(getSupportFragmentManager(),   mContext);
+        viewPager.setOffscreenPageLimit(4);
+        viewPager.setAdapter(adapter);
+        viewPager.disableScroll(true);
+        viewPager.setCurrentItem(0,true);
+        loadFragment(Consts.FRAG_HOME);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        loadFragment(Consts.FRAG_HOME);
+                        break;
+                    case 1:
+                        loadFragment(Consts.FRAG_BOOKINGS);
+                        break;
+                    case 2:
+                        loadFragment(Consts.FRAG_COINS);
+                        break;
+                    case 3:
+                        loadFragment(Consts.FRAG_PROFILE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST)){
+            viewPager.setCurrentItem(1);
+            sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+        }
     }
 
     @Override
     protected void initUI() {
+
 
     }
 
@@ -88,7 +142,7 @@ public class LandingActivity extends BaseActivity {
     }
 
 
-    public void loadFragment(Fragment fragment, int selected) {
+    public void loadFragment(int selected) {
 
         hideKeyboard(this);
 
@@ -127,13 +181,7 @@ public class LandingActivity extends BaseActivity {
             viewProfile.setBackgroundColor(getContext().getResources().getColor(R.color.app_color));
         }
 
-        if (mViewSelection != selected) {
-            mViewSelection = selected;
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.frame_container, fragment);
-            transaction.commit();
-        }
+
 
     }
 
@@ -141,19 +189,19 @@ public class LandingActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home:
-                loadFragment(HomeFragment.newInstance(mContext), Consts.FRAG_HOME);
+                viewPager.setCurrentItem(0,true);
 
                 break;
             case R.id.ll_bookings:
-                loadFragment(MyRequestFragment.newInstance(mContext), Consts.FRAG_BOOKINGS);
+                viewPager.setCurrentItem(1,true);
 
                 break;
             case R.id.ll_coins:
-                loadFragment(CoinsFragment.newInstance(mContext), Consts.FRAG_COINS);
+                viewPager.setCurrentItem(2,true);
 
                 break;
             case R.id.ll_profile:
-                loadFragment(ProfileFragment.newInstance(mContext), Consts.FRAG_PROFILE);
+                viewPager.setCurrentItem(3,true);
 
                 break;
 

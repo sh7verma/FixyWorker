@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
     <!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
     <!-- <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> -->
@@ -42,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -71,7 +73,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".activities.LandingActivity"
             android:screenOrientation="portrait"
@@ -127,7 +128,44 @@
         <service
             android:name=".service.JobDispatcherService"
             android:label="job_service"
-            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name=".service.CallService" />
+
+        <receiver android:name=".receivers.InternetReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".dialogs.InternetDialog"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/internetTheme" />
+        <activity
+            android:name=".activities.NewIncomingPopupActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentActivity" />
+
+        <receiver
+            android:name=".receivers.IncomingRequestReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="incoming" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".fragments.MyRequestFragment$NewRequestBroadcast"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="new_request_broadcast" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

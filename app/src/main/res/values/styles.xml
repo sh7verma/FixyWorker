@@ -38,6 +38,15 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="internetTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/pullBottomfromTop</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="traparentActivity" parent="android:Theme.Translucent.NoTitleBar">
+
+    </style>
     <style name="DialogBottomAnimation">
         <item name="android:windowEnterAnimation">@anim/enter_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/exit_from_bottom</item>
@@ -64,11 +73,12 @@
         <item name="android:windowAnimationStyle">@style/dilog_slide_top_to_down</item>
     </style>
 
-    <style name="TransparentActivity" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="TransparentActivity" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowActionBar">false</item>
         <item name="windowActionBar">false</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 

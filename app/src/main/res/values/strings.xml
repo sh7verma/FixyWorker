@@ -12,7 +12,7 @@
     <string name="new_version">A newer version of String Messenger is available would you like to update?</string>
     <string name="cannot_connect_server">Cannot connect to server</string>
     <string name="error">Something went wrong!</string>
-    <string name="internet">Internet connection not available!</string>
+    <string name="internet">Internet connection is not available!</string>
     <string name="success">200</string>
     <string name="invalid_access_token">420</string>
     <string name="someone_logedin_some_other_device">Someone has logged in from same account from other device.</string>
@@ -223,6 +223,11 @@
     <string name="enter_your_price">Enter your price</string>
     <string name="select_percentage_validation">Select percentage</string>
     <string name="select_period">Select Period</string>
+    <string name="oopss">Oopss..</string>
+    <string name="hureyy">Hurreyy!</string>
+    <string name="got_internet">Got the Internet. Enjoy!</string>
+    <string name="new_incoming_request">New Incoming Request</string>
+    <string name="click_to_see_full_detail">Click to see full detail</string>
 
 
 </resources>

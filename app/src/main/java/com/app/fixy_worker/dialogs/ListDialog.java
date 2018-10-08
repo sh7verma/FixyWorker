@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.app.fixy_worker.R;
@@ -59,6 +60,11 @@ public class ListDialog extends BaseDialog {
 
         clicks.click(pos);
         onBackPressed();
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 
     public interface dialogClick{

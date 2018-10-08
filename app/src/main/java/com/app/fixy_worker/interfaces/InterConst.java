@@ -62,6 +62,12 @@ public interface InterConst {
     String REFFERAL_COIN = "refferal_coin";
     String NEW_USER_COIN = "new_user_coin";
     String PASS_CONGRATULATION = "PASS_CONGRATULATION";
+    int CONNECT = 0;
+    int DISCONNECT = 1;
+    int SHOW = 1;
+    int DISMISS = 0;
+    String INCOMING_BROADCAST = "incoming";
+    String NEW_REQUEST_BROADCAST = "new_request_broadcast";
 
     public enum WEBVIEW{
         TERM_CONDITION;
