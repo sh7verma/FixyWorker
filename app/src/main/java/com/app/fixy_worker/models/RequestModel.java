@@ -1,8 +1,12 @@
 package com.app.fixy_worker.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class RequestModel {
+public class RequestModel implements Parcelable {
 
     /**
      * response : [{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""},{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""}]
@@ -23,7 +27,7 @@ public class RequestModel {
     }
 
     private String message;
-    private String code;
+    private int code;
     private List<ResponseBean> response;
 
     public String getMessage() {
@@ -34,11 +38,11 @@ public class RequestModel {
         this.message = message;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -50,7 +54,7 @@ public class RequestModel {
         this.response = response;
     }
 
-    public static class ResponseBean {
+    public static class ResponseBean implements Parcelable {
         /**
          * id : 9
          * worker_id : 6
@@ -81,7 +85,7 @@ public class RequestModel {
         private String original_price;
         private String offer_percentage;
         private String offer_period;
-        private Object offer_description;
+        private String offer_description;
         private String category_name;
         private String category_pic;
         private String request_price;
@@ -145,11 +149,11 @@ public class RequestModel {
             this.offer_period = offer_period;
         }
 
-        public Object getOffer_description() {
+        public String getOffer_description() {
             return offer_description;
         }
 
-        public void setOffer_description(Object offer_description) {
+        public void setOffer_description(String offer_description) {
             this.offer_description = offer_description;
         }
 
@@ -264,5 +268,108 @@ public class RequestModel {
         public void setProfile_pic(String profile_pic) {
             this.profile_pic = profile_pic;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(this.id);
+            dest.writeString(this.worker_id);
+            dest.writeString(this.user_id);
+            dest.writeString(this.original_price);
+            dest.writeString(this.offer_percentage);
+            dest.writeString(this.offer_period);
+            dest.writeString(this.offer_description);
+            dest.writeString(this.category_name);
+            dest.writeString(this.category_pic);
+            dest.writeString(this.request_price);
+            dest.writeString(this.fullname);
+            dest.writeString(this.address);
+            dest.writeString(this.additional_notes);
+            dest.writeString(this.request_status);
+            dest.writeString(this.email);
+            dest.writeString(this.request_otp);
+            dest.writeString(this.accepted_time);
+            dest.writeString(this.completed_time);
+            dest.writeString(this.created_at);
+            dest.writeString(this.average_rating);
+            dest.writeString(this.profile_pic);
+        }
+
+        public ResponseBean() {
+        }
+
+        protected ResponseBean(Parcel in) {
+            this.id = in.readString();
+            this.worker_id = in.readString();
+            this.user_id = in.readString();
+            this.original_price = in.readString();
+            this.offer_percentage = in.readString();
+            this.offer_period = in.readString();
+            this.offer_description = in.readString();
+            this.category_name = in.readString();
+            this.category_pic = in.readString();
+            this.request_price = in.readString();
+            this.fullname = in.readString();
+            this.address = in.readString();
+            this.additional_notes = in.readString();
+            this.request_status = in.readString();
+            this.email = in.readString();
+            this.request_otp = in.readString();
+            this.accepted_time = in.readString();
+            this.completed_time = in.readString();
+            this.created_at = in.readString();
+            this.average_rating = in.readString();
+            this.profile_pic = in.readString();
+        }
+
+        public static final Creator<ResponseBean> CREATOR = new Creator<ResponseBean>() {
+            @Override
+            public ResponseBean createFromParcel(Parcel source) {
+                return new ResponseBean(source);
+            }
+
+            @Override
+            public ResponseBean[] newArray(int size) {
+                return new ResponseBean[size];
+            }
+        };
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.message);
+        dest.writeInt(this.code);
+        dest.writeList(this.response);
+    }
+
+    public RequestModel() {
+    }
+
+    protected RequestModel(Parcel in) {
+        this.message = in.readString();
+        this.code = in.readInt();
+        this.response = new ArrayList<ResponseBean>();
+        in.readList(this.response, ResponseBean.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<RequestModel> CREATOR = new Parcelable.Creator<RequestModel>() {
+        @Override
+        public RequestModel createFromParcel(Parcel source) {
+            return new RequestModel(source);
+        }
+
+        @Override
+        public RequestModel[] newArray(int size) {
+            return new RequestModel[size];
+        }
+    };
 }

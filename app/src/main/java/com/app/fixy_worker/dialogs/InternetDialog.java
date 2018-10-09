@@ -2,11 +2,8 @@ package com.app.fixy_worker.dialogs;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
@@ -15,16 +12,13 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.activities.BaseActivity;
 import com.app.fixy_worker.interfaces.InterConst;
-import com.app.fixy_worker.interfaces.InterfacesCall;
-import com.app.fixy_worker.models.CItyModel;
-
 
 import butterknife.BindView;
-import butterknife.OnClick;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class InternetDialog extends BaseActivity {
 
@@ -60,17 +54,20 @@ public class InternetDialog extends BaseActivity {
 
     @Override
     protected int getContentView() {
+
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         WindowManager.LayoutParams wmlp = this.getWindow().getAttributes();
         wmlp.gravity = Gravity.TOP;
         wmlp.windowAnimations = R.style.dilog_slide_top_to_down;
-//        getWindow().setLayout(mWidth, (int) mHeight);
         return R.layout.activity_internet_dialog;
     }
 
     @Override
     protected void initUI() {
+        getWindow().setLayout(mWidth, (int) mHeight);
+//        getWindow().setLayout(MATCH_PARENT, MATCH_PARENT);
     }
 
     @Override

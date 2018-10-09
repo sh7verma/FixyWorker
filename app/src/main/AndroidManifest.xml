@@ -104,7 +104,7 @@
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.ShowAddressActivity" />
         <activity android:name=".activities.NewRequestDetailActivity" />
-        <activity android:name=".activities.PendingDetailActivity" />
+        <activity android:name=".activities.ScheduleDetailActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.SearchServiceActivity" />
         <activity android:name=".activities.PostNewAddActivity" />

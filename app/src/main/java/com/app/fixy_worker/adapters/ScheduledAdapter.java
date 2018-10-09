@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -54,7 +53,7 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
             }
         });
 
-
+/*
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +64,7 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
                 setView(holder, start);
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -155,7 +154,6 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         View viewCircle1, viewCircle2, viewCircle3, viewCircle4;
-        Button btn;
         ProgressBar vprogressbar;
         ScheduledAdapter.ViewBooking viewBooking = new ScheduledAdapter.ViewBooking();
 
@@ -166,7 +164,6 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
             viewCircle2 = itemView.findViewById(R.id.view_circle2);
             viewCircle3 = itemView.findViewById(R.id.view_circle3);
             viewCircle4 = itemView.findViewById(R.id.view_circle4);
-            btn = itemView.findViewById(R.id.btn);
             vprogressbar = itemView.findViewById(R.id.vprogressbar);
 
             viewBooking.llRequest.setVisibility(View.VISIBLE);

@@ -15,6 +15,9 @@ import com.app.fixy_worker.models.RequestModel;
 import com.app.fixy_worker.network.ApiInterface;
 import com.app.fixy_worker.network.RetrofitClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +34,7 @@ public class NewRequestFragment extends BaseFragment   {
 
 
     NewRequestAdapter mAdapter;
+    private List<RequestModel.ResponseBean> mList  = new ArrayList<>();
 
     public static NewRequestFragment newInstance(Context context) {
         fragment = new NewRequestFragment();
@@ -50,7 +54,7 @@ public class NewRequestFragment extends BaseFragment   {
         rvPast.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         rvPast.setNestedScrollingEnabled(false);
 
-        mAdapter = new NewRequestAdapter(mContext,click);
+        mAdapter = new NewRequestAdapter(mContext,click,mList);
         rvPast.setAdapter(mAdapter);
     }
 
@@ -68,6 +72,7 @@ public class NewRequestFragment extends BaseFragment   {
         @Override
         public void clickIndex(int pos) {
             Intent intent = new Intent(getActivity(), NewRequestDetailActivity.class);
+            intent.putExtra(InterConst.EXTRA,mList.get(pos));
             startActivity(intent);
             getActivity().overridePendingTransition(R.anim.in,R.anim.out);
         }
@@ -75,7 +80,7 @@ public class NewRequestFragment extends BaseFragment   {
 
     public void updateAdater(){
 
-        mAdapter = new NewRequestAdapter(mContext,click);
+        mAdapter = new NewRequestAdapter(mContext,click, mList);
         rvPast.setAdapter(mAdapter);
         hitIncomingRequest();
     }
@@ -87,7 +92,11 @@ public class NewRequestFragment extends BaseFragment   {
         call.enqueue(new Callback<RequestModel>() {
             @Override
             public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
+                if (response.body().getResponse().size()>0 && response.body().getCode() == InterConst.SUCCESS_RESULT){
 
+                    mList = response.body().getResponse();
+                    mAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

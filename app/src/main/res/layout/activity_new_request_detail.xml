@@ -34,6 +34,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/img_service"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:background="@drawable/black_round" />
@@ -46,6 +47,7 @@
                     android:orientation="vertical">
 
                     <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_service_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Body Massage"
@@ -53,6 +55,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_service_charges"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20 coins"
@@ -61,6 +64,7 @@
                 </LinearLayout>
 
                 <com.app.fixy_worker.customviews.RegularTextView
+                    android:id="@+id/txt_service_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ID: 1293K46NH3"
@@ -83,6 +87,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/img_user_img"
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/black_round" />
@@ -95,6 +100,7 @@
                     android:orientation="vertical">
 
                     <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Alex Martin"
@@ -102,6 +108,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/txt_user_rating"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -112,6 +119,7 @@
                 </LinearLayout>
 
                 <com.app.fixy_worker.customviews.BoldTextView
+                    android:id="@+id/txt_otp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -138,11 +146,12 @@
                 android:background="@mipmap/ic_line2" />
 
             <com.app.fixy_worker.customviews.RegularTextView
+                android:id="@+id/txt_user_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/ic_location_marker"
+                android:drawableLeft="@drawable/ic_location"
                 android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
                 android:text="@string/Lorem_Ipsum_large"
@@ -162,34 +171,19 @@
                     android:id="@+id/view_circle1"
                     android:layout_width="@dimen/_13sdp"
                     android:layout_height="@dimen/_13sdp"
-                    android:background="@drawable/circle_grey" />
+                    android:background="@drawable/pink_oval" />
 
                 <com.app.fixy_worker.customviews.RegularTextView
+                    android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:text="12 Aug at 6:00 pm"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_11ssp" />
 
-                <LinearLayout
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/grey_round_stroke">
 
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingLeft="@dimen/_6sdp"
-                        android:paddingRight="@dimen/_6sdp"
-                        android:paddingTop="@dimen/_3sdp"
-                        android:text="22:10 pm"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_12ssp" />
-                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -211,6 +205,7 @@
                 android:textSize="@dimen/_10ssp" />
 
             <com.app.fixy_worker.customviews.RegularTextView
+                android:id="@+id/txt_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -228,6 +223,42 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/grey_line" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_5sdp"
+                    android:background="@drawable/grey_oval_stroke"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_timer"/>
+
+                    <com.app.fixy_worker.customviews.SemiboldTextView
+                        android:id="@+id/txt_time_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:text="72:32:32"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@mipmap/ic_info"/>
+                </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -238,7 +269,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/pink_bottom_round">
+        android:background="@color/app_color">
 
         <com.app.fixy_worker.customviews.SemiboldTextView
             android:id="@+id/txt_decline"

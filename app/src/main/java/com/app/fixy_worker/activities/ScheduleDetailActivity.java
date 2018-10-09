@@ -10,7 +10,7 @@ import com.app.fixy_worker.R;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PendingDetailActivity extends BaseActivity {
+public class ScheduleDetailActivity extends BaseActivity {
 
 
     @BindView(R.id.ll_main)
@@ -21,7 +21,7 @@ public class PendingDetailActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_pending_detail;
+        return R.layout.activity_schedule_detail;
     }
 
     @Override
