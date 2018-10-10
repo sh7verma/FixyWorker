@@ -1,6 +1,7 @@
 package com.app.fixy_worker.activities;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.RoundedTransformation;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.models.RequestModel;
+import com.app.fixy_worker.utils.Consts;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -52,6 +54,11 @@ public class NewRequestDetailActivity extends BaseActivity {
 
     int serWidth, serHeight, radius;
     int userWidth, userHeight;
+
+    private Handler timeHandler = new Handler();
+    private Runnable timeRunnable;
+    private long timeMili;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_new_request_detail;
@@ -77,14 +84,14 @@ public class NewRequestDetailActivity extends BaseActivity {
     @Override
     protected void initListener() {
         txtServiceName.setText(mData.getCategory_name());
-        txtServiceCharges.setText(mData.getRequest_price());
-        txtServiceId.setText(mData.getId());
+        txtServiceCharges.setText(mData.getRequest_price()+" "+mContext.getString(R.string.coins));
+        txtServiceId.setText(mContext.getString(R.string.id_)+" "+mData.getId());
         txtUserName.setText(mData.getFullname());
         txtTime.setText(mData.getCreated_at());
         txtUserLocation.setText(mData.getAddress());
-        txtOtp.setText(mData.getRequest_otp());
-        txtDescription.setText(mData.getOffer_description());
-//        userRating.setProgress(Integer.parseInt(mData.getAverage_rating()));
+        txtOtp.setText(mContext.getString(R.string.otp)+" "+mData.getRequest_otp());
+        txtDescription.setText(mData.getAdditional_notes());
+        userRating.setRating(Float.parseFloat(mData.getAverage_rating()));
         if (!TextUtils.isEmpty(mData.getCategory_pic())) {
             Picasso.get()
                     .load(mData.getCategory_pic())
@@ -99,6 +106,20 @@ public class NewRequestDetailActivity extends BaseActivity {
                     .resize(userWidth, userHeight)
                     .into(imgUserImg);
         }
+        setHandler();
+    }
+    private void setHandler() {
+        timeHandler.removeCallbacks(timeRunnable);
+        timeRunnable = new Runnable() {
+            @Override
+            public void run() {
+                timeMili = Consts.differnceServerToCurrentTime("2018-10-11 07:10:59");
+                txtTimeCounter.setText(Consts.convertMilisecondtoTime(timeMili));
+
+                timeHandler.postDelayed(timeRunnable,1000);
+            }
+        };
+        timeHandler.postDelayed(timeRunnable,1000);
     }
 
     @Override

@@ -100,6 +100,15 @@ public class RequestModel implements Parcelable {
         private String created_at;
         private String average_rating;
         private String profile_pic;
+        private String remainingTime;
+
+        public String getRemainingTime() {
+            return remainingTime;
+        }
+
+        public void setRemainingTime(String remainingTime) {
+            this.remainingTime = remainingTime;
+        }
 
         public String getId() {
             return id;

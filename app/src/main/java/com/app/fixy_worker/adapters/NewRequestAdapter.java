@@ -1,6 +1,8 @@
 package com.app.fixy_worker.adapters;
 
 import android.content.Context;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -16,6 +18,7 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.RoundedTransformation;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.RequestModel;
+import com.app.fixy_worker.utils.Consts;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,19 +31,22 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
 
     private final Context mContext;
 
-    InterfacesCall.IndexClick click;
+    InterfacesCall.NewRequest click;
     List<RequestModel.ResponseBean> mDataList;
     int serWidth, serHeight, radius;
     int userWidth, userHeight;
+    CountDownTimer timer ;
+    private Handler timeHandler = new Handler();
+    private Runnable timeRunnable;
 
-    public NewRequestAdapter(Context con, InterfacesCall.IndexClick click, List<RequestModel.ResponseBean> mList) {
+    public NewRequestAdapter(Context con, InterfacesCall.NewRequest click, List<RequestModel.ResponseBean> mList) {
         mContext = con;
         this.click = click;
         mDataList = mList;
         serWidth = (int) mContext.getResources().getDimension(R.dimen._40sdp);
         serHeight = (int) mContext.getResources().getDimension(R.dimen._40sdp);
-        userWidth = (int) mContext.getResources().getDimension(R.dimen._30sdp);
-        userHeight = (int) mContext.getResources().getDimension(R.dimen._30sdp);
+        userWidth = (int) mContext.getResources().getDimension(R.dimen._35sdp);
+        userHeight = (int) mContext.getResources().getDimension(R.dimen._40sdp);
         radius = (int) mContext.getResources().getDimension(R.dimen._10sdp);
     }
 
@@ -55,12 +61,13 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.txtServiceName.setText(mDataList.get(position).getCategory_name());
-        holder.txtServiceCharges.setText(mDataList.get(position).getRequest_price());
-        holder.txtServiceId.setText(mDataList.get(position).getId());
+        holder.txtServiceCharges.setText(mDataList.get(position).getRequest_price()+" "+mContext.getString(R.string.coins));
+        holder.txtServiceId.setText(mContext.getString(R.string.id_)+" "+mDataList.get(position).getId());
         holder.txtUserName.setText(mDataList.get(position).getFullname());
-        holder.txtTime.setText(mDataList.get(position).getCreated_at());
+        holder.txtTime.setText(Consts.getDateTime(mDataList.get(position).getCreated_at()));
         holder.txtUserLocation.setText(mDataList.get(position).getAddress());
-//        holder.userRating.setProgress(Integer.parseInt(mDataList.get(position).getAverage_rating()));
+        holder.userRating.setRating(Float.parseFloat(mDataList.get(position).getAverage_rating()));
+        holder.txtTimeCounter.setText(mDataList.get(position).getRemainingTime());
         if (!TextUtils.isEmpty(mDataList.get(position).getCategory_pic())) {
             Picasso.get()
                     .load(mDataList.get(position).getCategory_pic())
@@ -79,6 +86,18 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
             @Override
             public void onClick(View view) {
                 click.clickIndex(position);
+            }
+        });
+        holder.txtAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                click.Accept(position);
+            }
+        });
+        holder.txtDecline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                click.Decline(position);
             }
         });
 
@@ -114,14 +133,20 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
         TextView txtTime;
         @BindView(R.id.txt_time_counter)
         TextView txtTimeCounter;
+        @BindView(R.id.txt_accept)
+        TextView txtAccept;
+        @BindView(R.id.txt_decline)
+        TextView txtDecline;
+
+        long timeMili = 0;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-//            runProgressbar();
-
-
+//
         }
 
     }
+
+
 }

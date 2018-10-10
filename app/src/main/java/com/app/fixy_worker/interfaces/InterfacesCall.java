@@ -4,8 +4,6 @@ package com.app.fixy_worker.interfaces;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.maps.GoogleMap;
 
-import java.util.ArrayList;
-
 public class InterfacesCall {
 
     public interface LocationInterface {
@@ -21,6 +19,11 @@ public class InterfacesCall {
 
     public  interface IndexClick{
         void clickIndex( int pos);
+    }
+    public  interface NewRequest{
+        void clickIndex( int pos);
+        void Accept( int pos);
+        void Decline( int pos);
     }
     public  interface Callback{
         void selected( int pos);

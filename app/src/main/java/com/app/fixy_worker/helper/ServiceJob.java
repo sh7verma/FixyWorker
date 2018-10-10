@@ -9,9 +9,13 @@ import android.os.Build;
 
 import com.app.fixy_worker.service.JobDispatcherService;
 import com.app.fixy_worker.service.JobServiceSchedule;
+import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 
 import static android.content.Context.JOB_SCHEDULER_SERVICE;
 
@@ -57,7 +61,13 @@ public class ServiceJob {
              dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
             Job myJob = dispatcher.newJobBuilder()
                     .setService(JobServiceSchedule.class) // the JobServiceSchedule that will be called
-                    .setTag(JOB_NAME)        // uniquely identifies the job
+                    .setTag(JOB_NAME)
+                    .setLifetime(Lifetime.FOREVER)
+                    .setRecurring(true)
+                    .setReplaceCurrent(false)
+                    .setConstraints(Constraint.ON_ANY_NETWORK) // set network availability constraint
+                    .setTrigger(Trigger.executionWindow(0,10))
+                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                     .build();
 
             dispatcher.mustSchedule(myJob);

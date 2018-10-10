@@ -68,11 +68,11 @@ public class LandingActivity extends BaseActivity {
     @Override
     protected void onCreateStuff() {
 
-        adapter = new LandingPagerAdapter(getSupportFragmentManager(),   mContext);
+        adapter = new LandingPagerAdapter(getSupportFragmentManager(), mContext);
         viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(adapter);
         viewPager.disableScroll(true);
-        viewPager.setCurrentItem(0,true);
+        viewPager.setCurrentItem(0, true);
         loadFragment(Consts.FRAG_HOME);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -85,19 +85,19 @@ public class LandingActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         loadFragment(Consts.FRAG_HOME);
-                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
+                        utils.setInt(InterConst.ON_BOOKING, InterConst.ZERO);
                         break;
                     case 1:
                         loadFragment(Consts.FRAG_BOOKINGS);
-                        utils.setInt(InterConst.ON_BOOKING,InterConst.ONE);
+                        utils.setInt(InterConst.ON_BOOKING, InterConst.ONE);
                         break;
                     case 2:
                         loadFragment(Consts.FRAG_COINS);
-                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
+                        utils.setInt(InterConst.ON_BOOKING, InterConst.ZERO);
                         break;
                     case 3:
                         loadFragment(Consts.FRAG_PROFILE);
-                        utils.setInt(InterConst.ON_BOOKING,InterConst.ZERO);
+                        utils.setInt(InterConst.ON_BOOKING, InterConst.ZERO);
                         break;
                 }
             }
@@ -112,7 +112,7 @@ public class LandingActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST)){
+        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST)) {
             viewPager.setCurrentItem(1);
             // call in myRequestFragment
             sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
@@ -184,19 +184,21 @@ public class LandingActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home:
-                viewPager.setCurrentItem(0,true);
+                viewPager.setCurrentItem(0, true);
 
                 break;
             case R.id.ll_bookings:
-                viewPager.setCurrentItem(1,true);
+                viewPager.setCurrentItem(1, true);
+                sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+
 
                 break;
             case R.id.ll_coins:
-                viewPager.setCurrentItem(2,true);
+                viewPager.setCurrentItem(2, true);
 
                 break;
             case R.id.ll_profile:
-                viewPager.setCurrentItem(3,true);
+                viewPager.setCurrentItem(3, true);
 
                 break;
 

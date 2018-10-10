@@ -233,6 +233,7 @@
     <string name="decline">Decline</string>
     <string name="accept">Accept</string>
     <string name="additional_notes">Addititional Notes</string>
+    <string name="id_">ID:</string>
 
 
 </resources>

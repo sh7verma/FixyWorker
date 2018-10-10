@@ -3,13 +3,17 @@ package com.app.fixy_worker.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class Consts {
 
@@ -101,6 +105,81 @@ public class Consts {
             e.printStackTrace();
         }
         return localTime;
+    }
+    public static String getDateTime(String timeServer) {
+        long utcTime = 0;
+        String dateValue = "";
+        try {
+
+            SimpleDateFormat serverFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            serverFormat.setTimeZone(TimeZone.getDefault());
+            Date value = serverFormat.parse(timeServer);
+
+//            DateFormat date = new SimpleDateFormat("dd-MMM-yyyy");
+            DateFormat date = new SimpleDateFormat("dd-MMM");
+//            date.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+            DateFormat time = new SimpleDateFormat(" hh:mm a");
+//            time.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+            Calendar todayDate = Calendar.getInstance();
+            Calendar cal1 = Calendar.getInstance();
+            Calendar cal2 = Calendar.getInstance();
+            cal1.setTime(date.parse(date.format(value)));
+            cal2.setTime(date.parse(date.format(todayDate.getTime())));
+
+            dateValue = date.format(value)+" at "+time.format(value);
+           /* if(cal1.after(cal2) || cal1.before(cal2)) {
+                dateValue = date.format(value)+","+time.format(value);
+                // In between
+            }
+            else {
+
+                dateValue = "Today, "+time.format(value);
+            }*/
+
+            Log.d("get trime","utc time "+dateValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return dateValue;
+    }
+
+    public static long getMilisecond(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");
+        try{
+            //formatting the dateString to convert it into a Date
+            Date date = sdf.parse(time);
+            return date.getTime();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public static String convertMilisecondtoTime(long millis) {
+        return String.format("%02d:%02d:%02d",
+                TimeUnit.MILLISECONDS.toHours(millis),
+                TimeUnit.MILLISECONDS.toMinutes(millis) -
+                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), // The change is in this line
+                TimeUnit.MILLISECONDS.toSeconds(millis) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+
+    }
+    public static long differnceServerToCurrentTime(String time) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");
+        Date expiryTIme = null;
+        try {
+            expiryTIme = dateFormat.parse(time);
+            Calendar today = Calendar.getInstance();
+            Date presentDate = today.getTime();
+            long diffInMs = expiryTIme.getTime() - presentDate.getTime();
+//             long leftTime= createdDate.getTime() - diffInMs;
+             return diffInMs;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
   
