@@ -32,6 +32,7 @@ public class NewRequestService extends Service {
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
+
             handler.postDelayed(runnable,RECALL);
             hitIncomingRequest();
         }
@@ -68,31 +69,33 @@ public class NewRequestService extends Service {
         return START_STICKY;
     }
     public void hitIncomingRequest() {
-        ApiInterface apiInterface = RetrofitClient.getInstance();
+        if (utils.getBoolean(Consts.FOURGROUND,false)) {
+            ApiInterface apiInterface = RetrofitClient.getInstance();
 
-        Call<RequestModel> call = apiInterface.incomming_request(utils.getString(InterConst.ACCESS_TOKEN, ""),
-                utils.getString(InterConst.DEVICE_ID, ""));
-        call.enqueue(new Callback<RequestModel>() {
-            @Override
-            public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
+            Call<RequestModel> call = apiInterface.incomming_request(utils.getString(InterConst.ACCESS_TOKEN, ""),
+                    utils.getString(InterConst.DEVICE_ID, ""));
+            call.enqueue(new Callback<RequestModel>() {
+                @Override
+                public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
 
-                if(utils.getBoolean(Consts.FOURGROUND,false) &&
-                        utils.getInt(InterConst.ON_BOOKING,InterConst.ZERO) == InterConst.ZERO){
+                    if (utils.getBoolean(Consts.FOURGROUND, false) &&
+                            utils.getInt(InterConst.ON_BOOKING, InterConst.ZERO) == InterConst.ZERO) {
 
-                    Intent intent  = new Intent(InterConst.INCOMING_BROADCAST);
-                    intent.putExtra(InterConst.EXTRA,InterConst.SHOW);
-                    // call broadcast of NewIncomingPopoupActivity
-                    if (response.body().getResponse().size()>0){
-                        sendBroadcast(intent);
+                        Intent intent = new Intent(InterConst.INCOMING_BROADCAST);
+                        intent.putExtra(InterConst.EXTRA, InterConst.SHOW);
+                        // call broadcast of NewIncomingPopoupActivity
+                        if (response.body().getResponse().size() > 0) {
+                            sendBroadcast(intent);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<RequestModel> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
+                @Override
+                public void onFailure(Call<RequestModel> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+        }
     }
 
 

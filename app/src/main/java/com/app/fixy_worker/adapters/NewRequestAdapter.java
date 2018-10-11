@@ -103,6 +103,10 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
 
 
     }
+    public void updateAdapter(List<RequestModel.ResponseBean> mList){
+        mDataList = mList;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

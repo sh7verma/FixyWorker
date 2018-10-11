@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class Consts {
 
     public final static String FOURGROUND = "fourground";
+    public final static String KILL = "killfkhfksas";
     public final static String REFRESH_TOKEN = "refreshedToken";
     public static final String FILE_NAME = "file_name";
     public static final String OPEN_FROM = "open_from";
@@ -175,7 +176,9 @@ public class Consts {
             Date presentDate = today.getTime();
             long diffInMs = expiryTIme.getTime() - presentDate.getTime();
 //             long leftTime= createdDate.getTime() - diffInMs;
-             return diffInMs;
+            if (presentDate.getTime() < expiryTIme.getTime()){
+                return diffInMs;
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }

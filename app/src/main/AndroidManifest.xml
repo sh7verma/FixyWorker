@@ -129,7 +129,8 @@
             android:name=".service.JobDispatcherService"
             android:label="job_service"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service android:name=".service.NewRequestService"/>
+        <service android:name=".service.NewRequestService"
+            android:stopWithTask="false"/>
 
         <receiver android:name=".receivers.InternetReceiver">
             <intent-filter>

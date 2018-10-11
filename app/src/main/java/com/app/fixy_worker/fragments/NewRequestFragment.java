@@ -131,10 +131,9 @@ public class NewRequestFragment extends BaseFragment   {
                 if (response.body().getResponse().size()>0 && response.body().getCode() == InterConst.SUCCESS_RESULT){
 
                     mList = response.body().getResponse();
-
+                    mAdapter.updateAdapter(mList);
 //                    mAdapter = new NewRequestAdapter(mContext, click, mList);
 //                    rvPast.setAdapter(mAdapter);
-                    mAdapter.notifyDataSetChanged();
 
                     setHandler();
                 }

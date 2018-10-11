@@ -17,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Foreground implements Application.ActivityLifecycleCallbacks {
     public static final long CHECK_DELAY = 500;
     public static final String TAG = Foreground.class.getName();
-    SharedPreferences sp;
+    public static SharedPreferences sp;
     static Context mContext;
 
     public interface Listener {
@@ -46,6 +46,8 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
      */
     @SuppressLint("NewApi")
     public static Foreground init(Application application) {
+
+        sp = application.getSharedPreferences(application.getPackageName(),Context.MODE_PRIVATE);
         if (instance == null) {
             instance = new Foreground();
             application.registerActivityLifecycleCallbacks(instance);
@@ -101,7 +103,6 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityResumed(Activity activity) {
-        sp = activity.getSharedPreferences(activity.getPackageName(),Context.MODE_PRIVATE);
         mContext = activity;
 
         paused = false;
@@ -167,6 +168,7 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityStarted(Activity activity) {
+        setkill(false);
     }
 
     @Override
@@ -179,6 +181,7 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityDestroyed(Activity activity) {
+        setkill(true);
     }
 
     void setOnline() {
@@ -186,10 +189,12 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
             NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancelAll();
         }
-        sp.edit().putBoolean(Consts.FOURGROUND, true).commit();
     }
 
     void setOffline() {
         sp.edit().putBoolean(Consts.FOURGROUND, false).commit();
+    }
+    void setkill(boolean flag) {
+        sp.edit().putBoolean(Consts.KILL, flag).apply();
     }
 }
