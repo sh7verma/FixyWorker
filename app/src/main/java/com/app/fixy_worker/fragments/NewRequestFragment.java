@@ -73,7 +73,7 @@ public class NewRequestFragment extends BaseFragment   {
                 for (int pos = 0;pos<mList.size();pos++) {
 
 //                    timeMili = Consts.differnceServerToCurrentTime(mList.get(pos).getCreated_at());
-                    timeMili = Consts.differnceServerToCurrentTime("2018-10-11 07:10:59");
+                    timeMili = Consts.differnceServerToCurrentTime("2018-10-12 07:10:59");
                     mList.get(pos).setRemainingTime(Consts.convertMilisecondtoTime(timeMili));
                     mAdapter.notifyDataSetChanged();
                 }
@@ -132,8 +132,9 @@ public class NewRequestFragment extends BaseFragment   {
 
                     mList = response.body().getResponse();
 
-                    mAdapter = new NewRequestAdapter(mContext, click, mList);
-                    rvPast.setAdapter(mAdapter);
+//                    mAdapter = new NewRequestAdapter(mContext, click, mList);
+//                    rvPast.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
 
                     setHandler();
                 }

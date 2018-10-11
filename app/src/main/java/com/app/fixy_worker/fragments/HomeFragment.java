@@ -19,7 +19,6 @@ import com.app.fixy_worker.activities.WorkersAdsListActivity;
 import com.app.fixy_worker.adapters.MyServicesAdapter;
 import com.app.fixy_worker.adapters.WorkersAdsAdapter;
 import com.app.fixy_worker.dialogs.SelectCityDialog;
-import com.app.fixy_worker.helper.ServiceJob;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.models.CItyModel;
@@ -103,7 +102,6 @@ public class HomeFragment extends BaseFragment{
         txtViewAllServices.setOnClickListener(this);
         txtViewAllAds.setOnClickListener(this);
         txtCity.setOnClickListener(this);
-        ServiceJob.scheduleJob(getContext());
     }
 
     @Override

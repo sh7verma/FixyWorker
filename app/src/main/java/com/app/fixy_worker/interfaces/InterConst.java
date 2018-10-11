@@ -10,6 +10,9 @@ public interface InterConst {
     public int ONE = 1;
     public int TWO = 2;
     public String NUMBER_REGISTERED = "number_registered";
+    public String STARTFOREGROUND_ACTION = "STARTFOREGROUND_ACTION";
+    public String STOPFOREGROUND_ACTION = "STOPFOREGROUND_ACTION";
+    public String MAIN_ACTION = "MAIN_ACTION";
     public String EXTRA = "extra";
     public String EXTRA2 = "extra2";
     String READ_PHONE_STATE_PERMISSION= "phone_state";
@@ -69,6 +72,7 @@ public interface InterConst {
     String INCOMING_BROADCAST = "incoming";
     String NEW_REQUEST_BROADCAST = "new_request_broadcast";
     String ON_BOOKING = "onbooking";
+    String SERVICE_RUNNING = "service_running";
 
     public enum WEBVIEW{
         TERM_CONDITION;

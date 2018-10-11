@@ -1,7 +1,11 @@
 package com.app.fixy_worker.activities;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +16,8 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.LandingPagerAdapter;
 import com.app.fixy_worker.customviews.CustomViewPager;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.service.JobDispatcherService;
+import com.app.fixy_worker.service.NewRequestService;
 import com.app.fixy_worker.utils.Consts;
 
 import butterknife.BindView;
@@ -107,6 +113,7 @@ public class LandingActivity extends BaseActivity {
 
             }
         });
+        callService();
     }
 
     @Override
@@ -204,5 +211,22 @@ public class LandingActivity extends BaseActivity {
 
         }
 
+    }
+    void callService() {
+// get job api service
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            ComponentName jobService = new ComponentName(getPackageName(), JobDispatcherService.class.getName());
+            JobInfo jobInfo;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                jobInfo = new JobInfo.Builder(1, jobService).setMinimumLatency(5000).build();
+            } else {
+                jobInfo = new JobInfo.Builder(1, jobService).setPeriodic(5000).build();
+            }
+            jobScheduler.schedule(jobInfo);
+        } else {
+                startService(new Intent(getApplicationContext(), NewRequestService.class));
+
+        }
     }
 }
