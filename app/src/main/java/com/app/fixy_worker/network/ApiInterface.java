@@ -8,8 +8,6 @@ import com.app.fixy_worker.models.LoginModel;
 import com.app.fixy_worker.models.NearbyPlaceModel;
 import com.app.fixy_worker.models.RequestModel;
 
-import java.util.List;
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -105,6 +103,15 @@ public interface ApiInterface {
     @POST("requests/incomming_request")
     Call<RequestModel> incomming_request(@Field("access_token") String access_token,
                                          @Field("device_token") String device_token);
+
+    @FormUrlEncoded
+    @POST("requests/update_request_status")
+    Call<RequestModel> update_request_status(@Field("access_token") String access_token,
+                                         @Field("device_token") String device_token,
+                                         @Field("request_id") String request_id,
+                                         @Field("deduct_worker_coins") String deduct_worker_coins,
+                                         @Field("onthe_way_time") String onthe_way_time,
+                                         @Field("request_status") String request_status);
 
 
 //    @FormUrlEncoded

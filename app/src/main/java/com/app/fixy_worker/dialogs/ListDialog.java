@@ -71,6 +71,10 @@ public class ListDialog extends BaseDialog {
         void click(int pos);
     }
 
+    public interface  CallBack{
+        void click(String time);
+    }
+
 
 
 }

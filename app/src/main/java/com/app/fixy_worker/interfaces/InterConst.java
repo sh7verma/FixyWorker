@@ -73,6 +73,7 @@ public interface InterConst {
     String NEW_REQUEST_BROADCAST = "new_request_broadcast";
     String ON_BOOKING = "onbooking";
     String SERVICE_RUNNING = "service_running";
+    String ACCEPT_REQUEST = "1";
 
     public enum WEBVIEW{
         TERM_CONDITION;

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestModel implements Parcelable {
+public class RequestModel extends BaseModel implements Parcelable {
 
     /**
      * response : [{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""},{"id":"9","worker_id":"6","user_id":"16","original_price":"","offer_percentage":"","offer_period":"","offer_description":null,"category_name":"Beauty","category_pic":"","request_price":"1","fullname":"hsgh","address":"hsgh","additional_notes":"gfhf","request_status":"0","email":"dsfgsd@ds.fh","request_otp":"1111","accepted_time":"","completed_time":"","created_at":"2018-10-08 07:10:59","average_rating":"5","profile_pic":""}]
@@ -98,9 +98,18 @@ public class RequestModel implements Parcelable {
         private String accepted_time;
         private String completed_time;
         private String created_at;
+        private String expired_time;
         private String average_rating;
         private String profile_pic;
         private String remainingTime;
+
+        public String getExpired_time() {
+            return expired_time;
+        }
+
+        public void setExpired_time(String expired_time) {
+            this.expired_time = expired_time;
+        }
 
         public String getRemainingTime() {
             return remainingTime;
@@ -304,6 +313,7 @@ public class RequestModel implements Parcelable {
             dest.writeString(this.accepted_time);
             dest.writeString(this.completed_time);
             dest.writeString(this.created_at);
+            dest.writeString(this.expired_time);
             dest.writeString(this.average_rating);
             dest.writeString(this.profile_pic);
         }
@@ -331,6 +341,7 @@ public class RequestModel implements Parcelable {
             this.accepted_time = in.readString();
             this.completed_time = in.readString();
             this.created_at = in.readString();
+            this.expired_time = in.readString();
             this.average_rating = in.readString();
             this.profile_pic = in.readString();
         }

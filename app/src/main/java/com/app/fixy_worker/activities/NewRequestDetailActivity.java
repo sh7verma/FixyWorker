@@ -113,7 +113,7 @@ public class NewRequestDetailActivity extends BaseActivity {
         timeRunnable = new Runnable() {
             @Override
             public void run() {
-                timeMili = Consts.differnceServerToCurrentTime("2018-10-11 07:10:59");
+                timeMili = Consts.differnceServerToCurrentTime(mData.getExpired_time());
                 txtTimeCounter.setText(Consts.convertMilisecondtoTime(timeMili));
 
                 timeHandler.postDelayed(timeRunnable,1000);

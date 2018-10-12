@@ -189,6 +189,7 @@ public class Foreground implements Application.ActivityLifecycleCallbacks {
             NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancelAll();
         }
+        sp.edit().putBoolean(Consts.FOURGROUND, true).commit();
     }
 
     void setOffline() {

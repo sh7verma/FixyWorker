@@ -247,7 +247,7 @@
                         android:layout_weight="1"
                         android:paddingBottom="@dimen/_4sdp"
                         android:paddingTop="@dimen/_4sdp"
-                        android:text="72:32:32"
+                        android:text=""
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp" />

@@ -234,6 +234,9 @@
     <string name="accept">Accept</string>
     <string name="additional_notes">Addititional Notes</string>
     <string name="id_">ID:</string>
+    <string name="accept_job">Accept Job</string>
+    <string name="when_are_you_available_mess">When are you available?\nPlease select your preffered time.</string>
+    <string name="no_request">No Request</string>
 
 
 </resources>

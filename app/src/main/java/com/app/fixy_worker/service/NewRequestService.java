@@ -88,6 +88,11 @@ public class NewRequestService extends Service {
                             sendBroadcast(intent);
                         }
                     }
+                    else  if (utils.getBoolean(Consts.FOURGROUND, false) &&
+                            utils.getInt(InterConst.ON_BOOKING, InterConst.ZERO) == InterConst.ONE) {
+
+                        sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+                    }
                 }
 
                 @Override

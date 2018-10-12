@@ -9,4 +9,15 @@
         android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <com.app.fixy_worker.customviews.SemiboldTextView
+        android:id="@+id/txt_no_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/white_tint"
+        android:textAllCaps="true"
+        android:drawablePadding="@dimen/_10sdp"
+        android:drawableTop="@drawable/sad_face_white"
+        android:layout_centerInParent="true"
+        android:text="@string/no_request"/>
 </RelativeLayout>

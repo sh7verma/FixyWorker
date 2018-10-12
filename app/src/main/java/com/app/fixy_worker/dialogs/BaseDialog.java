@@ -10,12 +10,10 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.app.fixy_worker.R;
 import com.app.fixy_worker.interfaces.InterfacesCall;
 import com.app.fixy_worker.utils.Connection_Detector;
 import com.app.fixy_worker.utils.Utils;
@@ -38,7 +36,7 @@ public abstract class BaseDialog extends Dialog implements InterfacesCall.IndexC
         void click(int pos);
     }
 
-    protected BaseDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected  BaseDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
 

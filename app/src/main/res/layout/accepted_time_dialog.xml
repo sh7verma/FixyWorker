@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="bottom"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/white_top_round_solid"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+
+            <com.app.fixy_worker.customviews.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_15ssp"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/app_color"
+                android:text="@string/accept_job"/>
+            <ImageView
+                android:id="@+id/ic_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_close_job"/>
+        </RelativeLayout>
+
+        <com.app.fixy_worker.customviews.RegularTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/_13ssp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/when_are_you_available_mess"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1ssp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@color/grey_line"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_10sdp" >
+                <com.app.fixy_worker.customviews.FlowLayout
+                    android:id="@+id/flow_layout"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    app:flFlow="true"
+                    app:flChildSpacingForLastRow="@dimen/_10sdp"
+                    app:flChildSpacing="@dimen/_10sdp"
+                    app:flRowSpacing="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1ssp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@color/grey_line"/>
+
+        <com.app.fixy_worker.customviews.BoldTextView
+            android:id="@+id/txt_done"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@drawable/black_round"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:text="@string/accept_job"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+    </LinearLayout>
+</LinearLayout>
