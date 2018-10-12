@@ -3,6 +3,7 @@ package com.app.fixy_worker.fragments;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.MyPagerAdapter;
+import com.app.fixy_worker.interfaces.InterConst;
 
 import butterknife.BindView;
 
@@ -75,6 +77,20 @@ public class MyRequestFragment extends BaseFragment {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getContext().registerReceiver(requestBroadcast,new IntentFilter(InterConst.NEW_REQUEST_BROADCAST));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getContext().unregisterReceiver(requestBroadcast);
+    }
+
     @Override
     protected void initListeners() {
         txtBooked.setOnClickListener(this);
@@ -92,7 +108,7 @@ public class MyRequestFragment extends BaseFragment {
                break;
        }
     }
-
+    NewRequestBroadcast requestBroadcast = new NewRequestBroadcast();
     public static class NewRequestBroadcast extends BroadcastReceiver{
 
         @Override

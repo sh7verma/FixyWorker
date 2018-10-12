@@ -146,7 +146,6 @@
         <activity
             android:name=".activities.NewIncomingPopupActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
             android:theme="@style/TransparentActivity" />
 
         <receiver
@@ -162,7 +161,6 @@
             android:name=".fragments.MyRequestFragment$NewRequestBroadcast"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="new_request_broadcast" />
             </intent-filter>

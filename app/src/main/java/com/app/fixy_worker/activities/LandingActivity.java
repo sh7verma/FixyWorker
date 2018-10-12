@@ -5,6 +5,7 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.LandingPagerAdapter;
 import com.app.fixy_worker.customviews.CustomViewPager;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.receivers.IncomingRequestReceiver;
 import com.app.fixy_worker.service.JobDispatcherService;
 import com.app.fixy_worker.service.NewRequestService;
 import com.app.fixy_worker.utils.Consts;
@@ -65,6 +67,7 @@ public class LandingActivity extends BaseActivity {
     // Current fragment selected
     int mViewSelection = Consts.FRAG_NULL;
     private LandingPagerAdapter adapter;
+    IncomingRequestReceiver requestReceiver = new IncomingRequestReceiver();
 
     @Override
     protected int getContentView() {
@@ -212,6 +215,13 @@ public class LandingActivity extends BaseActivity {
         }
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(requestReceiver,new IntentFilter(InterConst.INCOMING_BROADCAST));
+    }
+
     void callService() {
 // get job api service
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
@@ -228,5 +238,11 @@ public class LandingActivity extends BaseActivity {
                 startService(new Intent(getApplicationContext(), NewRequestService.class));
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(requestReceiver);
     }
 }

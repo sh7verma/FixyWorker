@@ -188,11 +188,13 @@ public class NewRequestFragment extends BaseFragment   {
  public void  UpdateRequestStatus(String time, RequestModel.ResponseBean responseBean) {
         ApiInterface apiInterface = RetrofitClient.getInstance();
 //    request_status:(1 for accept, -1 for decline, 2 for on the way, 3 for confirm)
+     showProgress();
         Call<RequestModel> call = apiInterface.update_request_status(utils.getString(InterConst.ACCESS_TOKEN, ""),
                 utils.getString(InterConst.DEVICE_ID, ""),responseBean.getId(),responseBean.getRequest_price(),time,InterConst.ACCEPT_REQUEST);
         call.enqueue(new Callback<RequestModel>() {
             @Override
             public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
+                hideProgress();
                 if (response.body().getResponse() != null && response.body().getCode() == InterConst.SUCCESS_RESULT){
 
                     mList = response.body().getResponse();
@@ -217,6 +219,7 @@ public class NewRequestFragment extends BaseFragment   {
             @Override
             public void onFailure(Call<RequestModel> call, Throwable t) {
                 t.printStackTrace();
+                hideProgress();
             }
         });
     }

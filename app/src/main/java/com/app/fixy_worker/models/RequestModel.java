@@ -101,7 +101,7 @@ public class RequestModel extends BaseModel implements Parcelable {
         private String expired_time;
         private String average_rating;
         private String profile_pic;
-        private String remainingTime;
+        private static String remainingTime;
 
         public String getExpired_time() {
             return expired_time;
