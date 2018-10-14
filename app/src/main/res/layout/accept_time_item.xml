@@ -18,9 +18,10 @@
             android:paddingLeft="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
             android:paddingTop="@dimen/_5sdp"
+            android:textAllCaps="true"
             android:paddingBottom="@dimen/_5sdp"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_11sdp" />
 
     </LinearLayout>
 </LinearLayout>

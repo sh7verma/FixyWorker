@@ -15,7 +15,9 @@ import android.widget.TextView;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.FlowLayout;
 import com.app.fixy_worker.interfaces.InterfacesCall;
+import com.app.fixy_worker.models.RequestModel;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import butterknife.BindView;
@@ -40,13 +43,16 @@ public class AcceptedTimeDialog extends BaseDialog {
     HashMap<Integer, String> selectedList = new HashMap<>();
     List<String> timeSlots = new ArrayList<>();
     private final ListDialog.CallBack clicks;
+    RequestModel.ResponseBean mData;
 
-    public AcceptedTimeDialog(@NonNull Context context, int themeResId, ListDialog.CallBack click) {
+    public AcceptedTimeDialog(@NonNull Context context, int themeResId, ListDialog.CallBack click,
+                              RequestModel.ResponseBean responseBean) {
         super(context, themeResId);
         clicks = click;
         WindowManager.LayoutParams wmlp = this.getWindow().getAttributes();
         wmlp.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
         getWindow().setAttributes(wmlp);
+        mData = responseBean;
     }
 
     protected AcceptedTimeDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
@@ -83,9 +89,15 @@ public class AcceptedTimeDialog extends BaseDialog {
                 dismiss();
                 break;
             case R.id.txt_done:
-                String time = TextUtils.join("",selectedList.values());
-                clicks.click(time);
-                dismiss();
+                if (selectedList.size() < 1){
+                    showValidationSnackBar(txtDone,getContext().getString(R.string.select_preffered_time_validation));
+                }
+                else {
+
+                    String time = TextUtils.join("",selectedList.values());
+                    clicks.click(time);
+                    dismiss();
+                }
                 break;
         }
     }
@@ -134,7 +146,8 @@ public class AcceptedTimeDialog extends BaseDialog {
     private List<String> displayTimeSlots() {
 //        String timeValue = "2015-10-28T18:37:04.899+05:30";
         List<String> timeSlots = new ArrayList<>();
-        String timeValue = "2018-10-12 07:10:59";
+//        String timeValue = "2018-10-14 10:10:16";
+        String timeValue = mData.getExpired_time();
         StringTokenizer stringTokenizer = new StringTokenizer(timeValue, " ");
         String dateValue = stringTokenizer.nextElement().toString();
         String restString = stringTokenizer.nextElement().toString();
@@ -156,10 +169,9 @@ public class AcceptedTimeDialog extends BaseDialog {
             hours = String.valueOf(getHoursValue(Integer.parseInt(hours)));
         }
         String time1 = hours + ":" + minutes + " " + amOrPm;
-        String time2 = "12" + ":" + "00" + " AM ";
         String format = "yyyy-MM-dd hh:mm a";
 
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        DateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
 
         try {
             Date dateObj1 = sdf.parse(dateValue + " " + time1);

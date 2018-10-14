@@ -82,7 +82,7 @@ public class MyRequestFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        getContext().registerReceiver(requestBroadcast,new IntentFilter(InterConst.NEW_REQUEST_BROADCAST));
+        getContext().registerReceiver(requestBroadcast,new IntentFilter(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
     }
 
     @Override

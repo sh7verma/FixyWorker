@@ -81,7 +81,7 @@ public class NewIncomingPopupActivity extends BaseActivity {
         switch (view.getId()){
             case R.id.ll_main:
                 Intent intent1 = new Intent(this, LandingActivity.class);
-                intent1.putExtra(InterConst.EXTRA, InterConst.INCOMING_BROADCAST);
+                intent1.putExtra(InterConst.EXTRA, InterConst.INCOMING_BROADCAST_OPEN_POPUP);
                 intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent1);
                 finish();

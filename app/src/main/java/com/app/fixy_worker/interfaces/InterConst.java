@@ -69,11 +69,14 @@ public interface InterConst {
     int DISCONNECT = 1;
     int SHOW = 1;
     int DISMISS = 0;
-    String INCOMING_BROADCAST = "incoming";
-    String NEW_REQUEST_BROADCAST = "new_request_broadcast";
+    // broadcast receiver
+    String INCOMING_BROADCAST_OPEN_POPUP = "incomingINCOMING_BROADCAST_OPEN_POPUP";
+    String NEW_REQUEST_HIT_API_BROADCAST = "new_request_broadcastNEW_REQUEST_HIT_API_BROADCAST";
+//    ---------------------
     String ON_BOOKING = "onbooking";
     String SERVICE_RUNNING = "service_running";
     String ACCEPT_REQUEST = "1";
+    String DECLINE_REQUEST = "-1";
 
     public enum WEBVIEW{
         TERM_CONDITION;

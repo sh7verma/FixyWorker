@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:src="@mipmap/ic_logo_login"/>
+            android:src="@mipmap/ic_logo_login1"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

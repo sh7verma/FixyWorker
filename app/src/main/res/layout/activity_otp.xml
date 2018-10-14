@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:src="@mipmap/ic_logo_login" />
+                    android:src="@mipmap/ic_logo_login1" />
 
                 <com.app.fixy_worker.customviews.SemiboldTextView
                     android:layout_width="wrap_content"

@@ -97,6 +97,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         encode = new Encode();
         mPermission = new MarshMallowPermission(this);
         getDefaults();
+        initUI();
+        initListener();
         onCreateStuff();
         errorInternet = getResources().getString(R.string.internet);
         errorAPI = getResources().getString(R.string.error);
@@ -107,9 +109,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onStart() {
         super.onStart();
         onPosted();
-        initUI();
-        initListener();
-        onStarted();
 
     }
 

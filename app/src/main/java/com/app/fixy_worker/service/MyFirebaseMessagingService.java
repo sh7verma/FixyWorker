@@ -14,6 +14,8 @@ import android.util.Log;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.activities.LandingActivity;
+import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.utils.Utils;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -22,25 +24,38 @@ import java.util.Map;
 public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+    Utils utils;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        utils = new Utils(getApplicationContext());
+    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        if (remoteMessage.getData().size() > 0) {
+            Map<String, String> data = remoteMessage.getData();
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+//            sendNotification(data);
+        }
     }
 
     @Override
     public void onNewToken(String token) {
         Log.d(TAG, "Refreshed token: " + token);
+        utils.setString(InterConst.DEVICE_ID, token);
 
-    }
+    }/*
     // [END on_new_token]
     private void newRequestNotification(Map<String, String> messageBody, String mess, int notificationId) {
         int icon;
         long pattern[] = {100};
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            icon = R.mipmap.ic_loc_pin;
+            icon = R.mipmap.ic_splash_logo;
         } else {
-            icon = R.mipmap.ic_loc_pin;
+            icon = R.mipmap.ic_splash_logo;
         }
 
         Intent notificationIntent = new Intent(this, LandingActivity.class);
@@ -82,9 +97,9 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         long pattern[] = {100};
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            icon = R.mipmap.ic_loc_pin;
+            icon = R.mipmap.ic_splash_logo;
         } else {
-            icon = R.mipmap.ic_loc_pin;
+            icon = R.mipmap.ic_splash_logo;
         }
 
         Intent notificationIntent = new Intent(this, LandingActivity.class);
@@ -120,5 +135,5 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         notificationManager.notify(notificationId, notificationBuilder.build());
 
     }
-
+*/
 }

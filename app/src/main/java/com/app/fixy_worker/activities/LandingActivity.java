@@ -122,10 +122,10 @@ public class LandingActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST)) {
+        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST_OPEN_POPUP)) {
             viewPager.setCurrentItem(1);
             // call in myRequestFragment
-            sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+            sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
         }
     }
 
@@ -199,7 +199,7 @@ public class LandingActivity extends BaseActivity {
                 break;
             case R.id.ll_bookings:
                 viewPager.setCurrentItem(1, true);
-                sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+                sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
 
 
                 break;
@@ -219,7 +219,7 @@ public class LandingActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(requestReceiver,new IntentFilter(InterConst.INCOMING_BROADCAST));
+        registerReceiver(requestReceiver,new IntentFilter(InterConst.INCOMING_BROADCAST_OPEN_POPUP));
     }
 
     void callService() {

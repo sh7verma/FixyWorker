@@ -6,6 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.multidex.MultiDex;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 
 /**
  * Created by Shubham verma on 14-08-2018.
@@ -15,14 +17,14 @@ import android.support.multidex.MultiDex;
 public class FixyApplication extends Application {
 
     private static FixyApplication instance;
-    public static final String TAG = NassApplication.class
-            .getSimpleName();
+    public static final String TAG = "";
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         MultiDex.install(this);
         Foreground.init(this);
+        FirebaseMessaging.getInstance().setAutoInitEnabled(false);
 
     }
 

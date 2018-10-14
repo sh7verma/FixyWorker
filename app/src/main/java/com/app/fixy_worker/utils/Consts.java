@@ -139,7 +139,7 @@ public class Consts {
                 dateValue = "Today, "+time.format(value);
             }*/
 
-            Log.d("get trime","utc time "+dateValue);
+//            Log.d("get trime","utc time "+dateValue)/;
         } catch (Exception e) {
             e.printStackTrace();
         }

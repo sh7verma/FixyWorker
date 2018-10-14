@@ -81,7 +81,7 @@ public class NewRequestService extends Service {
                     if (utils.getBoolean(Consts.FOURGROUND, false) &&
                             utils.getInt(InterConst.ON_BOOKING, InterConst.ZERO) == InterConst.ZERO) {
 
-                        Intent intent = new Intent(InterConst.INCOMING_BROADCAST);
+                        Intent intent = new Intent(InterConst.INCOMING_BROADCAST_OPEN_POPUP);
                         intent.putExtra(InterConst.EXTRA, InterConst.SHOW);
                         // call broadcast of NewIncomingPopoupActivity
                         if (response.body().getResponse().size() > 0) {
@@ -91,7 +91,7 @@ public class NewRequestService extends Service {
                     else  if (utils.getBoolean(Consts.FOURGROUND, false) &&
                             utils.getInt(InterConst.ON_BOOKING, InterConst.ZERO) == InterConst.ONE) {
 
-                        sendBroadcast(new Intent(InterConst.NEW_REQUEST_BROADCAST));
+                        sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
                     }
                 }
 

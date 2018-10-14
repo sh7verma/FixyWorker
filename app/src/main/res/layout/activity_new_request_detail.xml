@@ -253,6 +253,7 @@
                         android:textSize="@dimen/_14ssp" />
 
                     <ImageView
+                        android:id="@+id/ic_info_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_5sdp"

@@ -1,5 +1,6 @@
 package com.app.fixy_worker.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 
 public class NewRequestFragment extends BaseFragment   {
 
+    private static final int DETAIL_RESULT = 1;
     static NewRequestFragment fragment;
     private static Context mContext;
 
@@ -92,7 +94,13 @@ public class NewRequestFragment extends BaseFragment   {
                     mList.get(pos).setRemainingTime(Consts.convertMilisecondtoTime(timeMili));
                     mAdapter.notifyDataSetChanged();
                 }
-                timeHandler.postDelayed(timeRunnable,1000);
+                if (mList.size() < 1){
+                    timeHandler.removeCallbacks(timeRunnable);
+                }
+                else{
+                    timeHandler.postDelayed(timeRunnable,1000);
+                }
+
             }
         };
         timeHandler.postDelayed(timeRunnable,1000);
@@ -119,7 +127,7 @@ public class NewRequestFragment extends BaseFragment   {
         public void clickIndex(int pos) {
             Intent intent = new Intent(getActivity(), NewRequestDetailActivity.class);
             intent.putExtra(InterConst.EXTRA,mList.get(pos));
-            startActivity(intent);
+            startActivityForResult(intent,DETAIL_RESULT);
             getActivity().overridePendingTransition(R.anim.in,R.anim.out);
         }
 
@@ -130,20 +138,34 @@ public class NewRequestFragment extends BaseFragment   {
                 @Override
                 public void click(String time) {
                     Log.e("time",""+time);
-                    UpdateRequestStatus(time,mList.get(pos));
+                    hitAcceptRequestApi(time,mList.get(pos));
                 }
-            });
+            },mList.get(pos));
 
             acceptedTimeDialog.show();
         }
 
         @Override
         public void Decline(int pos) {
-
+            hitDeclineRequestApi(mList.get(pos));
         }
     };
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK){
+            switch (requestCode){
+                case DETAIL_RESULT:
+                    updateAdater();
+                    break;
+            }
+        }
+    }
+
+    // this functin is call from broad cast receiver frim my request fragment
+//    LANDING ACTIVITY > MyRequestFragment
     public void updateAdater(){
 
 //        mAdapter = new NewRequestAdapter(mContext,click, mList);
@@ -166,6 +188,7 @@ public class NewRequestFragment extends BaseFragment   {
                         rvPast.setVisibility(View.VISIBLE);
                         txtNoRequest.setVisibility(View.GONE);
                         mAdapter.updateAdapter(mList);
+                        setHandler();
                     }
                     else {
                         rvPast.setVisibility(View.GONE);
@@ -175,7 +198,6 @@ public class NewRequestFragment extends BaseFragment   {
 //                    mAdapter = new NewRequestAdapter(mContext, click, mList);
 //                    rvPast.setAdapter(mAdapter);
 
-                    setHandler();
                 }
             }
 
@@ -185,7 +207,7 @@ public class NewRequestFragment extends BaseFragment   {
             }
         });
     }
- public void  UpdateRequestStatus(String time, RequestModel.ResponseBean responseBean) {
+ public void hitAcceptRequestApi(String time, RequestModel.ResponseBean responseBean) {
         ApiInterface apiInterface = RetrofitClient.getInstance();
 //    request_status:(1 for accept, -1 for decline, 2 for on the way, 3 for confirm)
      showProgress();
@@ -203,6 +225,7 @@ public class NewRequestFragment extends BaseFragment   {
                         rvPast.setVisibility(View.VISIBLE);
                         txtNoRequest.setVisibility(View.GONE);
                         mAdapter.updateAdapter(mList);
+                        setHandler();
                     }
                     else {
                         rvPast.setVisibility(View.GONE);
@@ -212,7 +235,44 @@ public class NewRequestFragment extends BaseFragment   {
 //                    mAdapter = new NewRequestAdapter(mContext, click, mList);
 //                    rvPast.setAdapter(mAdapter);
 
-                    setHandler();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RequestModel> call, Throwable t) {
+                t.printStackTrace();
+                hideProgress();
+            }
+        });
+    }
+ public void hitDeclineRequestApi(RequestModel.ResponseBean responseBean) {
+        ApiInterface apiInterface = RetrofitClient.getInstance();
+//    request_status:(1 for accept, -1 for decline, 2 for on the way, 3 for confirm)
+     showProgress();
+        Call<RequestModel> call = apiInterface.update_request_status(utils.getString(InterConst.ACCESS_TOKEN, ""),
+                utils.getString(InterConst.DEVICE_ID, ""),responseBean.getId(),responseBean.getRequest_price(),"",InterConst.DECLINE_REQUEST);
+        call.enqueue(new Callback<RequestModel>() {
+            @Override
+            public void onResponse(Call<RequestModel> call, Response<RequestModel> response) {
+                hideProgress();
+                if (response.body().getResponse() != null && response.body().getCode() == InterConst.SUCCESS_RESULT){
+
+                    mList = response.body().getResponse();
+                    if (mList.size() > 0){
+
+                        rvPast.setVisibility(View.VISIBLE);
+                        txtNoRequest.setVisibility(View.GONE);
+                        mAdapter.updateAdapter(mList);
+                        setHandler();
+                    }
+                    else {
+                        rvPast.setVisibility(View.GONE);
+                        txtNoRequest.setVisibility(View.VISIBLE);
+
+                    }
+//                    mAdapter = new NewRequestAdapter(mContext, click, mList);
+//                    rvPast.setAdapter(mAdapter);
+
                 }
             }
 
