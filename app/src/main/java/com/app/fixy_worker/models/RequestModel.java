@@ -101,7 +101,25 @@ public class RequestModel extends BaseModel implements Parcelable {
         private String expired_time;
         private String average_rating;
         private String profile_pic;
+        private String schedule_time;
+        private String ontheway_time;
         private static String remainingTime;
+
+        public String getSchedule_time() {
+            return schedule_time;
+        }
+
+        public void setSchedule_time(String schedule_time) {
+            this.schedule_time = schedule_time;
+        }
+
+        public String getOntheway_time() {
+            return ontheway_time;
+        }
+
+        public void setOntheway_time(String ontheway_time) {
+            this.ontheway_time = ontheway_time;
+        }
 
         public String getExpired_time() {
             return expired_time;
@@ -316,6 +334,8 @@ public class RequestModel extends BaseModel implements Parcelable {
             dest.writeString(this.expired_time);
             dest.writeString(this.average_rating);
             dest.writeString(this.profile_pic);
+            dest.writeString(this.schedule_time);
+            dest.writeString(this.ontheway_time);
         }
 
         public ResponseBean() {
@@ -344,6 +364,8 @@ public class RequestModel extends BaseModel implements Parcelable {
             this.expired_time = in.readString();
             this.average_rating = in.readString();
             this.profile_pic = in.readString();
+            this.schedule_time = in.readString();
+            this.ontheway_time = in.readString();
         }
 
         public static final Creator<ResponseBean> CREATOR = new Creator<ResponseBean>() {
