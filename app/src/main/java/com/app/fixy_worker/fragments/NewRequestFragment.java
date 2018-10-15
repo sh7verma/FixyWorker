@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -90,7 +91,10 @@ public class NewRequestFragment extends BaseFragment   {
                 for (int pos = 0;pos<mList.size();pos++) {
 
 //                    timeMili = Consts.differnceServerToCurrentTime(mList.get(pos).getCreated_at());
-                    timeMili = Consts.differnceServerToCurrentTime(mList.get(pos).getExpired_time());
+                    if (!TextUtils.isEmpty(mList.get(pos).getExpired_time())){
+
+                        timeMili = Consts.differnceServerToCurrentTime(mList.get(pos).getExpired_time());
+                    }
                     mList.get(pos).setRemainingTime(Consts.convertMilisecondtoTime(timeMili));
                     mAdapter.notifyDataSetChanged();
                 }

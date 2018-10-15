@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.adapters.MyPagerAdapter;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.utils.Utils;
 
 import butterknife.BindView;
 
@@ -30,10 +31,12 @@ public class MyRequestFragment extends BaseFragment {
     TextView txtPending;
     public static Context mContext;
     public static MyPagerAdapter myPagerAdapter;
+    public static Utils util;
 
     public static MyRequestFragment newInstance(Context mCont) {
         fragment = new MyRequestFragment();
         mContext = mCont;
+        util = new Utils(mCont);
         return fragment;
     }
 
@@ -61,10 +64,13 @@ public class MyRequestFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 if (position == 0){
+                    utils.setInt(InterConst.SCHEDULED,InterConst.ONE);
                     txtBooked.setBackground(mContext.getResources().getDrawable(R.drawable.black_round));
                     txtPending.setBackground(mContext.getResources().getDrawable(R.drawable.grey_round_stroke));
                 }
                 else {
+
+                    utils.setInt(InterConst.SCHEDULED,InterConst.TWO);
                     txtBooked.setBackground(mContext.getResources().getDrawable(R.drawable.grey_round_stroke));
                     txtPending.setBackground(mContext.getResources().getDrawable(R.drawable.black_round));
 
@@ -114,7 +120,13 @@ public class MyRequestFragment extends BaseFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d("myRequest","fragment hit");
-            ((NewRequestFragment)myPagerAdapter.getItem(0)).updateAdater();
+            if (util.getInt(InterConst.SCHEDULED,-1) == InterConst.ONE){
+
+                ((NewRequestFragment)myPagerAdapter.getItem(0)).updateAdater();
+            }
+            else {
+                ((ScheduledFragment)myPagerAdapter.getItem(1)).updateAdater();
+            }
 
         }
     }

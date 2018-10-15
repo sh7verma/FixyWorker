@@ -76,7 +76,11 @@ public interface InterConst {
     String ON_BOOKING = "onbooking";
     String SERVICE_RUNNING = "service_running";
     String ACCEPT_REQUEST = "1";
+    String ON_THE_WAY= "2";
+    String CONFRIM= "3";
     String DECLINE_REQUEST = "-1";
+    String NEW_REQUEST = "new_request_shared";
+    String SCHEDULED = "scheduled_request_shared";
 
     public enum WEBVIEW{
         TERM_CONDITION;

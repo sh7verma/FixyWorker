@@ -8,12 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.interfaces.InterfacesCall;
+import com.app.fixy_worker.models.RequestModel;
+import com.app.fixy_worker.utils.Consts;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,15 +31,17 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
 
     private final Context mContext;
     Bitmap bitmap =null;
-    InterfacesCall.IndexClick mClick;
+    InterfacesCall.ScheduleRequest mClick;
 
     private Handler handler = new Handler();
     Runnable runnable;
     private int progressStatus = 0, count = 25;
-    int start = 0,end = 75,next=0; 
-    public ScheduledAdapter(Context con, InterfacesCall.IndexClick click) {
+    int start = 0,end = 75,next=0;
+    List<RequestModel.ResponseBean> mData;
+    public ScheduledAdapter(Context con, InterfacesCall.ScheduleRequest click, List<RequestModel.ResponseBean> mList) {
         mContext = con;
         mClick = click;
+        mData = mList;
     }
 
     @NonNull
@@ -42,14 +52,39 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ScheduledAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
 
-        setView(holder,start);
+        if (mData.get(position).getRequest_status().equalsIgnoreCase(String.valueOf(InterConst.ONE))){
+            start = 25;
+            setView(holder,start);
+            holder.viewBooking.txtRequestedTime.setText(Consts.getDateTime(mData.get(position).getCreated_at()));
+            holder.viewBooking.txtAcceptedTime.setText(Consts.getDateTime(mData.get(position).getAccepted_time()));
+            holder.viewBooking.txtConfirm.setText(mContext.getString(R.string.on_the_way));
+        }
+       else if (mData.get(position).getRequest_status().equalsIgnoreCase(String.valueOf(InterConst.TWO))){
+            start = 50;
+            setView(holder,start);
+            holder.viewBooking.txtRequestedTime.setText(Consts.getDateTime(mData.get(position).getCreated_at()));
+            holder.viewBooking.txtAcceptedTime.setText(Consts.getDateTime(mData.get(position).getAccepted_time()));
+//            holder.viewBooking.txtConfirmTime.setText(Consts.getDateTime(mData.get(position).geto()));
+            holder.viewBooking.txtConfirm.setText(mContext.getString(R.string.confirm));
+        }
+        holder.viewBooking.txtServiceName.setText(mData.get(position).getCategory_name());
+        holder.viewBooking.txtServiceCharges.setText(mData.get(position).getRequest_price()+" "+mContext.getString(R.string.coins));
+        holder.viewBooking.txtServiceId.setText(mContext.getString(R.string.id_)+" "+mData.get(position).getId());
+        holder.viewBooking.txtUserName.setText(mData.get(position).getFullname());
+        holder.viewBooking.userRating.setRating(Float.parseFloat(mData.get(position).getAverage_rating()));
         holder.viewBooking.llMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mClick.clickIndex(position);
+            }
+        });
+        holder.viewBooking.txtConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClick.Confirm(position);
             }
         });
 
@@ -69,19 +104,48 @@ public class ScheduledAdapter extends RecyclerView.Adapter<ScheduledAdapter.View
 
     @Override
     public int getItemCount() {
-        return 3;
+        return mData.size();
     }
+
+    public void updateAdapter(List<RequestModel.ResponseBean> mList) {
+        mData = mList;
+        notifyDataSetChanged();
+    }
+
     public class ViewBooking {
-        @BindView(R.id.ll_request)
-        LinearLayout llRequest;
-        @BindView(R.id.ll_accepted)
-        LinearLayout llAccepted;
-        @BindView(R.id.ll_on_way)
-        LinearLayout llOnWay;
-        @BindView(R.id.ll_confirmed)
-        LinearLayout llConfirmed;
         @BindView(R.id.ll_main)
         LinearLayout llMain;
+        @BindView(R.id.img_service)
+        ImageView imgService;
+        @BindView(R.id.img_user_img)
+        ImageView imgUserImg;
+        @BindView(R.id.txt_service_name)
+        TextView txtServiceName;
+        @BindView(R.id.txt_service_charges)
+        TextView txtServiceCharges;
+        @BindView(R.id.txt_service_id)
+        TextView txtServiceId;
+        @BindView(R.id.txt_user_name)
+        TextView txtUserName;
+        @BindView(R.id.txt_user_rating)
+        RatingBar userRating;
+
+        @BindView(R.id.ll_request)
+        LinearLayout llRequest;
+        @BindView(R.id.txt_requested_time)
+        TextView txtRequestedTime;
+        @BindView(R.id.ll_accepted)
+        LinearLayout llAccepted;
+        @BindView(R.id.txt_accepted_time)
+        TextView txtAcceptedTime;
+        @BindView(R.id.ll_on_way)
+        LinearLayout llOnWay;
+        @BindView(R.id.txt_confirm_time)
+        TextView txtConfirmTime;
+        @BindView(R.id.ll_confirmed)
+        LinearLayout llConfirmed;
+        @BindView(R.id.txt_confirm)
+        TextView txtConfirm;
     } 
     private void setView(@NonNull ScheduledAdapter.ViewHolder holder, int start) {
         switch (start) {

@@ -113,6 +113,10 @@ public interface ApiInterface {
                                          @Field("onthe_way_time") String onthe_way_time,
                                          @Field("request_status") String request_status);
 
+    @FormUrlEncoded
+    @POST("requests/schedule_request")
+    Call<RequestModel> schedule_request(@Field("access_token") String access_token,
+                                         @Field("device_token") String device_token);
 
 //    @FormUrlEncoded
 //    @POST("/users/signup")

@@ -25,6 +25,10 @@ public class InterfacesCall {
         void Accept( int pos);
         void Decline( int pos);
     }
+    public  interface ScheduleRequest{
+        void clickIndex( int pos);
+        void Confirm( int pos);
+    }
     public  interface Callback{
         void selected( int pos);
     }

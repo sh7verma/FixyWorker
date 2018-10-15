@@ -154,7 +154,7 @@
             android:exported="true">
 
             <intent-filter>
-                <action android:name="incoming" />
+                <action android:name="incomingINCOMING_BROADCAST_OPEN_POPUP" />
             </intent-filter>
         </receiver>
         <receiver
@@ -162,7 +162,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="new_request_broadcast" />
+                <action android:name="new_request_broadcastNEW_REQUEST_HIT_API_BROADCAST" />
             </intent-filter>
         </receiver>
     </application>
