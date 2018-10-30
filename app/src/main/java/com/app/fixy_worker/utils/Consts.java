@@ -159,6 +159,7 @@ public class Consts {
         return 0;
     }
     public static String convertMilisecondtoTime(long millis) {
+
         return String.format("%02d:%02d:%02d",
                 TimeUnit.MILLISECONDS.toHours(millis),
                 TimeUnit.MILLISECONDS.toMinutes(millis) -
@@ -166,6 +167,43 @@ public class Consts {
                 TimeUnit.MILLISECONDS.toSeconds(millis) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
 
+    }
+
+    //1 minute = 60 seconds
+//1 hour = 60 x 60 = 3600
+//1 day = 3600 x 24 = 86400
+    public String timeToDays(long different) {
+        //milliseconds
+
+        System.out.println("different : " + different);
+
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        long daysInMilli = hoursInMilli * 24;
+
+        long elapsedDays = different / daysInMilli;
+        different = different % daysInMilli;
+
+        long elapsedHours = different / hoursInMilli;
+        different = different % hoursInMilli;
+
+        long elapsedMinutes = different / minutesInMilli;
+        different = different % minutesInMilli;
+
+//        long elapsedSeconds = different / secondsInMilli;
+
+        if (elapsedDays > 0){
+            String daysTime = elapsedDays+"D:"+elapsedHours+"H:"+elapsedMinutes+"M";
+            return daysTime ;
+        }
+        else {
+            return convertMilisecondtoTime(different) ;
+
+        }
+//        System.out.printf(
+//                "%d days, %d hours, %d minutes, %d seconds%n",
+//                elapsedDays, elapsedHours, elapsedMinutes, elapsedSeconds);
     }
     public static long differnceServerToCurrentTime(String time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");

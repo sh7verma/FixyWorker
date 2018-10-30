@@ -99,6 +99,7 @@ public class LandingActivity extends BaseActivity {
                     case 1:
                         loadFragment(Consts.FRAG_BOOKINGS);
                         utils.setInt(InterConst.ON_BOOKING, InterConst.ONE);
+                        sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
                         break;
                     case 2:
                         loadFragment(Consts.FRAG_COINS);
@@ -116,13 +117,23 @@ public class LandingActivity extends BaseActivity {
 
             }
         });
-        callService();
+        setPushData();
+//        callService();
+    }
+
+    private void setPushData() {
+        if (getIntent().getIntExtra(InterConst.PUSH,0) == InterConst.NEW_REQUEST_PUSH_TYPE) {
+            viewPager.setCurrentItem(1);
+            // call in myRequestFragment
+            sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
+        }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST_OPEN_POPUP)) {
+        if (intent.getIntExtra(InterConst.PUSH,0) == InterConst.NEW_REQUEST_PUSH_TYPE ||
+                intent.getStringExtra(InterConst.EXTRA).equals(InterConst.INCOMING_BROADCAST_OPEN_POPUP)) {
             viewPager.setCurrentItem(1);
             // call in myRequestFragment
             sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
@@ -131,6 +142,7 @@ public class LandingActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
+
 
 
     }

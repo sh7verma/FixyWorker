@@ -240,7 +240,19 @@
     <string name="no_request">No Request</string>
     <string name="select_preffered_time_validation">Please select your preffered time</string>
     <string name="expired_time">Expired Time</string>
-    <string name="expired_time_mess">This job will be expired given time.Please Accept it before expire.</string>
+    <string name="expired_time_mess">This job will be expired in given time.Please Accept it before expire.</string>
+    <string name="complete">Complete</string>
+    <string name="scheduled_detail">Scheduled Detail</string>
+    <string name="eta">ETA</string>
+    <string name="arrival_time">Arriving Time</string>
+    <!--<string name="eta_time_mess">This is estimated time, worker will be arrive in the mentioned time on your selected address.</string>-->
+    <string name="eta_time_mess">Try to reach in the given time so your rating will be better to get more requests</string>
+    <string name="_20_coins_will_be_spent_to_request_this_service">coins left</string>
+    <string name="confirm_job">Confirm Job</string>
+    <string name="enter_otp_to_confirm_job_otp">Enter OTP to confirm job. Otp is sent to user please ask to share with you.</string>
+    <string name="expirinig_in">Expirinig in</string>
+    <string name="confirm_finish_job">Confirm finish job</string>
+    <string name="successfully_complete_job">Are you sure to finish this job?\n Make sure you have successfully completed this job.</string>
 
 
 </resources>

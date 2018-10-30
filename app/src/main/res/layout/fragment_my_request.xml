@@ -37,7 +37,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <com.app.fixy_worker.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:id="@+id/txt_booked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 android:paddingBottom="@dimen/_5sdp"
                 android:background="@drawable/black_round"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_12ssp"
                 android:layout_centerInParent="true" />
         </LinearLayout>
         <LinearLayout
@@ -57,7 +57,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <com.app.fixy_worker.customviews.SemiboldTextView
+            <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="match_parent"
                 android:id="@+id/txt_pending"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 android:paddingBottom="@dimen/_5sdp"
                 android:background="@drawable/grey_round_stroke"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_12ssp"
                 android:layout_centerInParent="true" />
         </LinearLayout>
     </LinearLayout>

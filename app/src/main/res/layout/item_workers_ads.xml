@@ -4,22 +4,52 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/ll_main"
         android:layout_width="@dimen/_140sdp"
         android:layout_height="@dimen/_140sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:background="@drawable/ads_shape_drawable"
         android:elevation="@dimen/_8sdp"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:src="@mipmap/ic_plumber_w" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_plumber_w" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.app.fixy_worker.customviews.RegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expirinig_in"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/_10ssp" />
+
+                <com.app.fixy_worker.customviews.SemiboldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2D:3H:47M"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <com.app.fixy_worker.customviews.SemiboldTextView
             android:layout_width="wrap_content"
@@ -29,7 +59,7 @@
             android:paddingTop="@dimen/_5sdp"
             android:text="20%"
             android:textColor="@color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_15ssp" />
 
         <com.app.fixy_worker.customviews.RegularTextView
             android:layout_width="match_parent"
@@ -38,8 +68,7 @@
             android:paddingStart="@dimen/_10sdp"
             android:text="@string/lorem_ipsum_small"
             android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp" />
-
+            android:textSize="@dimen/_10ssp" />
 
 
     </LinearLayout>

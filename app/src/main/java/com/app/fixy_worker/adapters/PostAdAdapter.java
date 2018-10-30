@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.app.fixy_worker.fragments.AdsDetailFragment;
+import com.app.fixy_worker.fragments.AdsDetailFormFragment;
 import com.app.fixy_worker.fragments.PostServiceFragment;
 import com.app.fixy_worker.models.LoginModel;
 
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class PostAdAdapter extends FragmentPagerAdapter {
 
     public static PostServiceFragment postServiceFragment;
-    public static AdsDetailFragment adsDetailFragment;
+    public static AdsDetailFormFragment adsDetailFragment;
     public PostAdAdapter(FragmentManager fm, Context mcon, ArrayList<LoginModel.ResponseBean.SelectedServicesBean> serviceList) {
         super(fm);
         postServiceFragment = PostServiceFragment.newInstance(mcon,serviceList);
-        adsDetailFragment =   AdsDetailFragment.newInstance(mcon);
+        adsDetailFragment =   AdsDetailFormFragment.newInstance(mcon);
 
     }
 

@@ -35,7 +35,7 @@ public class JobDispatcherService extends JobService {
             utils = new Utils(getApplicationContext());
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             scheduleRefresh();
         }
 
@@ -43,7 +43,7 @@ public class JobDispatcherService extends JobService {
             startService(new Intent(getApplicationContext(), NewRequestService.class));
         } else {
             startForegroundService(new Intent(getApplicationContext(), NewRequestService.class));
-        }
+        }*/
         return false;
     }
 

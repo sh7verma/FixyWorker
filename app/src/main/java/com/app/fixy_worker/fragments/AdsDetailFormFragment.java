@@ -2,35 +2,24 @@ package com.app.fixy_worker.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.customviews.MaterialEditText;
 import com.app.fixy_worker.dialogs.ListDialog;
-import com.app.fixy_worker.dialogs.UpdateDialog;
-import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.models.AdsModel;
 import com.app.fixy_worker.utils.Validations;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static android.app.Activity.RESULT_OK;
 
-public class AdsDetailFragment extends BaseFragment {
+public class AdsDetailFormFragment extends BaseFragment {
 
     private static final int DAY_RESULT_CODE = 3;
     private static final int PERCENTAGE_RESULT = 2;
@@ -47,15 +36,15 @@ public class AdsDetailFragment extends BaseFragment {
 
     ArrayList<String> daysList = new ArrayList<>();
     ArrayList<String> percentageList = new ArrayList<>();
-    public static AdsDetailFragment fragment;
+    public static AdsDetailFormFragment fragment;
     static Context mContext;
     AdsModel model;
     String percentNo, dayNo;
 
 
-    public static AdsDetailFragment newInstance(Context mcon) {
+    public static AdsDetailFormFragment newInstance(Context mcon) {
         if (fragment == null) {
-            fragment = new AdsDetailFragment();
+            fragment = new AdsDetailFormFragment();
         }
         mContext = mcon;
         return fragment;

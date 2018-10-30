@@ -120,6 +120,7 @@
 
                 <com.app.fixy_worker.customviews.BoldTextView
                     android:id="@+id/txt_otp"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -129,6 +130,7 @@
 
                 <ImageView
                     android:id="@+id/ic_info"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -171,7 +173,7 @@
                     android:id="@+id/view_circle1"
                     android:layout_width="@dimen/_13sdp"
                     android:layout_height="@dimen/_13sdp"
-                    android:background="@drawable/pink_oval" />
+                    android:background="@drawable/on_the_way_oval" />
 
                 <com.app.fixy_worker.customviews.RegularTextView
                     android:id="@+id/txt_time"
@@ -205,7 +207,7 @@
                 android:textSize="@dimen/_10ssp" />
 
             <com.app.fixy_worker.customviews.RegularTextView
-                android:id="@+id/txt_description"
+                android:id="@+id/txt_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"

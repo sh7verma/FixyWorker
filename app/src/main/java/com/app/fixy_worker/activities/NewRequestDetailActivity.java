@@ -55,8 +55,8 @@ public class NewRequestDetailActivity extends BaseActivity {
     TextView txtTime;
     @BindView(R.id.txt_time_counter)
     TextView txtTimeCounter;
-    @BindView(R.id.txt_description)
-    TextView txtDescription;
+    @BindView(R.id.txt_notes)
+    TextView txtNotes;
     @BindView(R.id.txt_otp)
     TextView txtOtp;
     @BindView(R.id.ic_info_time)
@@ -100,7 +100,7 @@ public class NewRequestDetailActivity extends BaseActivity {
         txtTime.setText(mData.getCreated_at());
         txtUserLocation.setText(mData.getAddress());
         txtOtp.setText(mContext.getString(R.string.otp) + " " + mData.getRequest_otp());
-        txtDescription.setText(mData.getAdditional_notes());
+        txtNotes.setText(mData.getAdditional_notes());
         userRating.setRating(Float.parseFloat(mData.getAverage_rating()));
         if (!TextUtils.isEmpty(mData.getCategory_pic())) {
             Picasso.get()
@@ -111,7 +111,7 @@ public class NewRequestDetailActivity extends BaseActivity {
         }
         if (!TextUtils.isEmpty(mData.getProfile_pic())) {
             Picasso.get()
-                    .load(mData.getCategory_pic())
+                    .load(mData.getProfile_pic())
                     .transform(new RoundedTransformation(radius, 0))
                     .resize(userWidth, userHeight)
                     .into(imgUserImg);

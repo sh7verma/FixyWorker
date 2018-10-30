@@ -17,20 +17,21 @@
     <!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
     <!-- <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
-     <uses-permission android:name="android.permission.CALL_PHONE" />
-     <uses-permission android:name="android.permission.VIBRATE" />
-     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> -->
-     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> -->
-     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+
     <application
         android:name=".utils.FixyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logo_login1"
+        android:icon="@mipmap/ic_splash_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_logo_login1"
+        android:roundIcon="@mipmap/ic_splash_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -129,8 +130,9 @@
             android:name=".service.JobDispatcherService"
             android:label="job_service"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service android:name=".service.NewRequestService"
-            android:stopWithTask="false"/>
+        <service
+            android:name=".service.NewRequestService"
+            android:stopWithTask="false" />
 
         <receiver android:name=".receivers.InternetReceiver">
             <intent-filter>
@@ -152,7 +154,6 @@
             android:name=".receivers.IncomingRequestReceiver"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="incomingINCOMING_BROADCAST_OPEN_POPUP" />
             </intent-filter>
@@ -165,6 +166,12 @@
                 <action android:name="new_request_broadcastNEW_REQUEST_HIT_API_BROADCAST" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".activities.AdsDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".dialogs.ConfirmOtpDialog"></activity>
     </application>
 
 </manifest>

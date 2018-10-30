@@ -151,7 +151,7 @@ public class NewRequestFragment extends BaseFragment   {
 
         @Override
         public void Decline(int pos) {
-            hitDeclineRequestApi(mList.get(pos));
+            hitDeclineRequestApi(mList.get(pos),pos);
         }
     };
 
@@ -249,7 +249,7 @@ public class NewRequestFragment extends BaseFragment   {
             }
         });
     }
- public void hitDeclineRequestApi(RequestModel.ResponseBean responseBean) {
+ public void hitDeclineRequestApi(RequestModel.ResponseBean responseBean, final int pos) {
         ApiInterface apiInterface = RetrofitClient.getInstance();
 //    request_status:(1 for accept, -1 for decline, 2 for on the way, 3 for confirm)
      showProgress();
@@ -261,7 +261,8 @@ public class NewRequestFragment extends BaseFragment   {
                 hideProgress();
                 if (response.body().getResponse() != null && response.body().getCode() == InterConst.SUCCESS_RESULT){
 
-                    mList = response.body().getResponse();
+//                    mAdapter.notifyItemRemoved(pos);
+                    mList.remove(pos);
                     if (mList.size() > 0){
 
                         rvPast.setVisibility(View.VISIBLE);

@@ -34,6 +34,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/img_service"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:background="@drawable/black_round" />
@@ -46,6 +47,7 @@
                     android:orientation="vertical">
 
                     <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_service_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Body Massage"
@@ -53,6 +55,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_service_charges"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20 coins"
@@ -61,6 +64,7 @@
                 </LinearLayout>
 
                 <com.app.fixy_worker.customviews.RegularTextView
+                    android:id="@+id/txt_service_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ID: 1293K46NH3"
@@ -75,20 +79,86 @@
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_5sdp"
                 android:background="@mipmap/ic_line2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_user_img"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/black_round" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alex Martin"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/txt_user_rating"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progress="55"
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBar" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_track"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:src="@mipmap/ic_track" />
+
+                <ImageView
+                    android:id="@+id/img_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:src="@mipmap/ic_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:background="@mipmap/ic_line2" />
+
             <com.app.fixy_worker.customviews.RegularTextView
                 android:id="@+id/txt_user_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:drawablePadding="@dimen/_5sdp"
                 android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="@dimen/_5sdp"
+                android:gravity="center_vertical"
                 android:paddingRight="@dimen/_10sdp"
                 android:text="@string/Lorem_Ipsum_large"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp" />
+
             <com.app.fixy_worker.customviews.RegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,6 +170,7 @@
                 android:textSize="@dimen/_10ssp" />
 
             <com.app.fixy_worker.customviews.RegularTextView
+                android:id="@+id/txt_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -108,196 +179,208 @@
                 android:text="@string/on_the_way"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginTop="@dimen/_10sdp"
+                android:animateLayoutChanges="true">
 
-            <ProgressBar
-                android:id="@+id/vprogressbar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="@dimen/_55sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:max="75"
-                android:progress="75"
-                android:progressDrawable="@drawable/verticle_progressbar" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:orientation="vertical">
+                <ProgressBar
+                    android:id="@+id/vprogressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_3sdp"
+                    android:layout_height="@dimen/_55sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:max="75"
+                    android:progress="75"
+                    android:progressDrawable="@drawable/verticle_progressbar" />
 
                 <LinearLayout
-                    android:id="@+id/ll_request"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:id="@+id/view_circle1"
-                        android:layout_width="@dimen/_13sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@drawable/circle_grey" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:text="12 Aug at 6:00 pm"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_10ssp" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:background="@drawable/grey_oval"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingLeft="@dimen/_6sdp"
-                        android:paddingRight="@dimen/_6sdp"
-                        android:paddingTop="@dimen/_3sdp"
-                        android:text="@string/requested"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_accepted"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:visibility="visible">
-
-                    <View
-                        android:id="@+id/view_circle2"
-                        android:layout_width="@dimen/_13sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@drawable/circle_grey" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:text="12 Aug at 6:00 pm"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_10ssp" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:background="@drawable/blue_oval"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingLeft="@dimen/_6sdp"
-                        android:paddingRight="@dimen/_6sdp"
-                        android:paddingTop="@dimen/_3sdp"
-                        android:text="@string/accepted"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_on_way"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:visibility="gone">
-
-                    <View
-                        android:id="@+id/view_circle3"
-                        android:layout_width="@dimen/_13sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@drawable/circle_grey" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:text="12 Aug at 6:00 pm"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_10ssp" />
-
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:background="@drawable/pink_oval"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingLeft="@dimen/_6sdp"
-                        android:paddingRight="@dimen/_6sdp"
-                        android:paddingTop="@dimen/_3sdp"
-                        android:text="@string/on_the_way"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_confirmed"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <View
-                        android:id="@+id/view_circle4"
-                        android:layout_width="@dimen/_13sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@drawable/circle_grey" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:id="@+id/ll_request"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view_circle1"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_height="@dimen/_13sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@drawable/circle_grey" />
 
                         <com.app.fixy_worker.customviews.RegularTextView
+                            android:id="@+id/txt_requested_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
                             android:text="12 Aug at 6:00 pm"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp" />
 
-                        <com.app.fixy_worker.customviews.SemiboldTextView
-                            android:layout_width="wrap_content"
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:layout_width="@dimen/_70sdp"
                             android:layout_height="wrap_content"
-                            android:text="OTP: 7987"
-                            android:textColor="@color/black"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/grey_oval"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:paddingRight="@dimen/_6sdp"
+                            android:paddingTop="@dimen/_3sdp"
+                            android:text="@string/requested"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
-                    <com.app.fixy_worker.customviews.RegularTextView
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:background="@drawable/green_oval"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:paddingLeft="@dimen/_6sdp"
-                        android:paddingRight="@dimen/_6sdp"
-                        android:paddingTop="@dimen/_3sdp"
-                        android:text="@string/confirmed"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10ssp" />
+                    <LinearLayout
+                        android:id="@+id/ll_accepted"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:visibility="visible">
+
+                        <View
+                            android:id="@+id/view_circle2"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_height="@dimen/_13sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@drawable/circle_grey" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content">
+
+                            <com.app.fixy_worker.customviews.RegularTextView
+                                android:id="@+id/txt_accepted_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:text="12 Aug at 6:00 pm"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10ssp" />
+                            <com.app.fixy_worker.customviews.SemiboldTextView
+                                android:id="@+id/txt_eta_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:paddingRight="@dimen/_5sdp"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:drawableRight="@mipmap/ic_info"
+                                android:text="12 Aug at 6:00 pm"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10ssp" />
+                        </LinearLayout>
+
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/blue_oval"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:paddingRight="@dimen/_6sdp"
+                            android:paddingTop="@dimen/_3sdp"
+                            android:text="@string/accepted"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_on_way"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:visibility="gone">
+
+                        <View
+                            android:id="@+id/view_circle3"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_height="@dimen/_13sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@drawable/circle_grey" />
+
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:id="@+id/txton_the_way_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:text="12 Aug at 6:00 pm"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/on_the_way_oval"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:paddingRight="@dimen/_6sdp"
+                            android:paddingTop="@dimen/_3sdp"
+                            android:text="@string/on_the_way"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_confirmed"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <View
+                            android:id="@+id/view_circle4"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_height="@dimen/_13sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@drawable/circle_grey" />
+
+
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:id="@+id/txt_confirm_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12 Aug at 6:00 pm"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.app.fixy_worker.customviews.RegularTextView
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/green_oval"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:paddingRight="@dimen/_6sdp"
+                            android:paddingTop="@dimen/_3sdp"
+                            android:text="@string/confirmed"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
-
-
-            </LinearLayout>
 
             </RelativeLayout>
 
@@ -322,6 +405,7 @@
             android:gravity="center">
 
             <com.app.fixy_worker.customviews.BoldTextView
+                android:id="@+id/txtcancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/grey_oval_stroke"
@@ -344,23 +428,23 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <com.app.fixy_worker.customviews.BoldTextView
-                android:id="@+id/txt_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:background="@drawable/grey_oval_stroke"
-                android:drawableLeft="@mipmap/ic_timer"
-                android:drawablePadding="@dimen/_5sdp"
                 android:gravity="center"
-                android:paddingBottom="@dimen/_4sdp"
-                android:paddingLeft="@dimen/_10sdp"
-                android:paddingRight="@dimen/_20sdp"
-                android:drawableRight="@mipmap/ic_info"
-                android:paddingTop="@dimen/_4sdp"
-                android:text="12:32:32"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp" />
+                android:orientation="horizontal">
+
+                <com.app.fixy_worker.customviews.BoldTextView
+                    android:id="@+id/txt_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/on_the_way"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

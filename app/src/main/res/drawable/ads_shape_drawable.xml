@@ -1,7 +1,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:id="@+id/shape">
+    <item android:id="@+id/ads_shape">
         <shape android:shape="rectangle">
             <solid android:color="@color/background" />
             <size android:width="72dp" />
@@ -10,7 +10,7 @@
 
     </item>
     <item
-        android:id="@+id/corner"
+        android:id="@+id/ads_corner"
         android:right="@dimen/_60sdp"
         android:bottom="@dimen/_85sdp">
         <shape android:shape="rectangle">

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
+import com.app.fixy_worker.activities.AdsDetailActivity;
 import com.app.fixy_worker.activities.PostNewAddActivity;
 import com.app.fixy_worker.activities.ServicesListActivity;
 import com.app.fixy_worker.activities.WorkersAdsListActivity;
@@ -257,10 +258,19 @@ public class HomeFragment extends BaseFragment{
 
         @Override
         public void adsClick(int pos) {
-            Intent intent = new Intent(getContext(), PostNewAddActivity.class);
-            intent.putParcelableArrayListExtra(InterConst.EXTRA, (ArrayList<LoginModel.ResponseBean.SelectedServicesBean>) servicesList);
-            startActivityForResult(intent,CALLBACK);
-            getActivity().overridePendingTransition(R.anim.trans_enter,R.anim.stay);
+            if (pos == 0){
+
+                Intent intent = new Intent(getContext(), PostNewAddActivity.class);
+                intent.putParcelableArrayListExtra(InterConst.EXTRA, (ArrayList<LoginModel.ResponseBean.SelectedServicesBean>) servicesList);
+                startActivityForResult(intent,CALLBACK);
+                getActivity().overridePendingTransition(R.anim.trans_enter,R.anim.stay);
+            }
+            else{
+
+                Intent intent = new Intent(getContext(), AdsDetailActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_up,R.anim.stay);
+            }
         }
 
         @Override

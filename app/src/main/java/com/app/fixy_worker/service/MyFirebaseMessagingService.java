@@ -15,13 +15,14 @@ import android.util.Log;
 import com.app.fixy_worker.R;
 import com.app.fixy_worker.activities.LandingActivity;
 import com.app.fixy_worker.interfaces.InterConst;
+import com.app.fixy_worker.utils.Consts;
 import com.app.fixy_worker.utils.Utils;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
 
-public class MyFirebaseMessagingService  extends FirebaseMessagingService {
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
     Utils utils;
@@ -37,8 +38,28 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Map<String, String> data = remoteMessage.getData();
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-//            sendNotification(data);
+            sendNotification(data);
         }
+    }
+
+    private void sendNotification(Map<String, String> data) {
+
+        Intent notificationIntent = null;
+        if (data.get("push_type").equals("1")) {
+            if (utils.getBoolean(Consts.FOURGROUND, false)) {
+                // if app open
+
+                sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
+            } else {
+                //app closed
+
+                notificationIntent = new Intent(this, LandingActivity.class);
+                notificationIntent.putExtra(InterConst.PUSH, InterConst.NEW_REQUEST_PUSH_TYPE);
+                generateNotification(data, 1, notificationIntent);// 1 for new request
+            }
+        }
+
+
     }
 
     @Override
@@ -46,11 +67,14 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         Log.d(TAG, "Refreshed token: " + token);
         utils.setString(InterConst.DEVICE_ID, token);
 
-    }/*
+    }
+
     // [END on_new_token]
-    private void newRequestNotification(Map<String, String> messageBody, String mess, int notificationId) {
+    private void generateNotification(Map<String, String> messageBody, int notificationId, Intent notificationIntent) {
         int icon;
         long pattern[] = {100};
+        String mess = messageBody.get("message");
+        String title = messageBody.get("title");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             icon = R.mipmap.ic_splash_logo;
@@ -58,17 +82,13 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
             icon = R.mipmap.ic_splash_logo;
         }
 
-        Intent notificationIntent = new Intent(this, LandingActivity.class);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                | Intent.FLAG_ACTIVITY_CLEAR_TOP
-                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         PendingIntent intent1 = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,String.valueOf(notificationId))
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, String.valueOf(notificationId))
                 .setSmallIcon(icon)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setContentTitle(messageBody.get("title"))
+                .setContentTitle(title)
                 .setContentText(mess)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(mess))
                 .setAutoCancel(true)
@@ -91,6 +111,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         notificationManager.notify(notificationId, notificationBuilder.build());
 
     }
+
     // [END on_new_token]
     private void defaultNotification(Map<String, String> messageBody, String mess, int notificationId) {
         int icon;
@@ -109,7 +130,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
         PendingIntent intent1 = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,String.valueOf(notificationId))
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, String.valueOf(notificationId))
                 .setSmallIcon(icon)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setContentTitle(messageBody.get("title"))
@@ -135,5 +156,4 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         notificationManager.notify(notificationId, notificationBuilder.build());
 
     }
-*/
 }

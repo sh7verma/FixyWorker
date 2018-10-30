@@ -42,7 +42,7 @@
                 android:padding="@dimen/_5sdp">
 
                 <ImageView
-                    android:id="@+id/img_service"
+                    android:id="@+id/img_user_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_15sdp"
@@ -59,6 +59,7 @@
             android:orientation="vertical">
 
             <com.app.fixy_worker.customviews.BoldTextView
+                android:id="@+id/txt_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -68,6 +69,7 @@
                 android:textSize="@dimen/_20sdp" />
 
             <com.app.fixy_worker.customviews.RegularTextView
+                android:id="@+id/txt_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -107,6 +109,7 @@
                 android:orientation="horizontal">
 
                 <com.app.fixy_worker.customviews.RegularTextView
+                    android:id="@+id/txt_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,6 +119,7 @@
                     android:textSize="@dimen/_10sdp" />
 
                 <com.app.fixy_worker.customviews.RegularTextView
+                    android:id="@+id/txt_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -291,6 +295,7 @@
                         android:orientation="vertical">
 
                         <com.app.fixy_worker.customviews.BoldTextView
+                            android:id="@+id/txt_referral_code"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="FixY85v"

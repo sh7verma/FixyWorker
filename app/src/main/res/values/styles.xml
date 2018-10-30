@@ -63,6 +63,10 @@
         <item name="android:windowEnterAnimation">@anim/slide_down</item>
         <item name="android:windowExitAnimation">@anim/slide_up_out</item>
     </style>
+    <style name="dilog_scale_up_down">
+        <item name="android:windowEnterAnimation">@anim/scale_enlarge</item>
+        <item name="android:windowExitAnimation">@anim/scale_down</item>
+    </style>
 
 
     <style name="DialogSlideAnim" parent="@android:style/Theme.Dialog">
@@ -70,6 +74,9 @@
     </style>
     <style name="pullBottomfromTop" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/dilog_slide_top_to_down</item>
+    </style>
+    <style name="scale_out_dowm" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/dilog_scale_up_down</item>
     </style>
 
     <style name="TransparentActivity" parent="Theme.AppCompat.Light.Dialog">

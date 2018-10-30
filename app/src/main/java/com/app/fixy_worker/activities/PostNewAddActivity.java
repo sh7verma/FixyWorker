@@ -2,20 +2,16 @@ package com.app.fixy_worker.activities;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.fixy_worker.R;
-import com.app.fixy_worker.adapters.CreateProfilePagerAdapter;
 import com.app.fixy_worker.adapters.PostAdAdapter;
 import com.app.fixy_worker.customviews.CirclePageIndicator;
 import com.app.fixy_worker.customviews.CustomViewPager;
-import com.app.fixy_worker.fragments.AdsDetailFragment;
-import com.app.fixy_worker.fragments.CreateProfileFragment;
+import com.app.fixy_worker.fragments.AdsDetailFormFragment;
 import com.app.fixy_worker.fragments.PostServiceFragment;
 import com.app.fixy_worker.interfaces.InterConst;
 import com.app.fixy_worker.models.AdsModel;
@@ -102,7 +98,7 @@ public class PostNewAddActivity extends BaseActivity {
                 if (viewPager.getCurrentItem() == 0 && ((PostServiceFragment) adapter.getItem(0)).validate()){
                     viewPager.setCurrentItem(1,true);
                 }
-                else if(viewPager.getCurrentItem() == 1 && ((AdsDetailFragment) adapter.getItem(1)).validate()){
+                else if(viewPager.getCurrentItem() == 1 && ((AdsDetailFormFragment) adapter.getItem(1)).validate()){
                     hitAddPostApi();
                 }
 
@@ -143,7 +139,8 @@ public class PostNewAddActivity extends BaseActivity {
                     hideProgress();
                     if (response.body().getCode() == InterConst.SUCCESS_RESULT) {
                         showToast(getString(R.string.your_post_is_uploaded));
-                        onBackPressed();
+                        finish();
+                        overridePendingTransition(R.anim.stay,R.anim.trans_exit);
                     } else if (response.body().getError().getCode() == InterConst.ERROR_RESULT) {
                         Dialogs.showValidationSnackBar(mContext, txtDone, response.body().getError().getMessage());
                     } else if (response.body().getError().getCode() == InterConst.INVALID_ACCESS_TOKEN) {

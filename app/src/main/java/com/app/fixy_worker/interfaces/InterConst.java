@@ -69,6 +69,9 @@ public interface InterConst {
     int DISCONNECT = 1;
     int SHOW = 1;
     int DISMISS = 0;
+    //
+    String PUSH = "push_message_from_notification";
+    int NEW_REQUEST_PUSH_TYPE = 1;
     // broadcast receiver
     String INCOMING_BROADCAST_OPEN_POPUP = "incomingINCOMING_BROADCAST_OPEN_POPUP";
     String NEW_REQUEST_HIT_API_BROADCAST = "new_request_broadcastNEW_REQUEST_HIT_API_BROADCAST";
@@ -78,9 +81,13 @@ public interface InterConst {
     String ACCEPT_REQUEST = "1";
     String ON_THE_WAY= "2";
     String CONFRIM= "3";
+    String COMPLETE = "4";
     String DECLINE_REQUEST = "-1";
     String NEW_REQUEST = "new_request_shared";
     String SCHEDULED = "scheduled_request_shared";
+    int SHOW_ADAPTER_SNACKBAR = -2;
+    int CANCEL = 1;
+    int CONFIRM = 2;
 
     public enum WEBVIEW{
         TERM_CONDITION;

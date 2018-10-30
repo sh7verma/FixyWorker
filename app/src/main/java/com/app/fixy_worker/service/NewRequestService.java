@@ -27,7 +27,7 @@ public class NewRequestService extends Service {
 
 
     Utils utils;
-    int RECALL =10000;
+    int RECALL =30000;
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
@@ -68,6 +68,8 @@ public class NewRequestService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         return START_STICKY;
     }
+
+
     public void hitIncomingRequest() {
         if (utils.getBoolean(Consts.FOURGROUND,false)) {
             ApiInterface apiInterface = RetrofitClient.getInstance();
@@ -90,7 +92,7 @@ public class NewRequestService extends Service {
                     }
                     else  if (utils.getBoolean(Consts.FOURGROUND, false) &&
                             utils.getInt(InterConst.ON_BOOKING, InterConst.ZERO) == InterConst.ONE) {
-
+//                        if i am on new request fragment  screen
                         sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
                     }
                 }

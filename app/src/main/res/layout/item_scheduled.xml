@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey_color"
+    android:background="@color/transparent_black"
     android:orientation="vertical">
 
     <LinearLayout
@@ -109,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_5sdp"
+                android:visibility="gone"
                 android:src="@mipmap/ic_track" />
 
             <ImageView
@@ -204,16 +205,33 @@
                         android:layout_height="@dimen/_13sdp"
                         android:layout_marginTop="@dimen/_4sdp"
                         android:background="@drawable/circle_grey" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
 
                     <com.app.fixy_worker.customviews.RegularTextView
                         android:id="@+id/txt_accepted_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_weight="1"
                         android:text="12 Aug at 6:00 pm"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10ssp" />
+                    <com.app.fixy_worker.customviews.SemiboldTextView
+                        android:id="@+id/txt_eta_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:drawableRight="@mipmap/ic_info"
+                        android:text="12 Aug at 6:00 pm"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
+                </LinearLayout>
 
                     <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="@dimen/_70sdp"
@@ -234,7 +252,7 @@
                     android:id="@+id/ll_on_way"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <View
                         android:id="@+id/view_circle3"
@@ -244,7 +262,7 @@
                         android:background="@drawable/circle_grey" />
 
                     <com.app.fixy_worker.customviews.RegularTextView
-                        android:id="@+id/txt_confirm_time"
+                        android:id="@+id/txton_the_way_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
@@ -257,7 +275,7 @@
                         android:layout_width="@dimen/_70sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/_10sdp"
-                        android:background="@drawable/pink_oval"
+                        android:background="@drawable/on_the_way_oval"
                         android:gravity="center"
                         android:paddingBottom="@dimen/_3sdp"
                         android:paddingLeft="@dimen/_6sdp"
@@ -273,7 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <View
                         android:id="@+id/view_circle4"
@@ -282,27 +300,15 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:background="@drawable/circle_grey" />
 
-                    <LinearLayout
+                    <com.app.fixy_worker.customviews.RegularTextView
+                        android:id="@+id/txt_confirm_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <com.app.fixy_worker.customviews.RegularTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="12 Aug at 6:00 pm"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_10ssp" />
-
-                        <com.app.fixy_worker.customviews.SemiboldTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="OTP: 7987"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_10ssp" />
-                    </LinearLayout>
+                        android:text="12 Aug at 6:00 pm"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
 
                     <com.app.fixy_worker.customviews.RegularTextView
                         android:layout_width="@dimen/_70sdp"
@@ -324,7 +330,7 @@
 
         </RelativeLayout>
 
-        <com.app.fixy_worker.customviews.RegularTextView
+        <com.app.fixy_worker.customviews.SemiboldTextView
             android:id="@+id/txt_confirm"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"

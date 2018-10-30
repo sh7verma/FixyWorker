@@ -45,9 +45,9 @@ public class RetrofitClient {
     private static OkHttpClient provideOkHttpClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(provideOfflineCacheInterceptor())
-                .addNetworkInterceptor(provideCacheInterceptor())
-                .cache(provideCache())
+//                .addInterceptor(provideOfflineCacheInterceptor())
+//                .addNetworkInterceptor(provideCacheInterceptor())
+//                .cache(provideCache())
                 .readTimeout(120, TimeUnit.SECONDS)
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .build();

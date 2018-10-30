@@ -34,9 +34,11 @@ public class MyRequestFragment extends BaseFragment {
     public static Utils util;
 
     public static MyRequestFragment newInstance(Context mCont) {
+
         fragment = new MyRequestFragment();
         mContext = mCont;
         util = new Utils(mCont);
+        util.setInt(InterConst.SCHEDULED,InterConst.ONE);
         return fragment;
     }
 
@@ -75,6 +77,8 @@ public class MyRequestFragment extends BaseFragment {
                     txtPending.setBackground(mContext.getResources().getDrawable(R.drawable.black_round));
 
                 }
+
+                getContext().sendBroadcast(new Intent(InterConst.NEW_REQUEST_HIT_API_BROADCAST));
             }
 
             @Override
@@ -120,7 +124,7 @@ public class MyRequestFragment extends BaseFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d("myRequest","fragment hit");
-            if (util.getInt(InterConst.SCHEDULED,-1) == InterConst.ONE){
+            if (util.getInt(InterConst.SCHEDULED,InterConst.ONE) == InterConst.ONE){
 
                 ((NewRequestFragment)myPagerAdapter.getItem(0)).updateAdater();
             }

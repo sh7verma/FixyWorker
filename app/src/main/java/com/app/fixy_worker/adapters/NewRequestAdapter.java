@@ -45,8 +45,8 @@ public class NewRequestAdapter extends RecyclerView.Adapter<NewRequestAdapter.Vi
         mDataList = mList;
         serWidth = (int) mContext.getResources().getDimension(R.dimen._40sdp);
         serHeight = (int) mContext.getResources().getDimension(R.dimen._40sdp);
-        userWidth = (int) mContext.getResources().getDimension(R.dimen._35sdp);
-        userHeight = (int) mContext.getResources().getDimension(R.dimen._40sdp);
+        userWidth = (int) mContext.getResources().getDimension(R.dimen._30sdp);
+        userHeight = (int) mContext.getResources().getDimension(R.dimen._30sdp);
         radius = (int) mContext.getResources().getDimension(R.dimen._10sdp);
     }
 

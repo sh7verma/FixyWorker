@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 public abstract class BaseDialog extends Dialog implements InterfacesCall.IndexClick,View.OnClickListener{
     private int contentView;
     private Context context;
-    private Typeface typefaceMedium,typefaceRegular,typefaceBold;
+    public Typeface typefaceMedium,typefaceRegular,typefaceBold;
     private Utils utils;
     private int mWidth,mHeight;
     InterfacesCall.IndexClick indexClick;
